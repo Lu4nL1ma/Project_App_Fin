@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>fintech_apps</title>
+    
+                <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+                
+                    <nav>
+                      <ul class="">
+                       <li class="dropdown"> 
+                          <a class="dropdown" href="">MENU»</a> 
+                          <div class="dropdown-menu">
+                            <a class="inse" href="{% url "index" %}">Home</a>
+                            <a class="inse" href="{% url "apagar" %}">Apagar Parcelas</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </nav>
+                  
+
+    <div class="head">
+        <a href="{% url "index" %}"> <h1> CLIENTE </h1> </a>
+    </div>
+
+
+</head>
+
+<body class="fundo">
+
+    <br> <br> 
+
+    <div class="dados_cliente">
+            
+            <br>           
+            
+            <tr>  ID: {{c.id}} </tr> <br>
+            <tr> NOME: {{c.nome}} </tr> <br>
+            <tr> CPF: {{c.cpf}}  </tr> <br>
+            <tr> TELEFONE: {{c.telefone}} </tr> <br> 
+            <tr> NASCIMENTO: {{c.nascimento|date:'d/m/Y'}} </tr> <br>
+            <tr> REGISTRO: {{c.registro|date:'d/m/Y'}} </tr> <br> <br>
+            <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
+            
+            <br> 
+      <form action="{% url "cliente" c.id %}">
+        <table class='responsive_table'>
+  
+            <tr class="head">
+                
+                <th> <button type="submit" class="trash"> 
+                  <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                </svg> </button> </th>
+                <th> ID </th> 
+                <th>NOME </th>
+                <th>PARCELAS</th>
+                <th>VALOR</th>
+                <th>VENCIMENTO</th>
+        
+              </tr>
+              
+                {% for f in fin %}
+                <tr>
+                 <td> <input type="checkbox" class="check" value="{{f.id}}" name="ids_slct_fin"><br> </td> 
+                 <td> <a href="#"> {{f.id}} </a> <br> </td>
+                 <td> {{f.cliente}}   <br> </td>
+                 <td> {{f.parcela}} <br> </td>
+                 <td> R$ {{f.valor}},00 <br> </td>
+                 <td type="date"> {{f.data|date:'d/m/Y'}} <br> </td>
+                </tr>
+               {% endfor %}
+              
+        </table>
+      </form>
+        
+
+    </div>
+    
+    
+</body>
+
+
+
+
+</html>

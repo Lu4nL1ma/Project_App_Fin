@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fintech_apps</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <div class="">
+      <nav>
+        <ul class="">
+         <li class="dropdown"> 
+            <a class="dropdown" href="">MENU»</a> 
+            <div class="dropdown-menu">
+              <a class="inse" href="{% url "index" %}">Home</a>              
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  <div class="head">
+    <a href="{% url "cliente" c.id %}"> <h1> LANÇAR PARCELAS </h1> </a>
+  </div>
+
+
+</head>
+
+<body class="fundo">
+    
+  
+    <br> <br>
+
+    <div class="form">
+    
+      <form class="" action="{% url "cliente" c.id %}" method="post">
+        {% csrf_token %}
+
+        
+        <input type="hidden" id="nome" name="id_ori" value="{{c.id}}" required>
+        
+        <label for="nome">Nome</label> <br>
+        <input type="text" id="nome" name="nome_cli" value="{{c.nome}}" required> 
+        
+        <br> <br>
+      
+        <label for="nome"> Valor </label> <br>
+        <input type="text" id="parcela" name="vlo" required> 
+
+        <br> <br>
+      
+        <label for="nome"> Parcelas </label> <br>
+        <input type="number" id="parcela" name="parc" required>
+        
+        <br> <br>
+
+        <label for="nome"> Vencimento </label> <br>
+        <input type="date" id="" name="vnc" required>
+          
+        <br><br>
+
+        <button stype="submit">Inserir</button>
+      </form>
+    </div>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head >
+  <div class="responsive_table">
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>fintech_apps</title>
+    
+          <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    
+
+  
+    <nav>
+      <ul class="">
+       <li class="dropdown"> 
+          <a class="dropdown" href="">MENU»</a> 
+          <div class="dropdown-menu">
+            <a class="inse" href="{% url "index" %}">Home</a>
+            <a class="inse" href="{% url "inserir" %}">Inserir Cliente</a>
+            <a class="inse" href="{% url "apagar" %}">Apagar Cliente</a>
+             
+        </li>
+      </ul>
+    </nav>
+
+    
+      
+    
+<div class="head">
+<h1> CONTROLE DE CLIENTES </h1> <br>
+<form action="{% url "buscar" %}" method="get">
+<input class="pesquisa" type="search" id="search" placeholder="Pesquise pelo Nome ou ID" name="q"> <button class='botao' type="submit">Buscar</button>
+</form>
+</div>
+  
+
+</head>
+<br>
+<body class="fundo">
+
+ <form action="{% url "index" %}" method="post">
+    {% csrf_token %}
+    
+    <table class='responsive_table'>
+      <div class="index">
+    
+              <tr class="head">
+                
+                  <th> <button type="submit" class="trash"> 
+                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                  </svg> </button> </th> 
+                  
+                  <th> ID </th> 
+                  <th>NOME COMPLETO</th>
+                  <th>CPF</th>
+                  <th>TELEFONE</th>
+                  <th>NASCIMENTO</th>
+                  <th>REGISTRO</th>
+        
+              </tr>
+              
+              {% for c in customer %}
+                <tr>  
+                  <td> <input type="checkbox" class="check" value="{{c.id}}" name="ids_slct"><br> </td> 
+                  <td> <a href="{% url "cliente" c.id %}"> {{c.id}} </a> <br> </td>
+                  <td> {{c.nome}}   <br> </td>
+                  <td> {{c.cpf}} <br> </td>
+                  <td> {{c.telefone}} <br> </td>
+                  <td type="date"> {{c.nascimento|date:'d/m/Y'}} </td>
+                  <td type="date"> {{c.registro|date:'d/m/Y'}} </td>
+                </tr>
+              {% endfor %}
+              
+      </div>
+    </table>
+ </form> 
+</body>
+
+
+
+
+</html>
