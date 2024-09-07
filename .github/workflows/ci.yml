@@ -1,0 +1,22 @@
+name: Lu4nL1ma CI
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  builds:
+    runs-on: unbuntu-latest
+    steps:
+      - name: checkout do repositorio
+        uses: actions/checkout@1
+      - name: deploy para meu hosting
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "fin_tech/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}

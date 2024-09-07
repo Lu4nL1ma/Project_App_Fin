@@ -38,13 +38,24 @@
     
       <form class="" action="{% url "cliente" c.id %}" method="post">
         {% csrf_token %}
-
         
         <input type="hidden" id="nome" name="id_ori" value="{{c.id}}" required>
         
-        <label for="nome">Nome</label> <br>
-        <input type="text" id="nome" name="nome_cli" value="{{c.nome}}" required> 
-        
+        <input type="hidden" id="nome" name="nome_cli" value="{{c.nome}}" required> 
+       
+        <label for=""> Curso </label> <br>
+        <select name="curs_p" id=""> 
+          {% for cur in curs %}
+          <option value="{{cur}}">{{cur}}</option> 
+          {% endfor %}
+        </select>
+          <br> <br>
+        <label for=""> Turma </label> <br> 
+        <select name="turms" id=""> 
+          {% for t in turms %}
+          <option value="{{t}}">{{t}}</option> 
+          {% endfor %}
+        </select>
         <br> <br>
       
         <label for="nome"> Valor </label> <br>
@@ -53,8 +64,12 @@
         <br> <br>
       
         <label for="nome"> Parcelas </label> <br>
-        <input type="number" id="parcela" name="parc" required>
-        
+        <select name="parcs" id="">
+        {% for p in parcs %}
+        <option value="{{p}}">{{p}}</option>
+        {% endfor %}
+        </select>
+      
         <br> <br>
 
         <label for="nome"> Vencimento </label> <br>
@@ -62,7 +77,7 @@
           
         <br><br>
 
-        <button stype="submit">Inserir</button>
+        <button stype="submit" name="i_p">Inserir</button>
       </form>
     </div>
 </body>

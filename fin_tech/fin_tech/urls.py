@@ -23,10 +23,9 @@ urlpatterns = [
 
     path('<int:c_id>/', views.customer, name='cliente'),
     path('', views.index, name='index'),
-    path('admin/', admin.site.urls, name='admin'),
+    path('admin/', admin.site.urls, name='admin'),  
     path('buscar/', views.buscar, name='buscar'),
     path('inserir/', views.inserir, name='inserir'),
-    path('apagar/', views.apagar, name='apagar'),
     path('form/<int:c_id>/', views.form, name='form'),
    
 ]

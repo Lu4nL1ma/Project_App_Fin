@@ -1,4 +1,5 @@
 {% load static %}
+{% load my_tags %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +22,7 @@
           <div class="dropdown-menu">
             <a class="inse" href="{% url "index" %}">Home</a>
             <a class="inse" href="{% url "inserir" %}">Inserir Cliente</a>
-            <a class="inse" href="{% url "apagar" %}">Apagar Cliente</a>
+
              
         </li>
       </ul>
@@ -31,7 +32,7 @@
       
     
 <div class="head">
-<h1> CONTROLE </h1> <br>
+<h1> CONTROLE DE CLIENTES </h1> <br>
 <form action="{% url "buscar" %}" method="get">
 <input class="pesquisa" type="search" id="search" placeholder="Pesquise pelo Nome ou ID" name="q"> <button class='botao' type="submit">Buscar</button>
 </form>
@@ -70,7 +71,7 @@
                   <td> <input type="checkbox" class="check" value="{{c.id}}" name="ids_slct"><br> </td> 
                   <td> <a href="{% url "cliente" c.id %}"> {{c.id}} </a> <br> </td>
                   <td> {{c.nome}}   <br> </td>
-                  <td> {{c.cpf}} <br> </td>
+                  <td> {{c.cpf|formata_cpf}} <br> </td>
                   <td> {{c.telefone}} <br> </td>
                   <td type="date"> {{c.nascimento|date:'d/m/Y'}} </td>
                   <td type="date"> {{c.registro|date:'d/m/Y'}} </td>
