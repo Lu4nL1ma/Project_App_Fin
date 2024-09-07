@@ -25,7 +25,6 @@ jobs:
 
       - name: Run tests
         run: |
-          echo /fin_tech/
           python manage.py test
 
       - name: Deploy
