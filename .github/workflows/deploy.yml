@@ -24,7 +24,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: Project_App_Fin/fin_tech
+        run: |
+          cp r- Project_App_Fin/fin_tech
           python manage.py test
 
       - name: Deploy
