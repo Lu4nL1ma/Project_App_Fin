@@ -25,7 +25,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cp r- Project_App_Fin/fin_tech
+          cp Project_App_Fin/fin_tech
           python manage.py test
 
       - name: Deploy
