@@ -25,9 +25,9 @@ jobs:
 
       - name: Run tests
         run: |
-          cp Project_App_Fin/fin_tech
           python manage.py test
-
+          cp Project_App_Fin/fin_tech
+          
       - name: Deploy
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
