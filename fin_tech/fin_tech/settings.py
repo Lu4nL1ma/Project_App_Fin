@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-s^6)&59p3t)2#px7jo)ypdfzjhb8)g46!_snm2m%lw)7s++&(f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.finappstech.site']
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'fin_tech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,9 +117,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
 
-STATIC_ROOT = BASE_DIR / 'fin_tech/financas_online/'
+STATIC_URL = 'static/'
 
 #STATICFILES_DIR = [os.path.join(BASE_DIR, 'estatico')]
 
