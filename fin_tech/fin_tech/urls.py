@@ -27,5 +27,6 @@ urlpatterns = [
     path('buscar/', views.buscar, name='buscar'),
     path('inserir/', views.inserir, name='inserir'),
     path('form/<int:c_id>/', views.form, name='form'),
+    path('login/', views.login, name='login'),
    
 ]

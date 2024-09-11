@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fintech_apps</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <div class="head">
+        <h1> LOGIN NO APP </h1> 
+    </div>
+
+</head>
+
+<body class="fundo">
+    
+  
+    <br> <br>
+
+    <div class="form">
+    
+      <form action="" method="post">
+        {% csrf_token %}
+        <br>
+        <label for="usuario"> Nome </label> <br>
+        <input type="text" id="user" name="user" required> 
+        
+        <br> <br>
+      
+        <label for="pass"> Senha </label> <br>
+        <input type="text" id="pass" name="pass" required> 
+
+        <br> <br>
+
+        <button stype="submit">Inserir</button>
+      
+      </form>
+    </div>
+</body>
+
+
+
+
+</html>

@@ -147,8 +147,9 @@ def form(request, c_id):
      
      return render(request, 'forms.html', context)
 
-  
-  
+def login(request):
+     
+     return render(request, 'login.html')
 
 
 
