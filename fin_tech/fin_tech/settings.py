@@ -125,6 +125,8 @@ STATIC_URL = 'static/'
 
 # STATIC_URL = 'static/'
 
+#UM PEQUENO PASSO PARA HOMEM, MAS UM GRANDE PASSO PARA A HUMANIDADE!
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
