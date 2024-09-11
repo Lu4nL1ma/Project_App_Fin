@@ -69,7 +69,7 @@
               {% for c in customer %}
                 <tr>  
                   <td> <input type="checkbox" class="check" value="{{c.id}}" name="ids_slct"><br> </td> 
-                  <td> <a href =" {% url " cliente " c.id %}" > {{c.id}} </a> <br> </td>    
+                  <td> <a href =" {% url "cliente" c.id %}" > {{c.id}} </a> <br> </td>    
                   <td> {{c.nome}}   <br> </td>
                   <td> {{c.cpf|formata_cpf}} <br> </td>
                   <td> {{c.telefone}} <br> </td>
