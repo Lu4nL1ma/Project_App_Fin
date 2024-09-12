@@ -38,10 +38,14 @@
 
     <div class="dados_cliente">
             <div class="div_customer">
-                <br>           
+                <br>   
+                <h3>Nome</h3>        
                 <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
+                <h3>CPF</h3> 
                 <tr> <input class="pesquisa_three" type="text" id="nome" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
+                <h3>telefone/h3> 
                 <tr> <input class="pesquisa_three" type="text" id="nome" name="tel_cli" value="{{c.telefone}}" required> </tr> <br> 
+                <h3>Nascimento</h3> 
                 <tr> <input class="pesquisa_three" type="text" id="nome" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br> <br>
                 <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
            </div>
