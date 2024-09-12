@@ -41,7 +41,7 @@
             <br>           
             
             <tr>  ID: {{c.id}} </tr> <br>
-            <tr> NOME: {{c.nome}} </tr> <br>
+            <tr> NOME: <input type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
             <tr> CPF: {{c.cpf|formata_cpf}}  </tr> <br>
             <tr> TELEFONE: {{c.telefone}} </tr> <br> 
             <tr> NASCIMENTO: {{c.nascimento|date:'d/m/Y'}} </tr> <br>
