@@ -63,6 +63,7 @@
   height: 25px;
   width: 260px;
   text-align: center;
+  overflow-x: auto;
 }
  
   .botao {padding: 10px;}
