@@ -62,7 +62,7 @@
 .pesquisa_three {
   height: 25px;
   width: 260px;
-  text-align: center;
+  align: center;
   overflow-x: auto;
 }
  
