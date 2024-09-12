@@ -175,6 +175,9 @@
   select{width: 400px;
          text-align: center;}
 
+  .alinhar_buttom{display: flex;
+                  justify-content: center; /* Centraliza os botões horizontalmente */}
+
 
 
   
