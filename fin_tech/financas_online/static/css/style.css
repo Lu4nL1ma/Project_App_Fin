@@ -65,8 +65,13 @@
   text-align: center;
 }
 
-.div_customer{text-align: center; 
-              margin: auto;}
+.div_customer{display: flex;
+              flex-direction: column;}
+
+.form-group {display: flex;
+             align-items: center;
+             margin-bottom: 10px;
+              }
  
   .botao {padding: 10px;}
 
@@ -169,6 +174,8 @@
 
   select{width: 400px;
          text-align: center;}
+
+
 
   
 

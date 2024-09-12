@@ -38,17 +38,19 @@
 
     <div class="dados_cliente">
             <div class="div_customer">
-                <br>   
-                <label for="">Nome</label>
-                <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
-                <label for="">CPF</label>
-                <tr> <input class="pesquisa_three" type="text" id="nome" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
-                <label for="">Telefone</label>
-                <tr> <input class="pesquisa_three" type="text" id="nome" name="tel_cli" value="{{c.telefone}}" required> </tr> <br> 
-                <label for="">Nascimento</label>
-                <tr> <input class="pesquisa_three" type="text" id="nome" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br> <br>
-                <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
-           </div>
+                <div class="form-group"> 
+                    <br>   
+                    <label for="nome">Nome</label>
+                    <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
+                    <label for="cpf">CPF</label>
+                    <tr> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
+                    <label for="telefone">Telefone</label>
+                    <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br> 
+                    <label for="nascimento">Nascimento</label>
+                    <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br> <br>
+                    <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
+                </div>
+            </div>
             <br> 
       <form method="post">
         {% csrf_token %}
