@@ -40,12 +40,11 @@
             
             <br>           
             
-            <tr>  ID: {{c.id}} </tr> <br>
-            <tr> NOME: <input type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
-            <tr> CPF: {{c.cpf|formata_cpf}}  </tr> <br>
-            <tr> TELEFONE: {{c.telefone}} </tr> <br> 
-            <tr> NASCIMENTO: {{c.nascimento|date:'d/m/Y'}} </tr> <br>
-            <tr> REGISTRO: {{c.registro|date:'d/m/Y'}} </tr> <br> <br>
+            <tr>  ID: {{c.id}} REGISTRO: {{c.registro|date:'d/m/Y'}} </tr> <br>
+            <tr> NOME: <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
+            <tr> CPF: <input class="pesquisa_three" type="text" id="nome" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
+            <tr> TELEFONE: <input class="pesquisa_three" type="text" id="nome" name="tel_cli" value="{{c.telefone}}" required> </tr> <br> 
+            <tr> NASCIMENTO: <input class="pesquisa_three" type="text" id="nome" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br>
             <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
             
             <br> 
