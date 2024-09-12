@@ -110,7 +110,10 @@
                     height: 20px;
                     border: 1px solid #0D242C;
                     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);}
-                    .butoso_two {display: block; 
+  .butoso:hover{ color: #0D242C;
+                      background-color: #fffafa;}
+                        
+  .butoso_two {display: block; 
                       color: #fffafa;
                       background-color:#0D242C;
                       text-align: center;
@@ -120,10 +123,7 @@
                       height: 30px;
                       border: 1px solid #0D242C;
                       box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);}
-  
-  .butoso:hover{ color: #0D242C;
-                          background-color: #fffafa;}
-                          .butoso_two:hover{ color: #0D242C;
+  .butoso_two:hover{ color: #0D242C;
                             background-color: #fffafa;}
   
 
