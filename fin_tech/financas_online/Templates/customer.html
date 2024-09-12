@@ -37,7 +37,7 @@
     <br> <br> 
 
     <div class="dados_cliente">
-            <div class="div_customer">
+
                     <br>   
                     <label for="nome">Nome</label>
                     <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
@@ -48,8 +48,7 @@
                     <label for="nascimento">Nascimento</label>
                     <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br> <br> 
                     <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a>
-            </div>
-            <br> 
+                    <br> 
       <form method="post">
         {% csrf_token %}
        
