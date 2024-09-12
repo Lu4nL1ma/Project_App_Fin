@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-s^6)&59p3t)2#px7jo)ypdfzjhb8)g46!_snm2m%lw)7s++&(f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.finappstech.site']
+# ALLOWED_HOSTS = ['www.finappstech.site']
+
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -56,7 +58,8 @@ ROOT_URLCONF = 'fin_tech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/Templates'],
+        # 'DIRS': ['/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/Templates'],
+        'DIRS': ['Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,13 +120,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
-
-STATIC_URL = 'static/'
-
 # STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
 
 # STATIC_URL = 'static/'
+
+STATIC_ROOT = 'C:\\Users\\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\static'
+
+STATIC_URL = 'static/'
 
 #UM PEQUENO PASSO PARA HOMEM, MAS UM GRANDE PASSO PARA A HUMANIDADE!
 
