@@ -47,9 +47,9 @@
                     <label for="telefone">Telefone</label>
                     <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br> 
                     <label for="nascimento">Nascimento</label>
-                    <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br> <br>
-                    <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
+                    <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br> <br> 
                 </div>
+                <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a>
             </div>
             <br> 
       <form method="post">
