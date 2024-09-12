@@ -62,9 +62,10 @@
 .pesquisa_three {
   height: 25px;
   width: 260px;
-  align: center;
-  overflow-x: auto;
 }
+
+.div_customer{text-align: center; 
+              margin: auto;}
  
   .botao {padding: 10px;}
 
