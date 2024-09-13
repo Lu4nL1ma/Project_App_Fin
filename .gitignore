@@ -10,6 +10,7 @@ configurações_locais.py
 banco de dados.sqlite3
 db.sqlite3-diário
 meios de comunicação
+settings.py
 
 # Se o seu processo de construção inclui a execução de collectstatic, então você provavelmente não precisa ou deseja incluir staticfiles/
 # no seu repositório Git. Atualize e descomente a linha a seguir adequadamente.
