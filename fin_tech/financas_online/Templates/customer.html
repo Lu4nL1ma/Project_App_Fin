@@ -37,18 +37,17 @@
     <br> <br> 
 
     <div class="dados_cliente">
-            
-            <br>           
-            
-            <tr>  ID: {{c.id}} </tr> <br>
-            <tr> NOME: {{c.nome}} </tr> <br>
-            <tr> CPF: {{c.cpf|formata_cpf}}  </tr> <br>
-            <tr> TELEFONE: {{c.telefone}} </tr> <br> 
-            <tr> NASCIMENTO: {{c.nascimento|date:'d/m/Y'}} </tr> <br>
-            <tr> REGISTRO: {{c.registro|date:'d/m/Y'}} </tr> <br> <br>
-            <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> 
-            
-            <br> 
+                    <br>
+                    <tr> <b> DADOS DO CLIENTE </b> </tr> <br>
+                    <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
+                    <tr> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
+                    <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br>
+                    <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br><br>
+                      <div class="alinhar_buttom">
+                        <tr> <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> <a class="butoso" href="{% url "form" c.id %}"> ATUALIZAR </a> <a class="butoso" href="{% url "form" c.id %}"> HISTÓRICO DO CLIENTE </a> </tr>
+                      </div>
+                    <br> 
+
       <form method="post">
         {% csrf_token %}
        
