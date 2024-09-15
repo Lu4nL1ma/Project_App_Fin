@@ -6,7 +6,6 @@
 *.Panela
 *.pyc
 __pycache__/
-configurações_locais.py
 banco de dados.sqlite3
 db.sqlite3-diário
 meios de comunicação
