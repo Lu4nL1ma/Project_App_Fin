@@ -12,17 +12,19 @@
     
                 <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
-                
-                    <nav>
-                      <ul class="">
-                       <li class="dropdown"> 
-                          <a class="dropdown" href="">MENU»</a> 
-                          <div class="dropdown-menu">
-                            <a class="inse" href="{% url "index" %}">Home</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </nav>
+                <nav>
+                  <ul class="">
+                   <li class="dropdown"> 
+                      <a class="dropdown" href="">MENU»</a> 
+                      <div class="dropdown-menu">
+                        <a class="inse" href="{% url "index" %}">Home</a>
+                        <a class="inse" href="{% url "inserir" %}">Inserir Cliente</a>
+                        <a class="butoso" href="{% url "form" c.id %}"> Lançar Parcelas</a> 
+                        <a class="butoso" href="{% url "form" c.id %}"> Atualizar </a> 
+                        <a class="butoso" href="{% url "form" c.id %}"> Histórico do Cliente </a>
+                    </li>
+                  </ul>
+                </nav>
                   
 
     <div class="head">
@@ -43,9 +45,6 @@
                     <tr> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
                     <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br>
                     <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br><br>
-                      <div class="alinhar_buttom">
-                        <tr> <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS</a> <a class="butoso" href="{% url "form" c.id %}"> ATUALIZAR </a> <a class="butoso" href="{% url "form" c.id %}"> HISTÓRICO DO CLIENTE </a> </tr>
-                      </div>
                     <br> 
 
       <form method="post">
