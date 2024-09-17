@@ -57,9 +57,10 @@
                       </tr>                 
                     </table>
                     <br>
-                     
-                          <tr class="alinhar_buttom" > <button class="butoso_two" stype="submit" name="up_d">Atualizar</button> <button class="butoso_two" stype="submit" name="up_d"><a class="inse" href="{% url "form" c.id %}"> Lançar Parcelas</a></button> </tr>
-            
+                      <div class="alinhar_buttom">
+                          <button class="butoso_two" stype="submit" name="up_d">Atualizar</button> 
+                          <a class="butoso_two" href="{% url "form" c.id %}"> Lançar Parcelas</a>
+                      </div>
                     <br> 
 
       <form method="post">
