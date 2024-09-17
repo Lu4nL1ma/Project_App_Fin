@@ -40,7 +40,7 @@
     <div class="dados_cliente">
                     <br>
                     <tr> <b> DADOS DO CLIENTE </b> </tr> <br> <br>
-                    <table>
+                    <table class="table_customer">
                       <tr>
                         <th>Nome</th>
                         <th>CPF</th>
@@ -54,6 +54,8 @@
                         <td> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
                       </tr>
                     </table>
+
+                    <br> <br>
 
       <form method="post">
         {% csrf_token %}
