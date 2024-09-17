@@ -39,20 +39,26 @@
 
     <div class="dados_cliente">
                     <br>
+                    
                     <tr> <b> DADOS DO CLIENTE </b> </tr> <br> <br>
+                    
                     <table class="table_customer">
                       <tr>
-                        <th class="th_table"> <b> Nome </b> </th>
-                        <th class="th_table"> <b> CPF </b> </th>
-                        <th class="th_table"><B> Telefone </B></th>
-                        <th class="th_table"><b> Nascimento </b></th>
+                          <th class="th_table"> <b> NOME </b> </th>
+                          <th class="th_table"> <b> CPF </b> </th>
+                          <th class="th_table"><B> TELEFONE </B></th>
+                          <th class="th_table"><b> NASCIMENTO </b></th>
                       </tr>
                       <tr>
-                        <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </td>
-                        <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
-                        <td> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </td>
-                        <td> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
                       </tr>
+                      <br>
+
+                      <button class="butoso_two" stype="submit" name="up_d">Atualizar</button>
+                   
                     </table>
 
                     <br> <br>
