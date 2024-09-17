@@ -40,11 +40,19 @@
     <div class="dados_cliente">
                     <br>
                     <tr> <b> DADOS DO CLIENTE </b> </tr> <br>
-                    <tr> <td> <b> <label for="nome"> Nome </label> </b> </td> <td>  <label for="cpf"> CPF </label> </b> </td> </tr> <br>
-                    <tr> <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </td> <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br><br>
+                    <table>
+                    <tr>  
+                    
+                    <th> <b> <label for="nome"> Nome </label> </b> </th> 
+                    <th> </th><label for="cpf"> CPF </label> </b> </td> </th> 
+                    <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </td>  
+                    <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
+                    <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required>
+                    <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required>  
+                    <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> 
+                    
+                    </tr> 
+                    </table>
                     <br> 
 
       <form method="post">
