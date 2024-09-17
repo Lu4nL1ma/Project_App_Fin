@@ -178,11 +178,12 @@
   .alinhar_buttom{display: flex;
                   justify-content: center; /* Centraliza os botões horizontalmente */}
 
-  .table_customer{background-color: bisque;
+  .table_customer{
                   align-items: center;
                   text-align: center;
                   margin: auto;
                   }
+  .th_table{background-color: #ece5df;}
 
 
 
