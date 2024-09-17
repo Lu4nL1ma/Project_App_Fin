@@ -54,14 +54,11 @@
                           <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
                           <td> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </td>
                           <td> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
-                      </tr>
-                      <br>
-
-                      <button class="butoso_two" stype="submit" name="up_d">Atualizar</button>
-                   
+                      </tr>                 
                     </table>
-
-                    <br> <br>
+                    <br>
+                        <button class="butoso_two" stype="submit" name="up_d">Atualizar</button>
+                    <br> 
 
       <form method="post">
         {% csrf_token %}
