@@ -12,17 +12,18 @@
     
                 <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
-                
-                    <nav>
-                      <ul class="">
-                       <li class="dropdown"> 
-                          <a class="dropdown" href="">MENU»</a> 
-                          <div class="dropdown-menu">
-                            <a class="inse" href="{% url "index" %}">Home</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </nav>
+                <nav>
+                  <ul class="">
+                   <li class="dropdown"> 
+                      <a class="dropdown" href="">MENU»</a> 
+                      <div class="dropdown-menu">
+                        <a class="inse" href="{% url "index" %}">Home</a>
+                        <a class="inse" href="{% url "form" c.id %}"> Lançar Parcelas</a> 
+                        <a class="inse" href=""> Atualizar Cadastro </a> 
+                        <a class="inse" href=""> Histórico do Cliente </a>
+                    </li>
+                  </ul>
+                </nav>
                   
 
     <div class="head">
@@ -38,11 +39,36 @@
 
     <div class="dados_cliente">
                     <br>
+<<<<<<< HEAD
                     <tr> <b> DADOS DO CLIENTE </b> </tr> <br>
                     <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
                     <tr> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
                     <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br>
                     <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br><br>
+=======
+                    
+                    <tr> <b> DADOS DO CLIENTE </b> </tr> <br> <br>
+                    
+                    <table class="table_customer">
+                      <tr>
+                          <th class="th_table"> <b> NOME </b> </th>
+                          <th class="th_table"> <b> CPF </b> </th>
+                          <th class="th_table"><B> TELEFONE </B></th>
+                          <th class="th_table"><b> NASCIMENTO </b></th>
+                      </tr>
+                      <tr>
+                          <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </td>
+                          <td> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
+                      </tr>                 
+                    </table>
+                    <br>
+                      <div class="alinhar_buttom">
+                          <button class="butoso" stype="submit" name="up_d">ATUALIZAR</button> 
+                          <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
+                      </div>
+>>>>>>> 935443a0040346fb451110130a174b609e989c0e
                     <br> 
 
       <form method="post">

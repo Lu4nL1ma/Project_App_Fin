@@ -110,7 +110,7 @@
                  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                  background-color: #ece5df;
                  height: 190px;
-                 width: 995px;
+                 width: 1180px;
                  margin: auto;
                  text-align: center; }
   
@@ -177,6 +177,14 @@
 
   .alinhar_buttom{display: flex;
                   justify-content: center; /* Centraliza os botões horizontalmente */}
+
+  .table_customer{
+                  align-items: center;
+                  text-align: center;
+                  margin: auto;
+                  }
+  .th_table{background-color: #ece5df;
+            color: #0D242C;}
 
 
 
