@@ -39,13 +39,6 @@
 
     <div class="dados_cliente">
                     <br>
-<<<<<<< HEAD
-                    <tr> <b> DADOS DO CLIENTE </b> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </tr> <br>
-                    <tr> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </tr> <br><br>
-=======
                     
                     <tr> <b> DADOS DO CLIENTE </b> </tr> <br> <br>
                     
@@ -67,8 +60,8 @@
                       <div class="alinhar_buttom">
                           <button class="butoso" stype="submit" name="up_d">ATUALIZAR</button> 
                           <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
-                      </div>
->>>>>>> 935443a0040346fb451110130a174b609e989c0e
+                          <a class="butoso" href="{% url "upfin" c.id %}"> DAR BAIXA </a>
+                        </div>
                     <br> 
 
       <form method="post">
