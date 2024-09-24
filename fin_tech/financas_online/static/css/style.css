@@ -186,7 +186,17 @@
   .th_table{background-color: #ece5df;
             color: #0D242C;}
 
-
+.dados_parcela{color: black;
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              background-color: #ece5df;
+              height: 350px;
+              width: 1180px;
+              margin: auto;
+              text-align: center; }
+.inputing{text-align: center;
+          display: flex;
+          margin: auto;
+          }
 
   
 

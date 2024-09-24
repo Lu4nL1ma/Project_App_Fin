@@ -27,6 +27,6 @@ urlpatterns = [
     path('buscar/', views.buscar, name='buscar'),
     path('inserir/', views.inserir, name='inserir'),
     path('form/<int:c_id>/', views.form, name='form'),
-    path('updatefin/<int:c_id>/', views.updatefin, name='upfin'),
+    path('updatefin/<int:c_id>/<int:f_id>/', views.updatefin, name='upfin'),
    
 ]

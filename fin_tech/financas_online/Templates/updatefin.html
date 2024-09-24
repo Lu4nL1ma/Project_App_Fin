@@ -23,7 +23,7 @@
     </div>
 
   <div class="head">
-    <a href="{% url "cliente" c.id %}"> <h1> LANÇAR PARCELAS </h1> </a>
+    <a href="{% url "cliente" c.id %}"> <h1> REGISTRAR PAGAMENTO </h1> </a>
   </div>
 
 
@@ -34,50 +34,42 @@
   
     <br> <br>
 
-    <div class="form">
+    <div class="dados_parcela">
     
       <form class="" action="{% url "cliente" c.id %}" method="post">
         {% csrf_token %}
-        
-        <input type="hidden" id="nome" name="id_ori" value="{{c.id}}" required>
-        
-        <input type="hidden" id="nome" name="nome_cli" value="{{c.nome}}" required> 
-       
-        <label for=""> Curso </label> <br>
-        <select name="curs_p" id=""> 
-          {% for cur in curs %}
-          <option value="{{cur}}">{{cur}}</option> 
-          {% endfor %}
-        </select>
-          <br> <br>
-        <label for=""> Turma </label> <br> 
-        <select name="turms" id=""> 
-          {% for t in turms %}
-          <option value="{{t}}">{{t}}</option> 
-          {% endfor %}
-        </select>
-        <br> <br>
-      
-        <label for="nome"> Valor </label> <br>
-        <input type="text" id="parcela" name="vlo" required> 
 
-        <br> <br>
-      
-        <label for="nome"> Parcelas </label> <br>
-        <select name="parcs" id="">
-        {% for p in parcs %}
-        <option value="{{p}}">{{p}}</option>
-        {% endfor %}
-        </select>
-      
-        <br> <br>
-
-        <label for="nome"> Vencimento </label> <br>
-        <input type="date" id="" name="vnc" required>
-          
-        <br><br><br>
-
-        <button class="butoso_two" stype="submit" name="i_p">Inserir</button>
+        <table class="table_customer">
+          <tr>
+            <br>
+            <tr> <b> INFORMAÇÕES DA PARCELA </b> </tr> <br> <br>
+              <th class="th_table"> <b> NOME </b> </th>
+              <th class="th_table"> <b> PARCELA </b> </th>
+              <th class="th_table"><b> VALOR </b></th>
+          </tr>
+          <tr>
+              <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{f.cliente}}" required> </td>
+              <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{f.parcela}}" required> </td>
+              <td> <input class="pesquisa_three" type="text" id="valor" name="tel_cli" value="{{f.valor}},00" required> </td>
+          </tr> 
+        </table>
+        <br>
+        <table class="table_customer">
+          <tr>
+            <th class="th_table"><b> VENCIMENTO </b></th>
+            <th class="th_table"><b> PAGAMENTO </b></th>
+            <th class="th_table"><b>  BANCO </b></th>
+          </tr>             
+          <tr>
+            <td> <input class="pesquisa_three" type="text" id="vencimento" name="nsc_cli" value="{{f.data|date:'d/m/Y'}}" required> </td>
+            <td> <input class="pesquisa_three" type="date" id="pagamento" name="pg_cli" value="" required> </td>
+            <td><input class="pesquisa_three" type="text"></td>
+          </tr>
+        </table>
+        <br>
+        <input class="inputing" type="file">
+        <br> 
+        <button class="butoso_two" stype="submit" name="i_p">Registrar</button>
       </form>
     </div>
 </body>

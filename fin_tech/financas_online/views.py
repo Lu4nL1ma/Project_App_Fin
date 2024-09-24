@@ -151,11 +151,11 @@ def login(request):
      
      return render(request, 'login.html')
 
-def updatefin(request, c_id):
-     id_cliente = customers.objects.get(pk=c_id)
-     fin = financas.objects.filter(id_ori=c_id)
-     context = {'c': id_cliente,'fin': fin}
-     return render(request, 'updatefin.html', context)
+def updatefin(request,c_id, f_id):
+   id_cliente = customers.objects.get(pk=c_id)
+   fin = financas.objects.get(id=f_id)
+   context = {'c': id_cliente,'f': fin}
+   return render(request, 'updatefin.html', context)
 
 
 
