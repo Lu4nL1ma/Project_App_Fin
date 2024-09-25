@@ -139,7 +139,7 @@ def customer(request, c_id):
        telefone = request.POST['up_tel_cli']
        nasicmento = request.POST['up_nsc_cli']
       
-       filtro = customer.filter(id=id).udpate(nome=nome, cpf=cpf, telefone=telefone, nascimento=nasicmento)
+       filtro = customer.objects.filter(pk=id).udpate(nome=nome, cpf=cpf, telefone=telefone, nascimento=nasicmento)
 
        filtro.save()
        
