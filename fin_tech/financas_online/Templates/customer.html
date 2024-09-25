@@ -38,32 +38,36 @@
     <br> <br> 
 
     <div class="dados_cliente">
-                    <br>
-                    
-                    <tr> <b> DADOS DO CLIENTE </b> </tr> <br> <br>
-                    
-                    <table class="table_customer">
-                      <tr>
-                          <th class="th_table"> <b> NOME </b> </th>
-                          <th class="th_table"> <b> CPF </b> </th>
-                          <th class="th_table"> <b> TELEFONE </b> </th>
-                          <th class="th_table"> <b> NASCIMENTO </b> </th>
-                      </tr>
-                      <tr>
-                          <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{c.nome}} " required> </td>
-                          <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
-                          <td> <input class="pesquisa_three" type="text" id="telefone" name="tel_cli" value="{{c.telefone}}" required> </td>
-                          <td> <input class="pesquisa_three" type="text" id="nascimento" name="nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
-                      </tr>                 
-                    </table>
-                    <br>
-                      <div class="alinhar_buttom">
-                          <button class="butoso" stype="submit" name="up_d">ATUALIZAR</button> 
+                   
+      <br>
+                    <form method="post">
+                      {% csrf_token %}
+                      <tr> <b> DADOS DO CLIENTE </b> </tr> <br> <br>
+                      <table class="table_customer">
+                          <tr>
+                              <th class="th_table"> <b> NOME </b> </th>
+                              <th class="th_table"> <b> CPF </b> </th>
+                              <th class="th_table"> <b> TELEFONE </b> </th>
+                              <th class="th_table"> <b> NASCIMENTO </b> </th>
+                          </tr>
+                          <tr>
+                                   <input class="pesquisa_three" type="hidden" id="id" name="up_id_cli" value="{{c.id}} " required> 
+                              <td> <input class="pesquisa_three" type="text" id="nome" name="up_nom_cli" value="{{c.nome}} " required> </td>
+                              <td> <input class="pesquisa_three" type="text" id="cpf" name="up_cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
+                              <td> <input class="pesquisa_three" type="text" id="telefone" name="up_tel_cli" value="{{c.telefone}}" required> </td>
+                              <td> <input class="pesquisa_three" type="text" id="nascimento" name="up_nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
+                          </tr>                 
+                      </table>
+                      <br>
+                        <div class="alinhar_buttom">
+                            <button class="butoso" stype="submit" name="up_date_cli">ATUALIZAR</button> 
+                    </form>      
                           <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
                         </div>
                     <br> 
 
       <form method="post">
+        
         {% csrf_token %}
        
         <table class='responsive_table'>

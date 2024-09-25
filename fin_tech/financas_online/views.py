@@ -1,6 +1,7 @@
 
 from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
+from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.db.models import Q
@@ -81,7 +82,7 @@ def inserir(request):
      
      return render(request, 'form_inse.html', dados)
 
-#view do clientes e apagar parcelas
+#view de controle da página de usuários
 def customer(request, c_id):
    id_cliente = customers.objects.get(pk=c_id)
    fin = financas.objects.filter(id_ori=c_id)
@@ -128,7 +129,22 @@ def customer(request, c_id):
          add_financeiro.save()
          contador += 1
       return render(request, 'customer.html', context)
-     
+
+#atualização dos dados do cliente    
+     elif 'up_date_cli' in request.POST:
+       
+       id = request.POST['up_id_cli']
+       nome = request.POST['up_nom_cli']
+       cpf = request.POST['up_cpf_cli']
+       telefone = request.POST['up_tel_cli']
+       nasicmento = request.POST['up_nsc_cli']
+      
+       filtro = customer.objects.filter(id=id).udpate(nome=nome, cpf=cpf, telefone=telefone, nascimento=nasicmento)
+
+       filtro.save()
+       
+       return render(request, 'customer.html', context)
+ 
          
 #view do forms inserir parcelas
 def form(request, c_id):
