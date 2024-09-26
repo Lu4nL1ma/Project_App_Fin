@@ -143,7 +143,7 @@ def customer(request, c_id):
       
        filtro = customers.objects.filter(pk=id) 
        filtro.update(nome=nome, cpf=cpf, telefone=telefone, nascimento=date_edits)
-       filtro.save()
+      #  filtro.save()
        
        return render(request, 'customer.html', context)
  
