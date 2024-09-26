@@ -139,7 +139,7 @@ def customer(request, c_id):
        telefone = request.POST['up_tel_cli']
        nasicmento = request.POST['up_nsc_cli']
       
-       filtro = customer.objects.filter(pk=id) 
+       filtro = customers.objects.filter(pk=id) 
        
        filtro.update(nome=nome, cpf=cpf, telefone=telefone, nascimento=nasicmento)
 
