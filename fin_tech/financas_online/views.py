@@ -8,7 +8,6 @@ from django.db.models import Q
 import numpy as np
 
 # Create your views here.
-
 app_name = 'financas_online'
 
 #view de home e apagar clientes
