@@ -137,12 +137,12 @@ def customer(request, c_id):
        nome = request.POST['up_nom_cli']
        cpf = request.POST['up_cpf_cli']
        telefone = request.POST['up_tel_cli']
-       nasicmento = request.POST['up_nsc_cli']
+       nascimento = request.POST['up_nsc_cli']
+       date_edits = datetime.strptime(nascimento,'%d/%m/%Y')
+
       
        filtro = customers.objects.filter(pk=id) 
-       
-       filtro.update(nome=nome, cpf=cpf, telefone=telefone, nascimento=nasicmento)
-
+       filtro.update(nome=nome, cpf=cpf, telefone=telefone, nascimento=date_edits)
        filtro.save()
        
        return render(request, 'customer.html', context)
