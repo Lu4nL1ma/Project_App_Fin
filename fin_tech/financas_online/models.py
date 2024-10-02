@@ -20,15 +20,16 @@ class customers(models.Model):
     registro = models.DateField(auto_now=True)
 
 class financas(models.Model):
-    id_ori = models.CharField(max_length=50)
-    cliente = models.CharField(max_length=100)
-    parcela = models.CharField(max_length=100)
-    valor = models.CharField(max_length=100) 
+    id_ori = models.CharField(max_length=50, blank=False)
+    cliente = models.CharField(max_length=100, blank=False)
+    parcela = models.CharField(max_length=100, blank=False)
+    valor = models.CharField(max_length=100), blank=False 
     curso = models.CharField(max_length=50, blank=False)
     turma = models.CharField(max_length=50,blank=False)
     data = models.DateField(auto_now=False)
     data_pagamento = models.DateField(auto_now=False)
     banco = models.CharField(max_length=50,blank=False)
-    arquivo = models.FileField(upload_to='posts/%Y/%m/%d/')
+    arquivo = models.FileField(upload_to='posts/%Y/%m/%d/', blank=True)
+
     
 
