@@ -18,7 +18,7 @@ class customers(models.Model):
     nome = models.CharField(max_length=100, blank=False, default='não informado!')
     cpf = models.CharField(max_length=50, blank=False, default='não informado!')
     telefone = models.CharField(max_length=50, blank=False, default='não informado!')
-    nascimento = models.DateField(auto_now=False)
+    nascimento = models.DateField(auto_now=False, default='01-01-2024')
     registro = models.DateField(auto_now=True)
 
 class financas(models.Model):
@@ -28,9 +28,9 @@ class financas(models.Model):
     valor = models.CharField(max_length=100, blank=False, default='não informado!')
     curso = models.CharField(max_length=50, blank=False, default='não informado!')
     turma = models.CharField(max_length=50,blank=False, default='não informado!')
-    data = models.DateField(auto_now=False)
-    data_pagamento = models.DateField(auto_now=False)
-    banco = models.CharField(max_length=50,blank=False, default='não informado!')
+    data = models.DateField(auto_now=False, default='01-01-2024')
+    data_pagamento = models.DateField(auto_now=False, default='01-01-2024')
+    banco = models.CharField(max_length=50, blank=False, default='não informado!')
     arquivo = models.FileField(upload_to='posts/%Y/%m/%d/', blank=True, default='não informado!')
     registro = models.DateField(auto_now=True)
 
