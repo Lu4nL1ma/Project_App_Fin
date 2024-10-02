@@ -92,6 +92,7 @@ DATABASES = {
         'USER': 'Lu4nL1ma',
         'PASSWORD': 'luansql!',
         'HOST': 'Lu4nL1ma.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
@@ -133,6 +134,10 @@ USE_TZ = True
 STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
 
 STATIC_URL = 'static/'
+
+MEDIA_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
+
+MEDIA_URL = 'media/'
 
 # STATIC_ROOT = 'C:\\Users\\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\static'
 
