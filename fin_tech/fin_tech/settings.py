@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'fin_tech.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Lu4nL1ma$last_db',
+        'NAME': 'Lu4nL1ma$db_fintech',
         'USER': 'Lu4nL1ma',
         'PASSWORD': 'luansql!',
         'HOST': 'Lu4nL1ma.mysql.pythonanywhere-services.com',
