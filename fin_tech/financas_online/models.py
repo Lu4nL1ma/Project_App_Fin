@@ -16,7 +16,7 @@ class turmas_formatec(models.Model):
 
 class customers(models.Model):
     nome = models.CharField(max_length=100, blank=False, default='não informado!')
-    cpf = models.CharField(max_length=50, blank=False), default='não informado!'
+    cpf = models.CharField(max_length=50, blank=False, default='não informado!')
     telefone = models.CharField(max_length=50, blank=False, default='não informado!')
     nascimento = models.DateField(auto_now=False, default='não informado!')
     registro = models.DateField(auto_now=True)
