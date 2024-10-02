@@ -27,5 +27,6 @@ class financas(models.Model):
     curso = models.CharField(max_length=50, blank=False)
     turma = models.CharField(max_length=50,blank=False)
     data = models.DateField(auto_now=False)
+    arquivo = models.FileField(upload_to='posts/%Y/%m/%d/')
     
 
