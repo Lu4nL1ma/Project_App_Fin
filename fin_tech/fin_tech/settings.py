@@ -78,22 +78,22 @@ WSGI_APPLICATION = 'fin_tech.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'Lu4nL1ma$finappstech',
-#         'USER': 'Lu4nL1ma',
-#         'PASSWORD': 'luansql!',
-#         'HOST': 'Lu4nL1ma.mysql.pythonanywhere-services.com',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Lu4nL1ma$finappstech',
+        'USER': 'Lu4nL1ma',
+        'PASSWORD': 'luansql!',
+        'HOST': 'Lu4nL1ma.mysql.pythonanywhere-services.com',
+    }
+}
 
 
 # Password validation
