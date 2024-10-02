@@ -23,7 +23,7 @@ class financas(models.Model):
     id_ori = models.CharField(max_length=50, blank=False)
     cliente = models.CharField(max_length=100, blank=False)
     parcela = models.CharField(max_length=100, blank=False)
-    valor = models.CharField(max_length=100), blank=False 
+    valor = models.CharField(max_length=100, blank=False)
     curso = models.CharField(max_length=50, blank=False)
     turma = models.CharField(max_length=50,blank=False)
     data = models.DateField(auto_now=False)
