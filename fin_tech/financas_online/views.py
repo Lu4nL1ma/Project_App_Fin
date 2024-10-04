@@ -179,7 +179,7 @@ def update_cliente(request, c_id):
      id_cliente = customers.objects.get(pk=c_id)
      context = {'c': id_cliente}
     
-     return redirect('customer.html', context)
+     return render(request,'updatecli.html', context)
 
 
    

@@ -46,6 +46,7 @@
 <b> DADOS DO CLIENTE </b> </tr> <br> <br>
 <table class="table_customer">
 <tr>
+  <th class="th_table"> <b> ID </b> </th>
   <th class="th_table"> <b> NOME </b> </th>
   <th class="th_table"> <b> CPF </b> </th>
   <th class="th_table"> <b> TELEFONE </b> </th>
@@ -61,7 +62,7 @@
 </table>
 <br>
 <div class="alinhar_buttom"> 
-    <a href="{% url "upcli" c.id %}">ATUALIZAR DADOS DO CLIENTE</a>
+    <a class="butoso" href="{% url "upcli" c.id %}">ATUALIZAR DADOS DO CLIENTE</a>
 </form>      
     <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
 </div>
