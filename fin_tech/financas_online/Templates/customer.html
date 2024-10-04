@@ -52,16 +52,16 @@
   <th class="th_table"> <b> NASCIMENTO </b> </th>
 </tr>
 <tr>
-    <input class="pesquisa_three" type="hidden" id="id" name="up_id_cli" value="{{c.id}} " required> 
-    <td> <input class="pesquisa_three" type="text" id="nome" name="up_nom_cli" value="{{c.nome}} " required> </td>
-    <td> <input class="pesquisa_three" type="text" id="cpf" name="up_cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
-    <td> <input class="pesquisa_three" type="text" id="telefone" name="up_tel_cli" value="{{c.telefone}}" required> </td>
-    <td> <input class="pesquisa_three" type="text" id="nascimento" name="up_nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
+    <td>{{c.id}}</td>
+    <td> {{c.nome}}</td>
+    <td> {{c.cpf|formata_cpf}} </td>
+    <td> {{c.telefone}} </td>
+    <td> {{c.nascimento|date:'d/m/Y'}} </td>
 </tr>                 
 </table>
 <br>
-<div class="alinhar_buttom">
-    <button class="butoso" stype="submit" name="up_date_cli">ATUALIZAR</button> 
+<div class="alinhar_buttom"> 
+    <a href="{% url "upcli" c.id %}">ATUALIZAR DADOS DO CLIENTE</a>
 </form>      
     <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
 </div>

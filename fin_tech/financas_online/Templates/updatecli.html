@@ -1,0 +1,58 @@
+{% load static %}
+{% load my_tags %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fintech_apps</title>
+    
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+                      
+
+<div class="head">
+<a href="{% url "index" %}"> <h1> ATUALIZAR DADOS DO CLIENTE </h1> </a>
+</div>
+
+
+</head>
+
+<body class="fundo">
+
+<br> <br> 
+
+<div class="dados_cliente">
+                   
+<br>
+<form method="post" action="{% url "cliente" c.id %}">
+  {% csrf_token %}
+<tr> 
+<b> DADOS DO CLIENTE </b> </tr> <br> <br>
+<table class="table_customer">
+<tr>
+  <th class="th_table"> <b> NOME </b> </th>
+  <th class="th_table"> <b> CPF </b> </th>
+  <th class="th_table"> <b> TELEFONE </b> </th>
+  <th class="th_table"> <b> NASCIMENTO </b> </th>
+</tr>
+<tr>
+    <input class="pesquisa_three" type="hidden" id="id" name="up_id_cli" value="{{c.id}} " required> 
+    <td> <input class="pesquisa_three" type="text" id="nome" name="up_nom_cli" value="{{c.nome}} " required> </td>
+    <td> <input class="pesquisa_three" type="text" id="cpf" name="up_cpf_cli" value="{{c.cpf|formata_cpf}}" required> </td>
+    <td> <input class="pesquisa_three" type="text" id="telefone" name="up_tel_cli" value="{{c.telefone}}" required> </td>
+    <td> <input class="pesquisa_three" type="text" id="nascimento" name="up_nsc_cli" value="{{c.nascimento|date:'d/m/Y'}}" required> </td>
+</tr>                 
+</table>
+<br>
+<div class="alinhar_buttom">
+    <button class="butoso" stype="submit" name="up_date_cli">ATUALIZAR</button> 
+</form>      
+        
+</div>
+      
+</body>
+
+</html>
