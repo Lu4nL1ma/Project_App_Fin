@@ -46,19 +46,24 @@
             <th class="th_table"> <b> PARCELA </b> </th>
             <th class="th_table"> <b> VALOR </b> </th>
             <th class="th_table"> <b> VENCIMENTO </b> </th>
-            <th class="th_table"> <b> PAGAMENTO </b> </th>
-            <th class="th_table"> <b>  BANCO </b> </th>
           </tr>             
           <tr>
-            <td> <div class='div_cells'> {{f.parcela}} </div> </td>
-            <td> <input class="pesquisa_three" type="text" id="valor" name="up_tel_cli" value="{{f.valor}},00" required> </td>
-            <td> <input class="pesquisa_three" type="text" id="vencimento" name="up_nsc_cli" value="{{f.vencimento|date:'d/m/Y'}}" required> </td>
+            <td> {{f.parcela}} </td>
+            <td> {{f.valor}},00 </td>
+            <td> {{f.vencimento|date:'d/m/Y'}} </td>
+          </tr>
+          <tr> 
+            <th class="th_table"> <b> PAGAMENTO </b> </th>
+            <th class="th_table"> <b> BANCO </b> </th>
+            <th class="th_table"> <b>  COMPROVANTE </b> </th>
+          </tr>
+          <tr>
             <td> <input class="pesquisa_three" type="date" id="pagamento" name="up_pg_cli" value="" required> </td>
             <td> <input class="pesquisa_three" type="text"> </td>
+            <td> <input class="inputing" type="file"> </td>
           </tr>
         </table>
         <br>
-        <input class="inputing" type="file">
         <br> 
         <button class="butoso_two" stype="submit" name="upd_p">Salvar</button>
       </form>
