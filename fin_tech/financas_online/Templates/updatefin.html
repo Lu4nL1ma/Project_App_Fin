@@ -48,33 +48,30 @@
               <th class="th_table"><b> VALOR </b></th>
           </tr>
           <tr>
-              <td> <input class="pesquisa_three" type="text" id="nome" name="nom_cli" value="{{f.cliente}}" required> </td>
-              <td> <input class="pesquisa_three" type="text" id="cpf" name="cpf_cli" value="{{f.parcela}}" required> </td>
-              <td> <input class="pesquisa_three" type="text" id="valor" name="tel_cli" value="{{f.valor}},00" required> </td>
+              <td> <input class="pesquisa_three" type="text" id="nome" name="up_nom_cli" value="{{f.cliente}}" required> </td>
+              <td> <input class="pesquisa_three" type="text" id="cpf" name="up_cpf_cli" value="{{f.parcela}}" required> </td>
+              <td> <input class="pesquisa_three" type="text" id="valor" name="up_tel_cli" value="{{f.valor}},00" required> </td>
           </tr> 
         </table>
         <br>
         <table class="table_customer">
           <tr>
-            <th class="th_table"><b> VENCIMENTO </b></th>
-            <th class="th_table"><b> PAGAMENTO </b></th>
-            <th class="th_table"><b>  BANCO </b></th>
+            <th class="th_table"> <b> VENCIMENTO </b> </th>
+            <th class="th_table"> <b> PAGAMENTO </b> </th>
+            <th class="th_table"> <b>  BANCO </b> </th>
           </tr>             
           <tr>
-            <td> <input class="pesquisa_three" type="text" id="vencimento" name="nsc_cli" value="{{f.vencimento|date:'d/m/Y'}}" required> </td>
-            <td> <input class="pesquisa_three" type="date" id="pagamento" name="pg_cli" value="" required> </td>
-            <td><input class="pesquisa_three" type="text"></td>
+            <td> <input class="pesquisa_three" type="text" id="vencimento" name="up_nsc_cli" value="{{f.vencimento|date:'d/m/Y'}}" required> </td>
+            <td> <input class="pesquisa_three" type="date" id="pagamento" name="up_pg_cli" value="" required> </td>
+            <td> <input class="pesquisa_three" type="text"> </td>
           </tr>
         </table>
         <br>
         <input class="inputing" type="file">
         <br> 
-        <button class="butoso_two" stype="submit" name="i_p">Salvar</button>
+        <button class="butoso_two" stype="submit" name="upd_p">Salvar</button>
       </form>
     </div>
 </body>
-
-
-
 
 </html>
