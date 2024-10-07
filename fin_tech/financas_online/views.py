@@ -146,7 +146,15 @@ def customer(request, c_id):
        
        return render(request, 'customer.html', context)
  
-         
+     elif 'upd_p' in request.POST:
+        
+        id = request.POST['id_up_f']
+        pagamento = request.POST['up_pg_cli']
+        banco = request.POST['up_banco']
+        comprovante = request.POST['up_file']
+        filtro = financas.objects.filter(pk=id) 
+        filtro.update(data_pagamento=pagamento, banco=banco, arquivo=comprovante)
+   
 #view do forms inserir parcelas
 def form(request, c_id):
 
