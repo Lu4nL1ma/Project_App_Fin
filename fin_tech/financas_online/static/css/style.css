@@ -19,7 +19,7 @@
   }
 
   .responsive_table {
-    width: 1600px;
+    width: 1900px;
     overflow-x: auto;
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
   }
