@@ -18,6 +18,6 @@ class Cadastroturmas(admin.ModelAdmin):
 
 @admin.register(models.financas)
 class financas(admin.ModelAdmin):
-   list_display = 'id','id_ori','cliente', 'parcela', 'valor', 'data', 'data_pagamento', 'banco', 'arquivo', 'registro_fin'
+   list_display = 'id','id_ori','cliente', 'parcela', 'valor', 'vencimento', 'data_pagamento', 'banco', 'arquivo', 'registro_fin'
 
 
