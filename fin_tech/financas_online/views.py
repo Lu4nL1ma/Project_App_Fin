@@ -124,7 +124,7 @@ def customer(request, c_id):
        while contador < end:
          data_edit = datetime.strptime(vencimento,'%Y-%m-%d') + relativedelta(months=contador)
          parcela_edit = f'0{contador+1}/0{end}'
-         add_financeiro = financas(cliente=nome, parcela=parcela_edit, valor=valor, data=data_edit, id_ori=id_ori, curso=curs, turma=turms)
+         add_financeiro = financas(cliente=nome, parcela=parcela_edit, valor=valor, vencimento=data_edit, id_ori=id_ori, curso=curs, turma=turms)
          add_financeiro.save()
          contador += 1
       return render(request, 'customer.html', context)
