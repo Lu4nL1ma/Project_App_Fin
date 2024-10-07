@@ -200,7 +200,8 @@
           margin: auto;
           }
 
-.div_cells{background: #ece5df;}
+.div_cells{background-color: #ece5df;
+           width: 100px;}
 
   
 
