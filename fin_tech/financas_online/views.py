@@ -154,6 +154,7 @@ def customer(request, c_id):
         comprovante = request.POST['up_file']
         filtro = financas.objects.filter(pk=id) 
         filtro.update(data_pagamento=pagamento, banco=banco, arquivo=comprovante)
+        return render(request, 'customer.html', context)
    
 #view do forms inserir parcelas
 def form(request, c_id):
