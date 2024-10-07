@@ -183,6 +183,7 @@
                   align-items: center;
                   text-align: center;
                   margin: auto;
+                  width: 1600px;
                   }
   .th_table{background-color: #ece5df;
             color: #0D242C;}
@@ -191,7 +192,7 @@
               font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
               background-color: #ece5df;
               height: 350px;
-              width: 1800px;
+              width: 1180px;
               margin: auto;
               text-align: center; }
 
