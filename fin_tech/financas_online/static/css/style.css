@@ -19,7 +19,7 @@
   }
 
   .responsive_table {
-    width: 100%;
+    width: 1600px;
     overflow-x: auto;
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
   }
@@ -124,6 +124,7 @@
                     height: 20px;
                     border: 1px solid #0D242C;
                     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);}
+
   .butoso:hover{ color: #0D242C;
                       background-color: #fffafa;}
                         
@@ -193,6 +194,7 @@
               width: 1180px;
               margin: auto;
               text-align: center; }
+
 .inputing{text-align: center;
           display: flex;
           margin: auto;
