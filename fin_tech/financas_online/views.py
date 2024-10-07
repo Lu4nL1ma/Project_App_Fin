@@ -111,7 +111,7 @@ def customer(request, c_id):
       
       if int(parcelas) == 1:
          parcs = f'0{parcelas}/0{parcelas}'
-         add_financeiro = financas(cliente=nome, parcela=parcs, valor=valor, data=vencimento, id_ori=id_ori, curso=curs, turma=turms)
+         add_financeiro = financas(cliente=nome, parcela=parcs, valor=valor, vencimento=vencimento, id_ori=id_ori, curso=curs, turma=turms)
          add_financeiro.save()
          return render(request, 'customer.html', context) 
 
