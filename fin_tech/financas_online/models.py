@@ -28,7 +28,7 @@ class financas(models.Model):
     valor = models.CharField(max_length=100, blank=False, default='não informado!')
     curso = models.CharField(max_length=50, blank=False, default='não informado!')
     turma = models.CharField(max_length=50,blank=False, default='não informado!')
-    data = models.DateField(auto_now=False, null=True)
+    vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
     banco = models.CharField(max_length=50, blank=False, default='não informado!')
     arquivo = models.FileField(upload_to='posts/%Y/%m/%d/', blank=True, default='não informado!')
