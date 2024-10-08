@@ -131,11 +131,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/static/'
+STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/media'
+MEDIA_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/'
 
 MEDIA_URL = 'media/'
 
