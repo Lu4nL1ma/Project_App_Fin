@@ -3,6 +3,8 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your models here.
 
+dir = FileSystemStorage(location='/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/media')
+
 class cursos(models.Model):
     curso = models.CharField(max_length=50, default='não informado!')
     registro_curs = models.DateField(auto_now=True)
@@ -32,7 +34,7 @@ class financas(models.Model):
     vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
     banco = models.CharField(max_length=50, blank=False, default=' ')
-    arquivo = models.FileField(upload_to='media/', blank=True, default=' ')
+    arquivo = models.ImageField(storage=dir, blank=True, default=' ')
     registro_fin = models.DateField(auto_now=True)
 
     
