@@ -137,7 +137,7 @@ STATIC_URL = 'static/'
 
 MEDIA_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
 # STATIC_ROOT = 'C:\\Users\\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\static'
 
