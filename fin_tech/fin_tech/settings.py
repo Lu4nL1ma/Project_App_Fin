@@ -135,7 +135,7 @@ STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_o
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/arquivos'
+MEDIA_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/arquivos/'
 
 MEDIA_URL = 'media/'
 
