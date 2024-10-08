@@ -3,7 +3,7 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your models here.
 
-dir = FileSystemStorage(location='/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/media')
+dir = FileSystemStorage(location='/fin_tech/media', base_url='/media/')
 
 class cursos(models.Model):
     curso = models.CharField(max_length=50, default='não informado!')
