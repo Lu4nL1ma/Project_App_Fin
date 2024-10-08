@@ -31,7 +31,7 @@ class financas(models.Model):
     vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
     banco = models.CharField(max_length=50, blank=False, default=' ')
-    arquivo = models.FileField(upload_to='media/', blank=True, default=' ')
+    arquivo = models.FileField(upload_to='/media/', blank=True, default=' ')
     registro_fin = models.DateField(auto_now=True)
 
     
