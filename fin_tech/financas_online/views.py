@@ -36,7 +36,7 @@ def index(request):
    
    clientes = customers.objects.all().order_by('id')
 
-   context = {'customer': clientes, 'form': financasform}
+   context = {'customer': clientes, 'form': financasform()}
  
    return render(request, 'index.html', context)
 
