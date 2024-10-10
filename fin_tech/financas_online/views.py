@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .forms import financasform
+from forms import financasform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
