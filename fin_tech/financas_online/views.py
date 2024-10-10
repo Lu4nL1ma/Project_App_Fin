@@ -189,15 +189,15 @@ def update_cliente(request, c_id):
     
      return render(request,'updatecli.html', context)
 
-def anexo_comprovante(request, c_id, f_id, f_arquivo):
+# def anexo_comprovante(request, c_id, f_id, f_arquivo):
    
-   id_cliente = customers.objects.get(pk=c_id)
-   fin = financas.objects.get(id=f_id)
-   arq = financas.objects.get(arquivo=f_arquivo)
+#    id_cliente = customers.objects.get(pk=c_id)
+#    fin = financas.objects.get(id=f_id)
+#    arq = financas.objects.get(arquivo=f_arquivo)
    
-   context = {'c': id_cliente,'f': fin, 'a': arq}
+#    context = {'c': id_cliente,'f': fin, 'a': arq}
    
-   return render(request, 'anexo.html', context)
+#    return render(request, 'anexo.html', context)
      
     
 
