@@ -29,7 +29,8 @@
 <br>
 <form method="post" action="{% url "cliente" c.id %}">
   {% csrf_token %}
-<tr> 
+  <br><br>
+  <tr> 
 <b> DADOS DO CLIENTE </b> </tr> <br> <br>
 <table class="table_customer">
 <tr>
@@ -50,7 +51,7 @@
 <div class="alinhar_buttom">
     <button class="butoso" stype="submit" name="up_date_cli">ATUALIZAR</button> 
 </form>      
-        
+<br><br>      
 </div>
       
 </body>

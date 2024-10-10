@@ -139,11 +139,9 @@ def customer(request, c_id):
        nascimento = request.POST['up_nsc_cli']
        date_edits = datetime.strptime(nascimento,'%d/%m/%Y')
 
-      
        filtro = customers.objects.filter(pk=id) 
        filtro.update(nome=nome, cpf=cpf, telefone=telefone, nascimento=date_edits)
-      #  filtro.save()
-       
+
        return render(request, 'customer.html', context)
  
      elif 'upd_p' in request.POST:
@@ -189,6 +187,18 @@ def update_cliente(request, c_id):
      context = {'c': id_cliente}
     
      return render(request,'updatecli.html', context)
+
+def anexo_comprovante(request, c_id, f_id, f_arquivo):
+   
+   id_cliente = customers.objects.get(pk=c_id)
+   fin = financas.objects.get(id=f_id)
+   arq = financas.objects.get(arquivo=f_arquivo)
+   
+   context = {'c': id_cliente,'f': fin, 'a': arq}
+   
+   return render(request, 'anexo.html', context)
+     
+    
 
 
    

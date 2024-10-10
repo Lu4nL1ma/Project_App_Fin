@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fintech_apps</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <div class="">
+      <nav>
+        <ul class="">
+         <li class="dropdown"> 
+            <a class="dropdown" href="">MENU»</a> 
+            <div class="dropdown-menu">
+              <a class="inse" href="{% url "index" %}">Home</a>              
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  <div class="head">
+    <a href="{% url "cliente" c.id %}"> <h1> COMPROVANTE </h1> </a>
+  </div>
+
+
+</head>
+
+<body class="fundo">
+    
+  
+    <br> <br>
+    <!-- vamos editar corretamente --> 
+    <div class="dados_parcela">
+    
+      
+    </div>
+</body>
+
+
+
+
+</html>
