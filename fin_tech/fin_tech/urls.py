@@ -11,6 +11,5 @@ urlpatterns = [
     path('inserir/', views.inserir, name='inserir'),
     path('form/<int:c_id>/', views.form, name='form'),
     path('updatecli/<int:c_id>/', views.update_cliente, name='upcli'),
-    path('updatefin/<int:c_id>/<int:f_id>/', views.updatefin, name='upfin'),
-    # path('anexo/<int:c_id>/<int:f_id>/<f_arquivo>', views.anexo_comprovante, name='anexo')   
+    path('updatefin/<int:c_id>/<int:f_id>/', views.updatefin, name='upfin')  
 ]
