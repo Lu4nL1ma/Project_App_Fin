@@ -2,9 +2,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from .forms import financasform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from django.db.models import Q
 import numpy as np
 
 # Create your views here.
@@ -35,7 +36,7 @@ def index(request):
    
    clientes = customers.objects.all().order_by('id')
 
-   context = {'customer': clientes}
+   context = {'customer': clientes, 'form': financasform}
  
    return render(request, 'index.html', context)
 
