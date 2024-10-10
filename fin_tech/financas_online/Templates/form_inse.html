@@ -36,7 +36,8 @@
 
     <div class="form">
     
-      <form action="" method="post">
+      <form action="{% url "index" %}" method="post">
+        
         {% csrf_token %}
         
         {{forms.as_table}}

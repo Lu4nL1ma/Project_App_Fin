@@ -36,7 +36,7 @@ def index(request):
    
    clientes = customers.objects.all().order_by('id')
 
-   context = {'customer': clientes, 'form': financasform()}
+   context = {'customer': clientes}
  
    return render(request, 'index.html', context)
 
@@ -77,8 +77,11 @@ def inserir(request):
 
      course = cursos.objects.all().order_by('id')
 
+     form = financasform()
+
      dados = {'course': course,
-            'turmas': turmas}
+            'turmas': turmas,
+            'form': form}
      
      return render(request, 'form_inse.html', dados)
 

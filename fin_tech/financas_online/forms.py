@@ -1,5 +1,5 @@
-from django import forms
 from models import customers
+from django.forms import ModelForm
 
 
 #CREATE YOUR FORMS HERE!
@@ -13,7 +13,7 @@ from models import customers
 #       model = financas
 #       fields = 'cliente', 'parcela', 'valor', 'curso'
 
-class financasform(forms.ModelForm):
+class financasform(ModelForm):
    class Meta:
       model = customers
       fields = '__all__'
