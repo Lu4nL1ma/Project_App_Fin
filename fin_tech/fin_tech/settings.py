@@ -131,13 +131,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# STATIC_ROOT = 'C:\\Users\\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\static'
+
+# STATIC_URL = 'static/'
+
 STATIC_ROOT = '/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/'
 
 STATIC_URL = 'static/'
 
-# STATIC_ROOT = 'C:\\Users\\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\static'
+# STATIC_MEDIA = 'C:\\Users\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\'
 
-# STATIC_URL = 'static/'
+# STATIC_MEDIA = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

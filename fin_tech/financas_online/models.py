@@ -18,9 +18,9 @@ class turmas_formatec(models.Model):
         return self.turmas_formatec
 
 class customers(models.Model):
-    nome = models.CharField(max_length=100, blank=False, default='não informado!')
-    cpf = models.CharField(max_length=50, blank=False, default='não informado!')
-    telefone = models.CharField(max_length=50, blank=False, default='não informado!')
+    nome = models.CharField(max_length=100, blank=False, default='')
+    cpf = models.CharField(max_length=50, blank=False, default='')
+    telefone = models.CharField(max_length=50, blank=False, default='')
     nascimento = models.DateField(auto_now=False, blank=False)
     registro_client = models.DateField(auto_now=True)
 
@@ -29,12 +29,12 @@ class financas(models.Model):
     cliente = models.CharField(max_length=100, blank=False, default=' ')
     parcela = models.CharField(max_length=100, blank=False, default=' ')
     valor = models.CharField(max_length=100, blank=False, default=' ')
-    curso = models.CharField(max_length=50, blank=False, default=' ')
-    turma = models.CharField(max_length=50,blank=False, default=' ')
+    curso = models.ForeignKey(cursos, on_delete=models.PROTECT)
+    turma = models.ForeignKey(turmas_formatec, on_delete=models.PROTECT)
     vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
     banco = models.CharField(max_length=50, blank=False, default=' ')
-    arquivo = models.ImageField(storage=dir, blank=True, default=' ')
+    arquivo = models.FileField(upload_to='media/', blank=True, default=' ')
     registro_fin = models.DateField(auto_now=True)
 
     

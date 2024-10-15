@@ -1,9 +1,9 @@
-
 from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.db.models import Q
-from forms import financasform
+from .forms import customerform, parcelaform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
@@ -59,34 +59,27 @@ def buscar(request):
 #view de inserir clientes
 def inserir(request):
 
-   if request.method == 'POST':
-     nome = request.POST['nome']
-     cpf = request.POST['cpf']
-     telefone = request.POST['tele']
-     nasicmento = request.POST['nasc']
+   if request.method == 'GET':
 
-     add_cliente = customers(nome=nome, cpf=cpf, telefone=telefone, nascimento=nasicmento)
+      form = customerform()
 
-     add_cliente.save()
-
-     return redirect('index')
+      dados = {'form': form}
+     
+      return render(request, 'form_inse.html', dados)
    
-   else:
-     
-     turmas = turmas_formatec.objects.all().order_by('id')
-
-     course = cursos.objects.all().order_by('id')
-
-     form = financasform()
-
-     dados = {'course': course,
-            'turmas': turmas,
-            'form': form}
-     
-     return render(request, 'form_inse.html', dados)
+   if request.method == 'POST':
+      
+      form = customerform(request.POST)
+      
+      if form.is_valid():
+        
+        form.save()
+      
+      return redirect('index')
 
 #view de controle da página de usuários
 def customer(request, c_id):
+   
    id_cliente = customers.objects.get(pk=c_id)
    fin = financas.objects.filter(id_ori=c_id)
    context = {'c': id_cliente,'fin': fin}
@@ -94,6 +87,7 @@ def customer(request, c_id):
    if request.method == 'GET':
       
       return render(request, 'customer.html', context)
+
 #condicional do método post
    elif request.method == 'POST':
      
@@ -102,78 +96,31 @@ def customer(request, c_id):
        dele = request.POST.getlist('ids_slct_fin')
        del_cliente = financas.objects.filter(id__in=dele)
        del_cliente.delete()
-       return render(request, 'customer.html', context)
-     
-     elif 'i_p' in request.POST:       
-      id_ori = request.POST['id_ori']
-      nome = request.POST['nome_cli']
-      curs = request.POST['curs_p']
-      turms = request.POST['turms']
-      parcelas = request.POST['parcs']
-      valor = request.POST['vlo']
-      vencimento = request.POST['vnc']
-      
-      if int(parcelas) == 1:
-         parcs = f'0{parcelas}/0{parcelas}'
-         add_financeiro = financas(cliente=nome, parcela=parcs, valor=valor, vencimento=vencimento, id_ori=id_ori, curso=curs, turma=turms)
-         add_financeiro.save()
-         return render(request, 'customer.html', context) 
-
-#condicional de repetição das parcelas > 1     
-      elif int(parcelas) > 1:
-      
-       contador = 0
-       end = int(parcelas)
-
-       while contador < end:
-         data_edit = datetime.strptime(vencimento,'%Y-%m-%d') + relativedelta(months=contador)
-         parcela_edit = f'0{contador+1}/0{end}'
-         add_financeiro = financas(cliente=nome, parcela=parcela_edit, valor=valor, vencimento=data_edit, id_ori=id_ori, curso=curs, turma=turms)
-         add_financeiro.save()
-         contador += 1
-      return render(request, 'customer.html', context)
-
-#atualização dos dados do cliente    
-     elif 'up_date_cli' in request.POST:
        
-       id = request.POST['up_id_cli']
-       nome = request.POST['up_nom_cli']
-       cpf = request.POST['up_cpf_cli']
-       telefone = request.POST['up_tel_cli']
-       nascimento = request.POST['up_nsc_cli']
-       date_edits = datetime.strptime(nascimento,'%d/%m/%Y')
-
-       filtro = customers.objects.filter(pk=id) 
-       filtro.update(nome=nome, cpf=cpf, telefone=telefone, nascimento=date_edits)
-
        return render(request, 'customer.html', context)
- 
-     elif 'upd_p' in request.POST:
-        
-        id = request.POST['id_up_f']
-        pagamento = request.POST['up_pg_cli']
-        banco = request.POST['up_banco']
-        comprovante = request.POST['up_file']
-        filtro = financas.objects.filter(pk=id) 
-        filtro.update(data_pagamento=pagamento, banco=banco, arquivo=comprovante)
-        return render(request, 'customer.html', context)
-   
+       
 #view do forms inserir parcelas
 def form(request, c_id):
 
   if request.method == 'GET':
      
-     id_clientes = customers.objects.get(pk=c_id)
+     c = customers.objects.get(pk=c_id)
 
-     parcelas = np.arange(1,6+1,1)
+     form_parc = parcelaform(initial={'id_ori': c_id, 'cliente': c.nome})
 
-     curs = cursos.objects.all()
-
-     turms = turmas_formatec.objects.all()
-
-     context = {'c': id_clientes, 'parcs':parcelas, 'curs': curs, 'turms': turms}
+     context = {'c': c, 'form_parc': form_parc}
      
      return render(request, 'forms.html', context)
+  
+  elif request.method == 'POST':
+     
+     form_parc = parcelaform(request.POST)
+     
+     if form_parc.is_valid():
+        
+        form_parc.save()
+     
+     return redirect(reverse('cliente', args=[c_id]))
 
 def login(request):
      

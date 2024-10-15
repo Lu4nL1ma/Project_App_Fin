@@ -10,20 +10,18 @@
     
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
-    <div class="">
-      <nav>
-        <ul class="">
-         <li class="dropdown"> 
-            <a class="dropdown" href="">MENU»</a> 
-            <div class="dropdown-menu">
-              <a class="inse" href="{% url "index" %}">Home</a>              
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <ul class="">
+    
+          <a class="dropdown" href="{% url "cliente" c.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+          </svg></a> 
+    
+      </ul>
+    </nav>
 
   <div class="head">
-    <a href="{% url "cliente" c.id %}"> <h1> LANÇAR PARCELAS </h1> </a>
+    <h1> LANÇAR PARCELAS </h1> 
   </div>
 
 
@@ -36,48 +34,19 @@
 
     <div class="form">
     
-      <form class="" action="{% url "cliente" c.id %}" method="post">
+      <form method="post">
+        
         {% csrf_token %}
         
-        <input type="hidden" id="nome" name="id_ori" value="{{c.id}}" required>
-        
-        <input type="hidden" id="nome" name="nome_cli" value="{{c.nome}}" required> 
-       
-        <label for=""> Curso </label> <br>
-        <select name="curs_p" id=""> 
-          {% for cur in curs %}
-          <option value="{{cur}}">{{cur}}</option> 
-          {% endfor %}
-        </select>
-          <br> <br>
-        <label for=""> Turma </label> <br> 
-        <select name="turms" id=""> 
-          {% for t in turms %}
-          <option value="{{t}}">{{t}}</option> 
-          {% endfor %}
-        </select>
-        <br> <br>
-      
-        <label for="nome"> Valor </label> <br>
-        <input type="text" id="parcela" name="vlo" required> 
+        <div class='class_form'>
 
-        <br> <br>
-      
-        <label for="nome"> Parcelas </label> <br>
-        <select name="parcs" id="">
-        {% for p in parcs %}
-        <option value="{{p}}">{{p}}</option>
-        {% endfor %}
-        </select>
-      
-        <br> <br>
+          {{form_parc.as_p}}
 
-        <label for="nome"> Vencimento </label> <br>
-        <input type="date" id="" name="vnc" required>
-          
-        <br><br><br>
+        </div>
 
-        <button class="butoso_two" stype="submit" name="i_p">Inserir</button>
+        <br>
+
+        <button class="butoso_two" stype="submit" name='inserir_parcelas'>Inserir</button>
       </form>
     </div>
 </body>

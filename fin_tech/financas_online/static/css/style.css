@@ -29,7 +29,7 @@
   .head {
     background-color: #263d4c;
     text-align: center;
-    padding: 60px ;
+    padding: 30px ;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     margin: auto;
@@ -80,8 +80,8 @@
   .form{align-items: center;
         text-align: center;
         background-color: #ece5df;
-        height: 500px;
-        width: 700px;
+        height: 430px;
+        width: 600px;
         justify-content: center;
         display: flex;
         margin: auto;
@@ -195,10 +195,10 @@
               margin: auto;
               text-align: center; }
 
-.inputing{text-align: center;
-          display: flex;
-          margin: auto;
-          }
+.class_form input{align-items: center; flex-direction: column; display: flex;}
+
+.class_form p{align-items: center; flex-direction: column; display: flex;}
+
 
 .div_cells{background-color: #ece5df;
            width: 100px;}
