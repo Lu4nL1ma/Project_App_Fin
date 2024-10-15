@@ -80,21 +80,23 @@ def inserir(request):
 #view de controle da página de usuários
 def customer(request, c_id):
    
-   id_cliente = customers.objects.get(pk=c_id)
-   fin = financas.objects.filter(id_ori=c_id)
-   context = {'c': id_cliente,'fin': fin}
-   
    if request.method == 'GET':
+
+      id_cliente = customers.objects.get(pk=c_id)
+      
+      fin = financas.objects.filter(id_ori=c_id)
+      
+      context = {'c': id_cliente,'fin': fin}
       
       return render(request, 'customer.html', context)
 
 #condicional do método post
    elif request.method == 'POST':
-     
-     if 'b_d_p' in request.POST:
-       
+      
        dele = request.POST.getlist('ids_slct_fin')
+       
        del_cliente = financas.objects.filter(id__in=dele)
+       
        del_cliente.delete()
        
        return render(request, 'customer.html', context)

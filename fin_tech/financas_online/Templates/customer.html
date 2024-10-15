@@ -91,7 +91,9 @@
     <th>BAIXA</th>
         
 </tr>             
-  {% for f in fin %}
+  
+{% for f in fin %}
+
 <tr>
     <td> <input type="checkbox" class="check" value="{{f.id}}" name="ids_slct_fin"><br> </td> 
     <td> {{f.cliente}} <br> </td>
