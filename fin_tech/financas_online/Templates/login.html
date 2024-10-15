@@ -25,13 +25,8 @@
     
       <form action="" method="post">
         {% csrf_token %}
-        <label for="usuario"> Usuário </label> <br> 
-        <input class="pesquisa_two" type="text" id="user" name="user" required> 
-        
-        <br> <br>
-      
-        <label for="pass"> Senha </label> <br> 
-        <input class="pesquisa_two" type="password" id="pass" name="pass" required> 
+         
+        {{login_form.as_p}}
 
         <br> <br> <br>
         <button class="butoso_two" stype="submit">Entrar</button>

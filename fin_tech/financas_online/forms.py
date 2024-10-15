@@ -1,18 +1,14 @@
 from financas_online.models import customers, financas
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django import forms
 
 #CREATE YOUR FORMS HERE!
 
-# class loginform(forms.ModelForm):
-#    class Meta:
-#       model = users
-
-# class financasform(forms.ModelForm):
-#    class Meta:
-#       model = financas
-#       fields = 'cliente', 'parcela', 'valor', 'curso'
-
+class loginform(forms.ModelForm):
+   class Meta:
+      model = User
+      fields = '__all__'
 
 class customerform(ModelForm):
    class Meta:
