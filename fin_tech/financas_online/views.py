@@ -3,7 +3,7 @@ from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.db.models import Q
-from .forms import customerform, parcelaform, loginform
+from .forms import customerform, parcelaform, CustomLoginForm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
@@ -126,7 +126,7 @@ def form(request, c_id):
 
 def login(request):
      
-     login_form = loginform()
+     login_form = CustomLoginForm()
 
      context = {'form_login': login_form}
      
