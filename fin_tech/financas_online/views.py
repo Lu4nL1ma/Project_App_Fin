@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
-from .forms import customerform, parcelaform, CustomLoginForm
+from .forms import customerform, parcelaform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
@@ -12,7 +13,25 @@ import numpy as np
 # Create your views here.
 app_name = 'financas_online'
 
+#view de login
+def login(request):
+   
+   form = AuthenticationForm(request)
+   
+   if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        
+        if form.is_valid():
+         user = form.get_user()
+         auth.login(request, user)
+         return redirect('index')
+        else:
+            return render(request, 'login.html', {'form':form})
+   else:
+      return render(request, 'login.html', {'form':form})
+
 #view de home e apagar clientes
+@login_required
 def index(request):
  
  if request.method == 'POST':
@@ -42,6 +61,7 @@ def index(request):
    return render(request, 'index.html', context)
 
 #view de buscar registros
+@login_required
 def buscar(request):
  
    buscar_valor = request.GET.get('q', '').strip()
@@ -58,6 +78,7 @@ def buscar(request):
     return render(request, 'index.html', context)
  
 #view de inserir clientes
+@login_required
 def inserir(request):
 
    if request.method == 'GET':
@@ -79,6 +100,7 @@ def inserir(request):
       return redirect('index')
 
 #view de controle da página de usuários
+@login_required
 def customer(request, c_id):
    
    if request.method == 'GET':
@@ -103,6 +125,7 @@ def customer(request, c_id):
        return render(request, 'customer.html', context)
        
 #view do forms inserir parcelas
+@login_required
 def form(request, c_id):
 
   if request.method == 'GET':
@@ -124,28 +147,8 @@ def form(request, c_id):
         form_parc.save()
      
      return redirect(reverse('cliente', args=[c_id]))
-
-def login(request):
-   
-   form = AuthenticationForm(request)
-   
-   if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        
-        if form.is_valid():
-         user = form.get_user()
-         auth.login(request, user)
-         return redirect('index')
-        else:
-            form = CustomLoginForm()
-            return render(request, 'login.html', {'form':form})
-   else:
-      return render(request, 'login.html', {'form':form})
-            
-
-     
-
-
+#atualizar financeiro            
+@login_required
 def updatefin(request,c_id, f_id):
    id_cliente = customers.objects.get(pk=c_id)
    fin = financas.objects.get(id=f_id)
