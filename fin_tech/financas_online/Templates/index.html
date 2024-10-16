@@ -69,7 +69,7 @@
                   <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.id}} </b> </a> <br> </td>    
                   <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.nome}} </b>   </a>  <br> </td>
                   <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.cpf|formata_cpf}} </b>  </a> <br> </td>
-                  <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.telefone}} </b> </a> <br> </td>
+                  <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.telefone|formata_telefone}} </b> </a> <br> </td>
                   <td type="date"> <a href =" {% url "cliente" c.id %}" > <b> {{c.nascimento|date:'d/m/Y'}} </b> </a> <br> </td>
                   <td type="date"> <a href =" {% url "cliente" c.id %}" > <b> {{c.registro_client|date:'d/m/Y'}} </b> </a> <br> </td>
                 </tr>
