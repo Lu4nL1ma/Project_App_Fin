@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth import login
 from django.db.models import Q
 from .forms import customerform, parcelaform, CustomLoginForm
 from datetime import datetime
