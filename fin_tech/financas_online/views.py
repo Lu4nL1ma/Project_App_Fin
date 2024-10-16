@@ -155,6 +155,7 @@ def updatefin(request,c_id, f_id):
    context = {'c': id_cliente,'f': fin}
    return render(request, 'updatefin.html', context)
 
+@login_required
 def update_cliente(request, c_id):
      
      id_cliente = customers.objects.get(pk=c_id)

@@ -3,7 +3,7 @@ from django.urls import path
 from financas_online import views
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
+    path('accounts/login/', views.login, name='login'),
     path('<int:c_id>/', views.customer, name='cliente'),
     path('', views.index, name='index'),
     path('admin/', admin.site.urls, name='admin'),  
