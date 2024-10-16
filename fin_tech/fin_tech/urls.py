@@ -4,6 +4,7 @@ from financas_online import views
 
 urlpatterns = [
     path('accounts/login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('<int:c_id>/', views.customer, name='cliente'),
     path('', views.index, name='index'),
     path('admin/', admin.site.urls, name='admin'),  

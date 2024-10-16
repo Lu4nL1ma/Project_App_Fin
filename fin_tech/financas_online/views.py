@@ -30,6 +30,11 @@ def login(request):
    else:
       return render(request, 'login.html', {'form':form})
 
+def logout(request):
+   auth.logout()
+   return redirect('login')
+
+
 #view de home e apagar clientes
 @login_required
 def index(request):
