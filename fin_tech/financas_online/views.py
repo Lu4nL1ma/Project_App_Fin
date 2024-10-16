@@ -127,7 +127,7 @@ def form(request, c_id):
 
 def login(request):
    if request.method == 'POST':
-        form = CustomLoginForm(request, data=request.POST)
+        form = CustomLoginForm(request.POST)
         if form.is_valid():
             login(form.get_user())
             return redirect('index')  # Redireciona para a página inicial
