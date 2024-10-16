@@ -1,13 +1,8 @@
 from financas_online.models import customers, financas
-from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ModelForm
 from django import forms
 
 #CREATE YOUR FORMS HERE!
-
-class CustomLoginForm(AuthenticationForm):
-    username = forms.CharField(label='Usuário', max_length=150)
-    password = forms.CharField(label='Senha', widget=forms.PasswordInput)
 
 class customerform(ModelForm):
    class Meta:
