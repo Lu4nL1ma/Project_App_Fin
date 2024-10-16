@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from django.contrib.auth import login
+from django.contrib.auth import authenticate
 from django.db.models import Q
 from .forms import customerform, parcelaform, CustomLoginForm
 from datetime import datetime
@@ -128,15 +128,21 @@ def form(request, c_id):
 def login(request):
    if request.method == 'POST':
         form = CustomLoginForm(request.POST)
+
         if form.is_valid():
-         login(form.get_user())
-         return redirect('index')  # Redireciona para a página inicial
-        else:
-           form = CustomLoginForm()
-        return render(request, 'login.html', {'form': form})
+         username = form.cleaned_data['username']
+         password = form.cleaned_data['password']
+         user = authenticate(request, username=username, password=password)
+         if user is not None:
+            return redirect('index')
+         else:
+            form = CustomLoginForm()
+            return render(request, 'login.html', {'form':form})
    else:
       form = CustomLoginForm()
-      return render(request, 'login.html', {'form': form})
+      return render(request, 'login.html', {'form':form})
+            
+
      
 
 
