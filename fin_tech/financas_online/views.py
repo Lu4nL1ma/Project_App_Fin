@@ -134,6 +134,9 @@ def login(request):
         else:
            form = CustomLoginForm()
         return render(request, 'login.html', {'form': form})
+   else:
+      form = CustomLoginForm()
+      return render(request, 'login.html', {'form': form})
      
 
 
