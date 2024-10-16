@@ -12,26 +12,23 @@
     
           <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    
+    <div class="logout">
+      <a href={% url "logout" %}> Logout <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
+      </svg> </a>
+     </div>
 
-  
     <nav>
-      <ul class="">
+
        <li class="dropdown"> 
           <a class="dropdown" href="">MENU»</a> 
           <div class="dropdown-menu">
             <a class="inse" href="{% url "index" %}">Home</a>
             <a class="inse" href="{% url "inserir" %}">Inserir Cliente</a>
         </li>
-      </ul>
-      <a class='' href='{{% url logout %}}'> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
-      </svg> </a>
+
     </nav>
 
-    
-      
-    
 <div class="head">
 <h1> CONTROLE DE CLIENTES </h1> <br>
 <form action="{% url "buscar" %}" method="get">

@@ -31,7 +31,7 @@ def login(request):
       return render(request, 'login.html', {'form':form})
 
 def logout(request):
-   auth.logout()
+   auth.logout(request)
    return redirect('login')
 
 

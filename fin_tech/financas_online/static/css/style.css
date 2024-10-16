@@ -203,6 +203,22 @@
 .div_cells{background-color: #ece5df;
            width: 100px;}
 
+.logout{display: flex;
+        justify-content: flex-end;
+}
+
+.logout a{color: red;
+          background-color: #0D242C;
+          width: 55px;
+          text-align: center;
+}
+
+.div_ul{color: #0D242C;
+        padding: 30px;}
+
+
+
+
   
 
 
