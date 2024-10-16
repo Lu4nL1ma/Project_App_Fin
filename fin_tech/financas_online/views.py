@@ -125,12 +125,16 @@ def form(request, c_id):
      return redirect(reverse('cliente', args=[c_id]))
 
 def login(request):
+   if request.method == 'POST':
+        form = CustomLoginForm(request, data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            return redirect('index')  # Redireciona para a página inicial
+        else:
+           form = CustomLoginForm()
+        return render(request, 'login.html', {'form': form})
      
-     login_form = CustomLoginForm()
 
-     context = {'form_login': login_form}
-     
-     return render(request, 'login.html', context)
 
 def updatefin(request,c_id, f_id):
    id_cliente = customers.objects.get(pk=c_id)
