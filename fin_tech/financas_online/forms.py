@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 from financas_online.models import customers, financas
+=======
+from financas_online.models import customers, financas, cursos
+from django.contrib.auth.forms import AuthenticationForm
+>>>>>>> 91f185a (inserir_curso)
 from django.forms import ModelForm
 from django import forms
 
@@ -15,6 +20,11 @@ class customerform(ModelForm):
             'telefone': forms.TextInput(attrs={'type': 'text', 'placeholder': 'Insira o Telefone.'}),
             'nascimento': forms.DateInput(attrs={'type': 'date',}),
         }
+      
+class inserir_curso(ModelForm):
+   class Meta: 
+      Model = cursos
+      fields = '__all__'
       
 class parcelaform(ModelForm):
    class Meta:

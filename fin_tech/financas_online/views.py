@@ -5,7 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
+<<<<<<< HEAD
 from .forms import customerform, parcelaform
+=======
+from .forms import customerform, parcelaform, CustomLoginForm, inserir_curso
+>>>>>>> 91f185a (inserir_curso)
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
@@ -104,6 +108,27 @@ def inserir(request):
       
       return redirect('index')
 
+#view de inserir clientes
+def inserir_curso(request):
+
+   if request.method == 'GET':
+
+      form = inserir_curso()
+
+      dados = {'form': form}
+     
+      return render(request, 'inserir_curso.html', dados)
+   
+   if request.method == 'POST':
+      
+      form = inserir_curso(request.POST)
+      
+      if form.is_valid():
+        
+        form.save()
+      
+      return redirect('index')
+
 #view de controle da página de usuários
 @login_required
 def customer(request, c_id):
@@ -152,8 +177,29 @@ def form(request, c_id):
         form_parc.save()
      
      return redirect(reverse('cliente', args=[c_id]))
+<<<<<<< HEAD
 #atualizar financeiro            
 @login_required
+=======
+
+def login(request):
+   if request.method == 'POST':
+        form = CustomLoginForm(request.POST)
+
+        if form.is_valid():
+         username = form.cleaned_data['username']
+         password = form.cleaned_data['password']
+         user = authenticate(request, username=username, password=password)
+         if user is not None:
+            return redirect('index')
+         else:
+            form = CustomLoginForm()
+            return render(request, 'login.html', {'form':form})
+   else:
+      form = CustomLoginForm()
+      return render(request, 'login.html', {'form':form})
+            
+>>>>>>> 91f185a (inserir_curso)
 def updatefin(request,c_id, f_id):
    id_cliente = customers.objects.get(pk=c_id)
    fin = financas.objects.get(id=f_id)
