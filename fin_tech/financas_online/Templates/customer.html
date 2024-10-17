@@ -33,35 +33,35 @@
 <body class="fundo">
 
 <br> <br> 
-
-<div class="">
-                   
+                  
 <br>
 <form method="post">
   {% csrf_token %}
-<tr> 
-<b> DADOS DO CLIENTE </b> </tr> <br> <br>
-<table class="table_customer">
-<tr>
-  <th class="th_table"> <b> ID </b> </th>
-  <th class="th_table"> <b> NOME </b> </th>
-  <th class="th_table"> <b> CPF </b> </th>
-  <th class="th_table"> <b> TELEFONE </b> </th>
-  <th class="th_table"> <b> NASCIMENTO </b> </th>
-</tr>
-<tr>
-    <td>{{c.id}} </td>
-    <td> {{c.nome}} </td>
-    <td> {{c.cpf|formata_cpf}} </td>
-    <td> {{c.telefone|formata_telefone}} </td>
-    <td> {{c.nascimento|date:'d/m/Y'}} </td>
-</tr>                 
-</table>
-<br>
-<div class="alinhar_buttom"> 
-    <a class="butoso" href="{% url "upcli" c.id %}">ATUALIZAR DADOS DO CLIENTE</a>
-</form>      
-    <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
+  <div class="div_back">
+  <tr> 
+  <b> DADOS DO CLIENTE </b> </tr> <br> <br>
+  <table class="table_customer">
+  <tr>
+    <th class="th_table"> <b> ID </b> </th>
+    <th class="th_table"> <b> NOME </b> </th>
+    <th class="th_table"> <b> CPF </b> </th>
+    <th class="th_table"> <b> TELEFONE </b> </th>
+    <th class="th_table"> <b> NASCIMENTO </b> </th>
+  </tr>
+  <tr>
+      <td>{{c.id}} </td>
+      <td> {{c.nome}} </td>
+      <td> {{c.cpf|formata_cpf}} </td>
+      <td> {{c.telefone|formata_telefone}} </td>
+      <td> {{c.nascimento|date:'d/m/Y'}} </td>
+  </tr>                 
+  </table>
+  <br>
+  <div class="alinhar_buttom"> 
+      <a class="butoso" href="{% url "upcli" c.id %}">ATUALIZAR DADOS DO CLIENTE</a>
+  </form>      
+      <a class="butoso" href="{% url "form" c.id %}"> LANÇAR PARCELAS </a>
+  </div>
 </div>
 <br> 
 
@@ -117,9 +117,7 @@
               
 </table>
 
-</form>
-       
-</div>
+</form>      
       
 </body>
 
