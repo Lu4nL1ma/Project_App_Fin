@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 from financas_online.models import customers, financas
-=======
 from financas_online.models import customers, financas, cursos
-from django.contrib.auth.forms import AuthenticationForm
->>>>>>> 91f185a (inserir_curso)
 from django.forms import ModelForm
 from django import forms
 
