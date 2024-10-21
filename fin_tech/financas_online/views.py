@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.http import HttpResponseRedirect
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -185,13 +186,21 @@ def form(request, c_id):
 
         vencimento = form_parc.cleaned_data['vencimento']
 
-        parcela_editada = f'0{parcela}/0{parcela}'
+        condicional = int(parcela)
 
-        parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela_editada, valor=valor, curso=curso, turma=turma, vencimento=vencimento)
+        if condicional == 1:
+           
+           parcela_editada = f'0{parcela}/0{parcela}'
+
+           parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela_editada, valor=valor, curso=curso, turma=turma, vencimento=vencimento)
         
-        parcelas.save()
+           parcelas.save()
+        
+        return redirect(reverse('cliente', args=[c_id]))
      
-     return redirect(reverse('cliente', args=[c_id]))
+     else:
+        return HttpResponseRedirect('index')
+        
   
 #atualizar financeiro            
 @login_required
