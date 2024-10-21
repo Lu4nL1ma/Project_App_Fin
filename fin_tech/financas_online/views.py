@@ -35,7 +35,6 @@ def logout(request):
    auth.logout(request)
    return redirect('login')
 
-
 #view de home e apagar clientes
 @login_required
 def index(request):
@@ -107,7 +106,6 @@ def inserir(request):
 
 #view de inserir curso.
 
-
 def inserir_curso(request):
 
    if request.method == 'POST':
@@ -127,7 +125,6 @@ def inserir_curso(request):
        dados = {'form_curs': form_curs}
       
        return render(request, 'inserir_curso.html', dados)
-
 
 #view de customer.
 @login_required
