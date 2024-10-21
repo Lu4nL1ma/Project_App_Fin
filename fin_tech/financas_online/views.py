@@ -185,7 +185,9 @@ def form(request, c_id):
 
         vencimento = form_parc.cleaned_data['vencimento']
 
-        parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela, valor=valor, curso=curso, turma=turma, vencimento=vencimento)
+        parcela_editada = f'0{parcela}/0{parcela}'
+
+        parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela_editada, valor=valor, curso=curso, turma=turma, vencimento=vencimento)
         
         parcelas.save()
      

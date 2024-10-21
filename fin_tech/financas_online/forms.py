@@ -36,14 +36,6 @@ class parcelaform(ModelForm):
             'turma': forms.Select(attrs={}),
             'vencimento': forms.DateInput(attrs={'type': 'date',}),
         }
-      def clean(self):
-         cleaned_data = super().clean()
-         parcela = cleaned_data.get(parcela)
-
-         if parcela == '1':
-            parcela = '01/01'
-        
-         return cleaned_data
       
 class updtparcelaform(ModelForm):
    class Meta:
