@@ -118,7 +118,7 @@ def inserir_curso(request):
       
       return redirect('index')
 
-   else:
+   elif request.method == 'POST':
       
       form = inserir_curso()
 
@@ -171,7 +171,23 @@ def form(request, c_id):
      
      if form_parc.is_valid():
         
-        form_parc.save()
+        id_ori = form_parc.cleaned_data['parcela']
+
+        cliente = form_parc.cleaned_data['cliente']
+        
+        parcela = form_parc.cleaned_data['parcela']
+
+        valor = form_parc.cleaned_data['valor']
+        
+        curso = form_parc.cleaned_data['curso']
+
+        turma = form_parc.cleaned_data['turma']
+
+        vencimento = form_parc.cleaned_data['vencimento']
+
+        parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela, valor=valor, curso=curso, turma=turma, vencimento=vencimento)
+        
+        parcelas.save()
      
      return redirect(reverse('cliente', args=[c_id]))
   
