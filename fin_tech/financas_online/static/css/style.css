@@ -213,11 +213,6 @@
           text-align: center;
 }
 
-.logout button{background-color: #ece5df;
-               color: #ece5df;
-              border: #000000;}
-.logout button:hover{background-color:#0D242C;}
-
 .div_ul{color: #0D242C;
         padding: 30px;}
 .div_back{background-color: #ece5df;
