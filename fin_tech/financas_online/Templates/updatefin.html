@@ -31,39 +31,14 @@
   
     <br> <br>
     <!-- vamos editar corretamente --> 
-    <div class="dados_parcela">
+    <div class="form">
     
-      <form class="" action="{% url "cliente" c.id %}" method="post">
+      <form method="post">
         {% csrf_token %}
-          <br> <br> <br>
-          <tr> <b> INFORMAÇÕES DA PARCELA </b> </tr> <br> <br>
-          <input type="hidden" name="id_up_f" value="{{f.id}}">          
-
-        <table class="table_customer">
-          <tr>
-            <th class="th_table"> <b> PARCELA </b> </th>
-            <th class="th_table"> <b> VALOR </b> </th>
-            <th class="th_table"> <b> VENCIMENTO </b> </th>
-          </tr>             
-          <tr>
-            <td> <input class="pesquisa_three" type="text" name value="{{f.parcela}}"> </td>
-            <td> <input class="pesquisa_three" type="text" value="{{f.valor}},00"> </td>
-            <td> <input class="pesquisa_three" type="text" value="{{f.vencimento|date:'d/m/Y'}}"> </td>
-          </tr>
-
-          <tr> 
-            <th class="th_table"> <b> PAGAMENTO </b> </th>
-            <th class="th_table"> <b> BANCO </b> </th>
-            <th class="th_table"> <b>  COMPROVANTE </b> </th>
-          </tr>
-          <tr>
-              <td> <input class="pesquisa_three" type="date" name="up_pg_cli"> </td>
-              <td> <input class="pesquisa_three" type="text" name="up_banco"> </td>
-              <td> <input class="inputing" type="file" name="up_file"> </td>
-          </tr>
-        </table>
-              <br>
-              <br> 
+            <div class="class_form">
+            {{form_updt.as_p}} 
+            <div>
+          <br> 
         <button class="butoso_two" stype="submit" name="upd_p">Salvar</button>
       </form>
     </div>

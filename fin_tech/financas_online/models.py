@@ -6,13 +6,13 @@ from django.core.files.storage import FileSystemStorage
 dir = FileSystemStorage(location='/fin_tech/media', base_url='/media/')
 
 class cursos(models.Model):
-    curso = models.CharField(max_length=50, default='não informado!')
+    curso = models.CharField(max_length=50, default='')
     registro_curs = models.DateField(auto_now=True)
     def __str__(self) -> str:
         return self.curso
 
 class turmas_formatec(models.Model):
-    turmas_formatec = models.CharField(max_length=40, default='não informado!')
+    turmas_formatec = models.CharField(max_length=40, default='')
     registro_turms = models.DateField(auto_now=True)
     def __str__(self) -> str:
         return self.turmas_formatec
@@ -25,16 +25,17 @@ class customers(models.Model):
     registro_client = models.DateField(auto_now=True)
 
 class financas(models.Model):
-    id_ori = models.CharField(max_length=50, blank=False, default=' ')
-    cliente = models.CharField(max_length=100, blank=False, default=' ')
-    parcela = models.CharField(max_length=100, blank=False, default=' ')
-    valor = models.CharField(max_length=100, blank=False, default=' ')
+    id_ori = models.CharField(max_length=50, blank=False, default='')
+    status = models.CharField(max_length=100, blank=False, default='Pendente')
+    cliente = models.CharField(max_length=100, blank=False, default='')
+    parcela = models.CharField(max_length=100, blank=False, default='')
+    valor = models.CharField(max_length=100, blank=False, default='')
     curso = models.ForeignKey(cursos, on_delete=models.PROTECT)
     turma = models.ForeignKey(turmas_formatec, on_delete=models.PROTECT)
     vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
-    banco = models.CharField(max_length=50, blank=False, default=' ')
-    arquivo = models.FileField(upload_to='media/', blank=True, default=' ')
+    banco = models.CharField(max_length=50, blank=False, default='')
+    arquivo = models.FileField(upload_to='media/', blank=True, null=True)
     registro_fin = models.DateField(auto_now=True)
 
     

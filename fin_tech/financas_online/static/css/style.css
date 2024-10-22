@@ -80,7 +80,7 @@
   .form{align-items: center;
         text-align: center;
         background-color: #ece5df;
-        height: 430px;
+        height: 460px;
         width: 600px;
         justify-content: center;
         display: flex;
@@ -222,6 +222,12 @@
           height: 150px;}
 
 .div_back h4{text-align: center;}
+
+.green{color: green;
+       font-weight: bold}
+
+.orange{color: orangered;
+        font-weight: bold}
 
 
         

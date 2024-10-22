@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
-from .forms import customerform, parcelaform, inserir_curso
+from .forms import customerform, parcelaform, inserir, updtparcelaform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
@@ -106,26 +106,28 @@ def inserir(request):
       return redirect('index')
 
 #view de inserir curso.
-@login_required
+
+
 def inserir_curso(request):
 
    if request.method == 'POST':
 
-      form = inserir_curso(request.POST)
+      form_curs = inserir(request.POST)
       
-      if form.is_valid():
+      if form_curs.is_valid():
          
          form.save()
       
       return redirect('index')
-
-   elif request.method == 'POST':
+  
+   else:
       
-      form = inserir_curso()
+       form_curs = inserir()
 
-      dados = {'form': form}
-     
-      return render(request, 'inserir_curso.html', dados)
+       dados = {'form_curs': form_curs}
+      
+       return render(request, 'inserir_curso.html', dados)
+
 
 #view de customer.
 @login_required
@@ -150,7 +152,7 @@ def customer(request, c_id):
        
        del_cliente.delete()
        
-       return render(request, 'customer.html', context)
+       return redirect(reverse('cliente', args=[c_id]))
        
 #view do forms inserir parcelas
 @login_required
@@ -172,7 +174,9 @@ def form(request, c_id):
      
      if form_parc.is_valid():
         
-        id_ori = form_parc.cleaned_data['parcela']
+        #pegar dados do formulário
+        
+        id_ori = form_parc.cleaned_data['id_ori']
 
         cliente = form_parc.cleaned_data['cliente']
         
@@ -185,9 +189,15 @@ def form(request, c_id):
         turma = form_parc.cleaned_data['turma']
 
         vencimento = form_parc.cleaned_data['vencimento']
-
+        
+        #TRATAR DADOS DO FORMULÁRIO
+        
         condicional = int(parcela)
 
+        date = str(vencimento)
+        
+        #CONDICIONAL DE UMA INCLUSÃO NO BANCO DE DADOS
+        
         if condicional == 1:
            
            parcela_editada = f'0{parcela}/0{parcela}'
@@ -195,20 +205,68 @@ def form(request, c_id):
            parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela_editada, valor=valor, curso=curso, turma=turma, vencimento=vencimento)
         
            parcelas.save()
+           
+           return redirect(reverse('cliente', args=[c_id]))
+       
+
+        #CONDICIONAL DE UMA INCLUSÃO DE REPETIÇAÕ DE PARCELAS
         
+        elif condicional != 1:
+           
+           contador = 1
+
+           meses = 0
+        
+           while contador < condicional+1:
+              
+              data_editada = datetime.strptime(date, '%Y-%m-%d') + relativedelta(months=meses)
+         
+              parcela_editada = f'0{contador}/0{parcela}'
+
+              parcelas = financas.objects.create(id_ori=id_ori, cliente=cliente, parcela=parcela_editada, valor=valor, curso=curso, turma=turma, vencimento=data_editada)
+        
+              parcelas.save()
+
+              contador = contador + 1
+
+              meses = meses + 1
+      
         return redirect(reverse('cliente', args=[c_id]))
-     
-     else:
-        return HttpResponseRedirect('index')
-        
-  
+      
 #atualizar financeiro            
 @login_required
 def updatefin(request,c_id, f_id):
-   id_cliente = customers.objects.get(pk=c_id)
-   fin = financas.objects.get(id=f_id)
-   context = {'c': id_cliente,'f': fin}
-   return render(request, 'updatefin.html', context)
+   
+   if request.method == "GET":
+      c = customers.objects.get(pk=c_id)
+      f = financas.objects.get(id=f_id)
+      form_updt = updtparcelaform(initial={'parcela': f.parcela})
+      context = {'c': c,'f': f, 'form_updt': form_updt}
+      return render(request, 'updatefin.html', context)
+   
+   elif request.method == "POST":
+      
+      form_updt = updtparcelaform(request.POST)
+      
+      if form_updt.is_valid():
+        
+        #pegar dados do formulário
+
+        parcela = form_updt.cleaned_data['parcela']
+        
+        status = form_updt.cleaned_data['status']
+        
+        data_pagamento = form_updt.cleaned_data['data_pagamento']
+
+        banco = form_updt.cleaned_data['banco']
+
+        arquivo = form_updt.cleaned_data['arquivo']
+
+        status = 'Pago'
+
+        financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=arquivo)
+        
+   return redirect(reverse('cliente', args=[c_id]))
 
 #atualizar cliente
 @login_required

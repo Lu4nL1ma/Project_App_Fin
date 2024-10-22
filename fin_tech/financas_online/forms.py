@@ -17,7 +17,7 @@ class customerform(ModelForm):
             'nascimento': forms.DateInput(attrs={'type': 'date',}),
         }
       
-class inserir_curso(ModelForm):
+class inserir(ModelForm):
    class Meta: 
       Model = cursos
       fields = '__all__'
@@ -40,9 +40,11 @@ class parcelaform(ModelForm):
 class updtparcelaform(ModelForm):
    class Meta:
       model = financas
-      fields = ['data_pagamento', 'banco', 'arquivo']
+      fields = ['status','parcela', 'data_pagamento', 'banco', 'arquivo']
       widgets = {
+            'status': forms.HiddenInput(),
+            'parcela': forms.TextInput(attrs={'readonly': 'readonly'}),
             'data_pagamento': forms.DateInput(attrs={'type': 'date',}),
-            'banco': forms.TextInput(attrs={'type': 'text',}),
-            'arquivo': forms.FileInput(attrs={'type': 'file',}),
-        }
+            'banco': forms.TextInput(attrs={'type': 'text'}),
+            'arquivo': forms.FileInput(attrs={'type': 'file'}),
+            }
