@@ -213,6 +213,11 @@
           text-align: center;
 }
 
+.logout button{background-color:#CDCDCD;
+               width: 55px;
+               text-align: center;
+}
+
 .div_ul{color: #0D242C;
         padding: 30px;}
 .div_back{background-color: #ece5df;
