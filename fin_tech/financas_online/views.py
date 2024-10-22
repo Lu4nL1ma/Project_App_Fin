@@ -259,7 +259,7 @@ def updatefin(request,c_id, f_id):
 
         arquivo = form_updt.cleaned_data['arquivo']
 
-        status = 'Pago'
+        status = 'Recebido'
 
         financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=arquivo)
         
