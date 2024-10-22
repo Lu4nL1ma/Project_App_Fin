@@ -208,13 +208,14 @@
 }
 
 .logout a{color: red;
-          background-color:azure;
+          background-color:#ece5df;
           width: 55px;
           text-align: center;
 }
 
-.logout button{background-color: azure;
-               color: azure;}
+.logout button{background-color: #ece5df;
+               color: #ece5df;
+              border: #000000;}
 
 .div_ul{color: #0D242C;
         padding: 30px;}
