@@ -207,13 +207,13 @@
         justify-content: flex-end;
 }
 
-.logout a{color: red;
-          background-color:#CDCDCD;
+.logout a{color: #ece5df;
+          background-color:#263d4c;
           width: 40px;
           text-align: center;
 }
 
-.logout button{background-color:#CDCDCD;}
+.logout button{background-color:#263d4c;}
 
 .div_ul{color: #0D242C;
         padding: 30px;}
