@@ -103,20 +103,6 @@ def inserir(request):
         form.save()
       
       return redirect('index')
-
-#view de inserir curso.
-
-def curso(request):
-
-   if request.method == 'POST':
-      form = inserir()
-
-      if form.is_valid():
-         form.save()
-         return redirect('index.html')
-   else:
-      form = inserir()
-      return render(request, 'inserir_curso.html', {'form': form})
    
 #view de customer.
 @login_required
@@ -265,7 +251,24 @@ def update_cliente(request, c_id):
      context = {'c': id_cliente}
     
      return render(request,'updatecli.html', context)
-     
+ 
+
+ #view de inserir curso.
+
+#inserir curso
+@login_required
+def curso(request):
+
+   if request.method == 'POST':
+      
+      form = inserir()
+
+      if form.is_valid():
+         form.save()
+         return redirect('index.html')
+   else:
+      form = inserir()
+      return render(request, 'inserir_curso.html', {'form': form})    
     
 
 
