@@ -33,7 +33,7 @@
     <!-- vamos editar corretamente --> 
     <div class="form">
     
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
             <div class="class_form">
             {{form_updt.as_p}} 

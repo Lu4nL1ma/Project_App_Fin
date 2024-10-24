@@ -26,7 +26,7 @@ class customers(models.Model):
 
 class financas(models.Model):
     id_ori = models.CharField(max_length=50, blank=False, default='')
-    status = models.CharField(max_length=100, blank=False, default='Pendente')
+    status = models.CharField(max_length=100, blank=False, default='A receber')
     cliente = models.CharField(max_length=100, blank=False, default='')
     parcela = models.CharField(max_length=100, blank=False, default='')
     valor = models.CharField(max_length=100, blank=False, default='')

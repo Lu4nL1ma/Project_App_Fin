@@ -9,6 +9,7 @@ from django.db.models import Q
 from .forms import customerform, parcelaform, updtparcelaform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from django.utils import timezone
 import numpy as np
 
 # Create your views here.
@@ -109,6 +110,8 @@ def inserir(request):
 def customer(request, c_id):
    
    if request.method == 'GET':
+
+      upd = financas.objects.filter(status="A receber", vencimento__lt=timezone.now().date()).update(status="Vencido")
 
       id_cliente = customers.objects.get(pk=c_id)
       
@@ -221,7 +224,9 @@ def updatefin(request,c_id, f_id):
    
    elif request.method == "POST":
       
-      form_updt = updtparcelaform(request.POST)
+      form_updt = updtparcelaform(request.POST, request.FILES)
+
+      print(request.FILES)
       
       if form_updt.is_valid():
         

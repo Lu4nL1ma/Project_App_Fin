@@ -225,8 +225,12 @@
 .green{color: green;
        font-weight: bold}
 
-.orange{color: orangered;
+.red{color: red;
         font-weight: bold}
+
+.orange{color: orange;
+  font-weight: bold}
+
         
 .gold{color: #b8860b}
 
