@@ -108,14 +108,16 @@ def inserir(request):
 
 def curso(request):
 
-   form = inserir()
+   if request.method == 'POST':
+      form = inserir()
 
-   if request.method == 'GET':
-
-      return render(request, "inserir_curso.html", {'form': form})
-
-
- 
+      if form.is_valid():
+         form.save()
+         return redirect('index.html')
+   else:
+      form = inserir()
+      return render(request, 'inserir_curso.html', {'form': form})
+   
 #view de customer.
 @login_required
 def customer(request, c_id):
