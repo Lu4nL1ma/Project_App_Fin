@@ -277,9 +277,9 @@ def turma(request):
 
    if request.method == 'POST':
          
-         curso = request.POST.get('turma')
+         turma = request.POST.get('turma')
 
-         inserir = turmas_formatec(curso=curso)
+         inserir = turmas_formatec(turma=turma)
 
          inserir.save()
          
