@@ -260,6 +260,13 @@ def update_cliente(request, c_id):
 def curso(request):
 
    if request.method == 'POST':
+         
+         curso = request.POST.get['curso']
+
+         inserir = cursos(curso=curso)
+
+         inserir.save()
+         
          return redirect('index.html')
    else:
       return render(request, 'inserir_curso.html')    

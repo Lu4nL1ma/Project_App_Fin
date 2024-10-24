@@ -36,18 +36,14 @@
 
     <div class="form">
     
-      <form  method="post">
-        
+      <form  method="post">     
         {% csrf_token %}
-        
         <div class='class_form'>
-        {{form.as_p}}
-        </div>
-        
-        <br>
-
-        <button class="butoso_two" stype="submit">Salvar</button>
-      
+          <label for="curs"> CURSO </label>
+          <input type="text" name="curso" id="curs">
+          </div>       
+          <br>
+          <button class="butoso_two" stype="submit">Salvar</button>
       </form>
     </div>
 </body>
