@@ -267,7 +267,7 @@ def curso(request):
 
          inserir.save()
          
-         return redirect('index.html')
+         return redirect('index')
    else:
       return render(request, 'inserir_curso.html')    
     
