@@ -20,7 +20,8 @@ class customerform(ModelForm):
 class inserir(ModelForm):
    class Meta: 
       Model = cursos
-      fields = '__all__'
+      fields = ['curso']
+      widgets = { 'curso': forms.TextInput(attrs={'type': 'text',})}
       
 class parcelaform(ModelForm):
    class Meta:
