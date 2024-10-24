@@ -267,8 +267,10 @@ def curso(request):
          form.save()
          return redirect('index.html')
    else:
+      
       form = inserir()
-      return render(request, 'inserir_curso.html', {'form': form})    
+   
+   return render(request, 'inserir_curso.html', {'form': form})    
     
 
 
