@@ -279,7 +279,7 @@ def turma(request):
          
          turma = request.POST.get('turma')
 
-         inserir = turmas_formatec(turma=turma)
+         inserir = turmas_formatec(turmas_formatec=turma)
 
          inserir.save()
          
