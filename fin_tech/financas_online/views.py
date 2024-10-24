@@ -110,7 +110,7 @@ def curso(request):
 
    if request.method == 'GET':
 
-      form = inserir()
+      form = inserir(request.GET)
 
       return render(request, "inserir_curso.html", {'form': form})
 
