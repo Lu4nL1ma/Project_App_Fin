@@ -17,12 +17,6 @@ class customerform(ModelForm):
             'nascimento': forms.DateInput(attrs={'type': 'date',}),
         }
       
-class inserir(ModelForm):
-   class Meta: 
-      Model = cursos
-      fields = ['curso']
-      widgets = { 'curso': forms.TextInput(attrs={'type': 'text',})}
-      
 class parcelaform(ModelForm):
    class Meta:
       model = financas
