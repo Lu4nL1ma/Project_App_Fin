@@ -269,7 +269,23 @@ def curso(request):
          
          return redirect('index')
    else:
-      return render(request, 'inserir_curso.html')    
+      return render(request, 'inserir_curso.html')
+
+#inserir turma
+@login_required
+def turma(request):
+
+   if request.method == 'POST':
+         
+         curso = request.POST.get('curso')
+
+         inserir = turmas_formatec(curso=curso)
+
+         inserir.save()
+         
+         return redirect('index')
+   else:
+      return render(request, 'inserir_turma.html')    
     
 
 
