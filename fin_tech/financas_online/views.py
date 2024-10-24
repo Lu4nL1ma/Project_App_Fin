@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
-from .forms import customerform, parcelaform, inserir, updtparcelaform
+from .forms import customerform, parcelaform, updtparcelaform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
