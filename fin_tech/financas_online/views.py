@@ -261,7 +261,7 @@ def curso(request):
 
    if request.method == 'POST':
          
-         curso = request.POST.get['curso']
+         curso = request.POST.get('curso')
 
          inserir = cursos(curso=curso)
 
