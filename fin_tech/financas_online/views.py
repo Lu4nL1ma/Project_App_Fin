@@ -10,7 +10,11 @@ from .forms import customerform, parcelaform, updtparcelaform
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
+from PIL import Image
+from django.conf import settings
 import numpy as np
+import os
+
 
 # Create your views here.
 app_name = 'financas_online'
@@ -245,7 +249,13 @@ def updatefin(request,c_id, f_id):
         status = 'Recebido'
 
         financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=arquivo)
-        
+
+        img = Image.open(arquivo)
+
+        path = os.path.join(settings.BASE_DIR,'media/teeeeeste.png')
+
+        img = img.save(path)
+     
    return redirect(reverse('cliente', args=[c_id]))
 
 #atualizar cliente
