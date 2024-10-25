@@ -291,7 +291,15 @@ def turma(request):
          return redirect('index')
    else:
       return render(request, 'inserir_turma.html')    
-    
+
+@login_required
+def comprovante(request, c_id, f_id):
+   if request.method == "GET":
+      c = customers.objects.get(pk=c_id)
+      f = financas.objects.get(id=f_id)
+      context = {'c': c,'f': f}
+      return render(request, 'updatefin.html', context)
+
 
 
    

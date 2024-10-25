@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from financas_online import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     
@@ -15,6 +17,7 @@ urlpatterns = [
     path('turma/', views.turma, name='turma'),
     path('form/<int:c_id>/', views.form, name='form'),
     path('updatecli/<int:c_id>/', views.update_cliente, name='upcli'),
-    path('updatefin/<int:c_id>/<int:f_id>/', views.updatefin, name='upfin'),  
-
+    path('updatefin/<int:c_id>/<int:f_id>/', views.updatefin, name='upfin'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
