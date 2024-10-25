@@ -139,9 +139,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = 'static/'
 
-# STATIC_MEDIA = 'C:\\Users\corpl\\OneDrive\\10_Django\\fin_tech\\financas_online\\'
+STATIC_MEDIA = os.path.join(BASE_DIR, 'media')
 
-# STATIC_MEDIA = 'media/'
+STATIC_MEDIA = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
