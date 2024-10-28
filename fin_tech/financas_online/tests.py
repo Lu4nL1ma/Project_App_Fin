@@ -30,16 +30,8 @@ import sqlite3
 
 # conection.close()
 
-date = "2024-10-22"
+texto = '040.012.042-90'
 
-data_edit = datetime.strptime(date, '%Y-%m-%d')
+texto = texto.strip().replace('.', '').replace('-', '')
 
-test = 10
-
-contador = 1
-
-while contador < test + 1:
-    contador
-    data_editada = data_edit + relativedelta(months=contador)
-    print(f"DAAATA {data_editada}")
-    contador += 1
+print(texto)

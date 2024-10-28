@@ -106,7 +106,25 @@ def inserir(request):
       
       if form.is_valid():
         
-        form.save()
+        nome = form.cleaned_data['nome']
+
+        cpf = form.cleaned_data['cpf']
+        
+        telefone = form.cleaned_data['telefone']
+
+        nascimento = form.cleaned_data['nascimento']
+
+        #edit dados do forms
+
+        nome = nome.title().strip()
+
+        telefone = telefone.replace(' ', '').replace('(', '').replace(')', '').replace('-', '')
+
+        cpf = cpf.strip().replace('.', '').replace('-', '')
+
+        cliente = customers.objects.create(nome=nome, cpf=cpf, telefone=telefone, nascimento=nascimento)
+        
+        cliente.save()
       
       return redirect('index')
    
@@ -293,6 +311,8 @@ def curso(request):
          
          curso = request.POST.get('curso')
 
+         curso = curso.title()
+
          inserir = cursos(curso=curso)
 
          inserir.save()
@@ -308,6 +328,8 @@ def turma(request):
    if request.method == 'POST':
          
          turma = request.POST.get('turma')
+
+         turma = turma.title()
 
          inserir = turmas_formatec(turmas_formatec=turma)
 
