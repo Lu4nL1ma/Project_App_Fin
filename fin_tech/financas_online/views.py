@@ -131,7 +131,7 @@ def customer(request, c_id):
          l_nome = l.nome.split()[-1]
          numero = l.telefone
          msg = f'Olá, {f_nome} {l_nome}, somos da Formatec, e você têm o débito abaixo pendente:'
-         link_wpp = f'https://web.whatsapp.com/send/?phone=55{numero}&text={quote(msg)+'%0A'}'
+         link_wpp = f'https://web.whatsapp.com/send/?phone=55{numero}&text={quote(msg)}%0A'
 
       context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp}
       
