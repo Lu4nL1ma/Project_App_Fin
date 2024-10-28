@@ -120,8 +120,14 @@ def customer(request, c_id):
       id_cliente = customers.objects.get(pk=c_id)
       
       fin = financas.objects.filter(id_ori=c_id)
+
+      for f in fin:
+         print(f.id)
+         print(f.cliente)
+
+      url_arquivo = os.path.join(settings.MEDIA_URL, 'media/comprovantes/')
       
-      context = {'c': id_cliente,'fin': fin}
+      context = {'c': id_cliente,'fin': fin, 'url': url_arquivo}
       
       return render(request, 'customer.html', context)
 
@@ -246,15 +252,18 @@ def updatefin(request,c_id, f_id):
 
         arquivo = form_updt.cleaned_data['arquivo']
 
+      #edições nos dados
         status = 'Recebido'
 
         financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=arquivo)
+        
+        if arquivo is not None:
+           
+         img = Image.open(arquivo)
 
-        img = Image.open(arquivo)
+         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{arquivo}')
 
-        path = os.path.join(settings.BASE_DIR,'media/teeeeeste.png')
-
-        img = img.save(path)
+         img = img.save(path)
      
    return redirect(reverse('cliente', args=[c_id]))
 
@@ -302,13 +311,9 @@ def turma(request):
    else:
       return render(request, 'inserir_turma.html')    
 
-@login_required
-def comprovante(request, c_id, f_id):
-   if request.method == "GET":
-      c = customers.objects.get(pk=c_id)
-      f = financas.objects.get(id=f_id)
-      context = {'c': c,'f': f}
-      return render(request, 'updatefin.html', context)
+   
+
+
 
 
 
