@@ -12,6 +12,7 @@ from dateutil.relativedelta import relativedelta
 from django.utils import timezone
 from PIL import Image
 from django.conf import settings
+from urllib.parse import quote
 import numpy as np
 import os
 
@@ -115,19 +116,24 @@ def customer(request, c_id):
    
    if request.method == 'GET':
 
-      upd = financas.objects.filter(status="A receber", vencimento__lt=timezone.now().date()).update(status="Vencido")
+      financas.objects.filter(status="A receber", vencimento__lt=timezone.now().date()).update(status="Vencido")
 
       id_cliente = customers.objects.get(pk=c_id)
+
+      list = customers.objects.filter(pk=c_id)
       
       fin = financas.objects.filter(id_ori=c_id)
 
-      for f in fin:
-         print(f.id)
-         print(f.cliente)
-
       url_arquivo = os.path.join(settings.MEDIA_URL, 'media/comprovantes/')
-      
-      context = {'c': id_cliente,'fin': fin, 'url': url_arquivo}
+
+      for l in list:
+         f_nome = l.nome.split()[0]
+         l_nome = l.nome.split()[-1]
+         numero = l.telefone
+         msg = f'Olá, {f_nome} {l_nome}, somos da Formatec, e você têm o débito abaixo pendente:'
+         link_wpp = f'https://web.whatsapp.com/send/?phone=55{numero}&text={quote(msg)+'%0A'}'
+
+      context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp}
       
       return render(request, 'customer.html', context)
 
