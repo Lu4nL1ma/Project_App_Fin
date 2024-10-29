@@ -279,7 +279,7 @@ def updatefin(request,c_id, f_id):
       #edições nos dados
         status = 'Recebido'
 
-        file_name = datetime.strptime(data_pagamento, format='%d_%m_%Y')
+        file_name = datetime.strptime(data_pagamento, '%d_%m_%Y')
         
         if arquivo is not None:
            
