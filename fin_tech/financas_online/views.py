@@ -279,9 +279,9 @@ def updatefin(request,c_id, f_id):
       #edições nos dados
         status = 'Recebido'
 
-        file_date = data_pagamento.strftime('%d_%m_%Y')
+        file_date = data_pagamento.strftime('%d.%m.%Y')
 
-        file_name = f'ID{f_id} - PG{file_date}'
+        file_name = f'ID{f_id}_PG{file_date}'
         
         if arquivo is not None:
            
