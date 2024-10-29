@@ -281,13 +281,13 @@ def updatefin(request,c_id, f_id):
 
         file_date = data_pagamento.strftime('%d.%m.%Y')
 
-        file_name = f'ID{f_id}_PG{file_date}'
+        file_name = f'ID-{f_id}_PG-{file_date}.png'
         
         if arquivo is not None:
            
          img = Image.open(arquivo)
 
-         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{file_name}.png')
+         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{file_name}')
 
          img = img.save(path)
 
