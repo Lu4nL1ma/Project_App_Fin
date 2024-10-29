@@ -285,7 +285,7 @@ def updatefin(request,c_id, f_id):
            
          img = Image.open(arquivo)
 
-         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{c_id}-{file_name}.png')
+         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/ID:{f_id} - PG:{file_name}.png')
 
          img = img.save(path)
 
