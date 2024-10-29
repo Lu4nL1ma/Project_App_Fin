@@ -279,15 +279,17 @@ def updatefin(request,c_id, f_id):
       #edições nos dados
         status = 'Recebido'
 
-        financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=arquivo)
+        file_name = datetime.strptime(data_pagamento, format='%d_%m_%Y')
         
         if arquivo is not None:
            
          img = Image.open(arquivo)
 
-         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{arquivo}')
+         path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{c_id}-{file_name}')
 
          img = img.save(path)
+
+      financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=file_name)
      
    return redirect(reverse('cliente', args=[c_id]))
 
