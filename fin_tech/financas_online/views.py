@@ -148,9 +148,8 @@ def customer(request, c_id):
          f_nome = l.nome.split()[0]
          l_nome = l.nome.split()[-1]
          numero = l.telefone
-         for f in fin:
-            msg = f'Olá, {f_nome} {l_nome}, somos da Formatec, segue as informações do débito com status de *{f.status}*:'
-            link_wpp = f'https://web.whatsapp.com/send/?phone=55{numero}&text={quote(msg)}%0A%0A'
+         msg = f'Olá, {f_nome} {l_nome}, somos da Formatec, segue as informações do débito abaixo:'
+         link_wpp = f'https://web.whatsapp.com/send/?phone=55{numero}&text={quote(msg)}%0A%0A'
 
       context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp}
       
