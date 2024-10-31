@@ -1,6 +1,8 @@
 .index {
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
-    width: 1400px; /* Define a largura da tabela como 100% da tela */
+    width: 100%; /* Define a largura da tabela como 100% da tela */
+    border-width: 4px;
+
   }
 
 .index a{color: #0D242C;}
