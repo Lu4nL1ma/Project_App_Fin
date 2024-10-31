@@ -371,9 +371,8 @@ def download_recibo(request, c_id, f_id):
    # Adiciona uma página
    pdf.add_page()
    
-   #background
+   #cor background
    pdf.set_fill_color(227, 232, 237)
-   pdf.cell(w=0, h=10, txt='', border=0, ln=1, align='C', fill=True)
 
    # logo
    caminho = caminho = os.path.join(BASE_DIR, 'media')
@@ -381,6 +380,9 @@ def download_recibo(request, c_id, f_id):
 
    # Define a fonte
    pdf.set_font("Arial", "B", size=10)
+
+   #cell de background
+   pdf.cell(w=0, h=10, txt='', border=0, ln=1, align='C', fill=True)
    
    pdf.set_x(22)
    pdf.set_y(28)
