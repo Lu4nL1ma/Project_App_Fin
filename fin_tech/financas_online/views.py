@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from financas_online.models import cursos, customers, turmas_formatec, financas
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -13,12 +13,23 @@ from django.utils import timezone
 from PIL import Image
 from django.conf import settings
 from urllib.parse import quote
+from fpdf import FPDF
+from pathlib import Path
+from num2words import num2words
 import numpy as np
+import locale
 import os
+import io
 
 
 # Create your views here.
 app_name = 'financas_online'
+
+#diretório base
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+#definir local global
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 #view de login
 def login(request):
@@ -290,8 +301,11 @@ def updatefin(request,c_id, f_id):
          path = os.path.join(settings.BASE_DIR, f'media/comprovantes/{file_name}')
 
          img = img.save(path)
+         
+         financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=file_name)
 
-      financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=file_name)
+        else:
+           financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo="")
      
    return redirect(reverse('cliente', args=[c_id]))
 
@@ -343,7 +357,107 @@ def turma(request):
    else:
       return render(request, 'inserir_turma.html')    
 
+def download_recibo(request, c_id, f_id):
+
+   #filtrar dados
+
+   dados_financeiros = financas.objects.filter(pk=f_id)
+
+   dados_clientes = customers.objects.filter(pk=c_id)
+
+   # Cria um objeto PDF
+   pdf = FPDF()
+
+   # Adiciona uma página
+   pdf.add_page()
+
+   # logo
+   caminho = caminho = os.path.join(BASE_DIR, 'media')
+   pdf.image(f'{caminho}\\files_clients\\formatec.png', x=11.5, y=10, w=30, h=20)
+
+   # Define a fonte
+   pdf.set_font("Arial", "B", size=10)
    
+   pdf.set_x(22)
+   pdf.set_y(28)
+   pdf.cell(30, 10, ' NOGUEIRA LTDA', 0, 1,)
+
+   pdf.set_x(30)
+   pdf.set_y(32)
+   pdf.cell(30, 10, '36.194.235/0001-09', 0, 1,)
+
+   #fonte do titulo
+   pdf.set_font("Arial", "B", size=18)
+
+   # Título centralizado
+   pdf.set_x(10)  # Volta para o início da linha
+   pdf.set_y(10)
+   pdf.cell(200, 10, 'RECIBO', 0, 1, 'C')
+
+   cliente = 'Luan Felipe Gloria e Lima' 
+   data = timezone.now().date()
+   data = data.strftime('%d de %B de %Y')
+
+   pdf.set_font("Arial", size=16)
+   pdf.set_x(70)
+   pdf.set_y(100)
+
+   for f in dados_financeiros:
+      cliente = f.cliente
+      valor = f.valor
+      valor_extens = num2words(valor, lang='pt_BR')
+      parcela = f.parcela
+      vencimento = f.vencimento
+      vencimento = vencimento.strftime('%d/%m/%Y')
+      curso = f.curso
+      turma = f.turma
+
+      for c in dados_clientes:
+         cpf = c.cpf
+         pdf.set_x(10)
+         pdf.set_y(80)
+         pdf.multi_cell(190, 10,  f'   Declaro ter recebido de {cliente} inscrito no CPF de nº. {f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"}, nesta data presente a quantia de R$ {valor},00 ({valor_extens} reais), referente a parcela {parcela} com vencimento em {vencimento} do curso de {curso} na turma {turma}.', 1,)
+
+   pdf.set_x(10)
+   pdf.set_y(150)
+   pdf.cell(200, 5,  'E para maior clareza, afirmo o presente.', 0, 1, 'L')
+
+   pdf.set_x(10)
+   pdf.set_y(175)
+   pdf.cell(200, 5,  f'Belém, {data}.', 0, 1, 'C')
+
+   pdf.set_x(10)
+   pdf.set_y(222)
+   pdf.cell(200, 5, '_____________________________', 0, 1, 'C')
+
+   pdf.set_font("Arial", 'B', size=12)
+
+   pdf.set_x(10)
+   pdf.set_y(228)
+   pdf.cell(200, 5, 'NOGUEIRA LTDA', 0, 1, 'C')
+
+   pdf.set_x(10)
+   pdf.set_y(232)
+   pdf.cell(200, 5, '36.194.235/0001-09', 0, 1, 'C')
+
+   # Salvar o conteúdo do PDF em memória (usando BytesIO)
+   
+   buffer = io.BytesIO()
+   
+   pdf_output = pdf.output(dest='S').encode('latin1') 
+   
+   buffer = io.BytesIO(pdf_output)
+  
+   buffer.seek(0)
+
+    # Criar a resposta HTTP com o conteúdo do PDF
+   response = HttpResponse(buffer, content_type='application/pdf')
+
+    # Definir cabeçalho para visualização no navegador ou para download
+   response['Content-Disposition'] = f'inline; filename="recibo_id{f_id}.pdf"'  # Para visualização
+   # response['Content-Disposition'] = 'attachment; filename="meu_arquivo.pdf"'  # Para download
+   
+   return response
 
 
 
