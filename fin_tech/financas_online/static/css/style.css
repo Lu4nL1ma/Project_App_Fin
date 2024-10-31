@@ -4,7 +4,7 @@
 
 .index a{color: #0D242C;}
 
-.index td:hover{color:darkgrey;}
+.index a:hover{color: #294B59;}
   
   th, td {
     border: 1px solid #000000; /* Adiciona bordas nas células */
