@@ -430,15 +430,11 @@ def download_recibo(request, c_id, f_id):
    pdf.set_y(222)
    pdf.cell(200, 5, '_____________________________', 0, 1, 'C')
 
-   pdf.set_font("Arial", 'B', size=12)
-
-   pdf.set_x(10)
-   pdf.set_y(228)
-   pdf.cell(200, 5, 'NOGUEIRA LTDA', 0, 1, 'C')
+   pdf.set_font("Arial", size=12)
 
    pdf.set_x(10)
    pdf.set_y(232)
-   pdf.cell(200, 5, '36.194.235/0001-09', 0, 1, 'C')
+   pdf.cell(200, 5, 'Assinatura', 0, 1, 'C')
 
    # Salvar o conteúdo do PDF em memória (usando BytesIO)
    
