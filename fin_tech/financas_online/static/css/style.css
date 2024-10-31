@@ -1,13 +1,11 @@
 .index {
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
     width: 100%; /* Define a largura da tabela como 100% da tela */
-    border-width: 4px;
-
   }
 
 .index a{color: #0D242C;}
 
-.index a:hover{color: #9d9d9d9d;}
+.index a:hover{color:#263d4c;}
   
   th, td {
     border: 1px solid #000000; /* Adiciona bordas nas células */
@@ -28,6 +26,7 @@
     width: 100%;
     overflow-x: auto;
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
+    border-width: 4px;
   }
 
 
