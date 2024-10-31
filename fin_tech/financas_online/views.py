@@ -373,7 +373,7 @@ def download_recibo(request, c_id, f_id):
 
    # logo
    caminho = caminho = os.path.join(BASE_DIR, 'media')
-   pdf.image(f'{caminho}\\files_clients\\formatec.png', x=11.5, y=10, w=30, h=20)
+   pdf.image(f'{caminho}/files_clients/formatec.png', x=11.5, y=10, w=30, h=20)
 
    # Define a fonte
    pdf.set_font("Arial", "B", size=10)
