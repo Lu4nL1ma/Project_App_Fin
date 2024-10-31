@@ -2,6 +2,8 @@
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
     width: 1400px; /* Define a largura da tabela como 100% da tela */
   }
+
+.index a{color: #0D242C;}
   
   th, td {
     border: 1px solid #000000; /* Adiciona bordas nas células */
