@@ -370,9 +370,6 @@ def download_recibo(request, c_id, f_id):
 
    # Adiciona uma página
    pdf.add_page()
-   
-   #cor background
-   pdf.set_fill_color(248,248,255)
 
    # logo
    caminho = caminho = os.path.join(BASE_DIR, 'media')
@@ -396,7 +393,7 @@ def download_recibo(request, c_id, f_id):
    # Título centralizado
    pdf.set_x(10)  # Volta para o início da linha
    pdf.set_y(10)
-   pdf.cell(30, 10, 'RECIBO', 0, 1, 'C', fill=True)
+   pdf.cell(200, 10, 'RECIBO', 0, 1, 'C')
 
    data = timezone.now().date()
    data = data.strftime('%d de %B de %Y')
@@ -419,7 +416,7 @@ def download_recibo(request, c_id, f_id):
          cpf = c.cpf
          pdf.set_x(10)
          pdf.set_y(80)
-         pdf.multi_cell(190, 10,  f'   Declaro ter recebido de {cliente} inscrito(a) no CPF de nº. {f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"}, nesta data presente a quantia de R$ {valor},00 ({valor_extens} reais), referente a parcela {parcela} com vencimento em {vencimento} do curso de {curso} na {turma}.', 1, fill=True)
+         pdf.multi_cell(190, 10,  f'   Declaro ter recebido de {cliente} inscrito(a) no CPF de nº. {f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"}, nesta data presente a quantia de R$ {valor},00 ({valor_extens} reais), referente a parcela {parcela} com vencimento em {vencimento} do curso de {curso} na {turma}.', 1)
 
    pdf.set_x(10)
    pdf.set_y(150)
