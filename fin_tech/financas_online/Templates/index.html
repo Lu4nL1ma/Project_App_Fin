@@ -68,7 +68,7 @@
         
               </tr>
               {% for c in customer %}
-                <tr>  
+                <tr class="index">  
                   <td> <input type="checkbox" class="check" value="{{c.id}}" name="ids_slct"><br> </td> 
                   <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.id}} </b> </a> <br> </td>    
                   <td> <a href =" {% url "cliente" c.id %}" > <b> {{c.nome}} </b>   </a>  <br> </td>
