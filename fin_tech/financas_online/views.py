@@ -370,6 +370,9 @@ def download_recibo(request, c_id, f_id):
 
    # Adiciona uma página
    pdf.add_page()
+   
+   #background
+   pdf.set_fill_color(200, 200, 200)
 
    # logo
    caminho = caminho = os.path.join(BASE_DIR, 'media')
