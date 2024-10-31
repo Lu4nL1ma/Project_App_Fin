@@ -1,5 +1,6 @@
 .index {
     width: 100%; /* Define a largura da tabela como 100% da tela */
+    border: 4px solid black;
   }
 
 .index a{color: #0D242C;}
