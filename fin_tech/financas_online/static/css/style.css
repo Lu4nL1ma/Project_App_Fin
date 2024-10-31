@@ -5,7 +5,7 @@
 
 .index a{color: #0D242C;}
 
-.index a:hover{color:#263d4c;}
+.index a:hover{color:darkgrey;}
   
   th, td {
     border: 1px solid #000000; /* Adiciona bordas nas células */
@@ -26,7 +26,6 @@
     width: 100%;
     overflow-x: auto;
     border-collapse: collapse; /* Faz com que as bordas das células se unam */
-    border-width: 4px;
   }
 
 
