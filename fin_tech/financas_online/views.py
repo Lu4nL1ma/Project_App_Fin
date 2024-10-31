@@ -420,11 +420,11 @@ def download_recibo(request, c_id, f_id):
 
    pdf.set_x(10)
    pdf.set_y(150)
-   pdf.cell(200, 5,  'E para maior clareza, afirmo o presente.', 0, 1, 'L')
+   pdf.cell(200, 5,  'E para maior clareza, firmo o presente.', 0, 1, 'L')
 
    pdf.set_x(10)
    pdf.set_y(175)
-   pdf.cell(200, 5,  f'Belém, {data}.', 0, 1, 'C')
+   pdf.cell(200, 5,  f'Belém-PA, {data}.', 0, 1, 'C')
 
    pdf.set_x(10)
    pdf.set_y(222)
