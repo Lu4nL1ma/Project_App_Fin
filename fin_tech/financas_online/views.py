@@ -396,7 +396,7 @@ def download_recibo(request, c_id, f_id):
    # Título centralizado
    pdf.set_x(10)  # Volta para o início da linha
    pdf.set_y(10)
-   pdf.cell(200, 10, 'RECIBO', 0, 1, 'C')
+   pdf.cell(200, 10, 'RECIBO', 0, 1, 'C', fill=True)
 
    data = timezone.now().date()
    data = data.strftime('%d de %B de %Y')
