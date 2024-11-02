@@ -18,6 +18,7 @@ urlpatterns = [
     path('updatecli/<int:c_id>/', views.update_cliente, name='upcli'),
     path('updatefin/<int:c_id>/<int:f_id>/', views.updatefin, name='upfin'),
     path('download_recibo/<int:c_id>/<int:f_id>', views.download_recibo, name='download_recibo'),
+    path('dashboard_financeiro/', views.dashboard_financeiro, name='dash_f')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

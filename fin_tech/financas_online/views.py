@@ -16,7 +16,9 @@ from urllib.parse import quote
 from fpdf import FPDF
 from pathlib import Path
 from num2words import num2words
+import plotly.graph_objects as go
 import numpy as np
+import pandas as pd
 import locale
 import os
 import io
@@ -290,7 +292,7 @@ def updatefin(request,c_id, f_id):
       #edições nos dados
         status = 'Recebido'
 
-        file_date = data_pagamento.strftime('%d.%m.%Y')
+        file_date = data_pagamento.strftime('%d_%m_%Y')
 
         file_name = f'ID-{f_id}_PG-{file_date}.png'
         
@@ -357,6 +359,7 @@ def turma(request):
    else:
       return render(request, 'inserir_turma.html')    
 
+@login_required
 def download_recibo(request, c_id, f_id):
 
    #filtrar dados
@@ -455,7 +458,75 @@ def download_recibo(request, c_id, f_id):
    
    return response
 
+@login_required
+def dashboard_financeiro(request):
+      
+      #dados
+      fins = financas.objects.values_list('curso', 'valor')
+      df = pd.DataFrame(fins, columns=['Curso','Valor'])
+      
+      # Criando os dados para o gráfico
 
+      df['Valor'] = df['Valor'].astype(int)
+
+      x = df['Curso']
+      y = df['Valor']
+
+      #cores
+      cor_interna = '#263d4c'
+      cor_externa = '#0D242C'
+      cor_barra = '#191970'
+      cor_font = '#F8F8FF'
+
+      # Criando o gráfico de barras
+      fig = go.Figure(data=go.Bar(x=x, y=y, marker_color=cor_barra, width=0.2))
+
+      # Personalizando o gráfico (opcional)
+      fig.update_layout(height=400, width=520,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Curso', yaxis_title='Demanda', font=dict(family='Arial', color='#000000', size=16))
+
+      # Convertendo o gráfico para HTML
+      div = fig.to_html(full_html=False)
+
+      # Dados do funil
+      stages = ['Segunda', 'Terça', 'Quarta', 'Quinta']
+      values = [1000, 500, 200, 150]
+
+      # Criar o gráfico de funil
+      fig_two = go.Figure(go.Funnel(
+         x=values,
+         y=stages,
+         textinfo="value+percent initial",
+         marker={"color": ["deepskyblue", "lightblue", "lightsalmon", "salmon"]}))
+      
+      fig_two.update_layout(height=400, width=400,title_text='Vendas Por Dias da Semana', title_x=0.5, font=dict(family='Arial', color='#000000', size=16))
+      
+      div_two = fig_two.to_html(full_html=False)
+
+
+            # Criando um DataFrame com dados fictícios
+      df = pd.DataFrame({'Ano': [2015, 2016, 2017, 2018, 2019],
+                        'Vendas': [100, 120, 150, 140, 180]})
+
+      # Criando o gráfico de linha
+      fig_three = go.Figure(data=go.Scatter(x=df['Ano'], y=df['Vendas'], mode='lines+markers'))
+
+      # Personalizando o gráfico
+      fig_three.update_layout(
+         title="Análise de Crescimento Mensal",
+         xaxis_title="Mês",
+         yaxis_title="Faturamento",
+         hovermode="x unified",
+         height=400, width=520,
+         title_x=0.5,
+         font=dict(family='Arial', color='#000000', size=16)
+         
+      )
+
+      div_three = fig_three.to_html(full_html=False)
+
+      
+      
+      return render(request, 'dashboard_fin.html', {'div':div, 'div_three': div_three, 'div_two': div_two})
 
 
 

@@ -37,11 +37,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     margin: auto;
-    width: auto;
-    
-   
-    
-  }
+    width: auto; }
 
   .inse {
     background-color: #263d4c;
@@ -244,7 +240,38 @@
 
 .gray{color: #3c3c3c;}
 
+.head_dash {
+  background-color: #263d4c;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+  margin: auto;
+  width: 1450px;
+  height: 40px; }
 
+  .fundo_dash{align-items: center;
+    text-align: center;
+    background-color: #263d4c;
+    height: 530px;
+    width: 1450px;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    color:#000000;
+    position: relative;
+  }
+
+  .graf_bar{position: absolute;
+            top: 100px;
+            left: 50px;}
+  
+  .graf_piz{position: absolute;
+            top: 100px;
+            right: 50px;}
+  
+  .graf_funil{position: absolute;
+              top: 100px;
+  }
 
 
   
