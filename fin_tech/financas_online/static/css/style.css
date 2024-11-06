@@ -264,7 +264,9 @@
   .graf_bar{position: absolute;
             top: 200px;
             left: 300px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);}
+            background-color: white;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;}
   
   .graf_piz{position: absolute;
             top: 200px;
