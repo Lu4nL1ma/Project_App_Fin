@@ -1,4 +1,5 @@
 from django import template
+import locale
 
 register = template.Library()
 
@@ -11,3 +12,7 @@ def formata_cpf(value):
 def formata_telefone(value):
     # Lógica para formatar telefone
     return (f"({value[:2]}){value[2:7]}-{value[7:]}")
+@register.filter
+def formata_reais(valor):
+    """Formata um valor numérico para o padrão brasileiro de reais."""
+    return locale.currency(valor, grouping=True)

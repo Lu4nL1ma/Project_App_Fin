@@ -462,8 +462,8 @@ def download_recibo(request, c_id, f_id):
 def dashboard_financeiro(request):
       
       #dados
-      fins = financas.objects.values_list('curso', 'valor')
-      df = pd.DataFrame(fins, columns=['Curso','Valor'])
+      fins = financas.objects.values_list('status', 'curso', 'valor')
+      df = pd.DataFrame(fins, columns=['Status','Curso','Valor'])
       
       # Criando os dados para o gráfico
 
@@ -472,35 +472,49 @@ def dashboard_financeiro(request):
       x = df['Curso']
       y = df['Valor']
 
+      #somas para o dash
+
+      faturado = df[df['Status'] == 'Recebido']['Valor'].sum()
+
+      receber = df[df['Status'] == 'A receber']['Valor'].sum()
+
+      vencido = df[df['Status'] == 'Vencido']['Valor'].sum()
+
       #cores
-      cor_interna = '#263d4c'
-      cor_externa = '#0D242C'
-      cor_barra = '#191970'
+      cor_interna = '#F0FFF0'
+      cor_externa = '#F0FFFF'
+      cor_barra = '#B0E0E6'
       cor_font = '#F8F8FF'
 
-      # Criando o gráfico de barras
-      fig = go.Figure(data=go.Bar(x=x, y=y, marker_color=cor_barra, width=0.2))
+      fig = go.Figure(go.Bar(
+      x=df['Valor'],
+      y=df['Curso'],
+      width=0.4,
+      orientation='h',
+      marker=dict(color='red')
+      ))
 
-      # Personalizando o gráfico (opcional)
-      fig.update_layout(height=400, width=520,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Curso', yaxis_title='Demanda', font=dict(family='Arial', color='#000000', size=16))
+
+      fig.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa, height=400, width=520,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Demanda', yaxis_title='Curso', font=dict(family='Arial', color='#000000', size=16))
+
 
       # Convertendo o gráfico para HTML
       div = fig.to_html(full_html=False)
 
-      # Dados do funil
-      stages = ['Segunda', 'Terça', 'Quarta', 'Quinta']
-      values = [1000, 500, 200, 150]
+      # # Dados do funil
+      # stages = ['Segunda', 'Terça', 'Quarta', 'Quinta']
+      # values = [1000, 500, 200, 150]
 
-      # Criar o gráfico de funil
-      fig_two = go.Figure(go.Funnel(
-         x=values,
-         y=stages,
-         textinfo="value+percent initial",
-         marker={"color": ["deepskyblue", "lightblue", "lightsalmon", "salmon"]}))
+      # # Criar o gráfico de funil
+      # fig_two = go.Figure(go.Funnel(
+      #    x=values,
+      #    y=stages,
+      #    textinfo="value+percent initial",
+      #    marker={"color": ["deepskyblue", "lightblue", "lightsalmon", "salmon"]}))
       
-      fig_two.update_layout(height=400, width=400,title_text='Vendas Por Dias da Semana', title_x=0.5, font=dict(family='Arial', color='#000000', size=16))
+      # fig_two.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa,height=400, width=400,title_text='Vendas Por Dias da Semana', title_x=0.5, font=dict(family='Arial', color='#000000', size=16))
       
-      div_two = fig_two.to_html(full_html=False)
+      # div_two = fig_two.to_html(full_html=False)
 
 
             # Criando um DataFrame com dados fictícios
@@ -512,6 +526,7 @@ def dashboard_financeiro(request):
 
       # Personalizando o gráfico
       fig_three.update_layout(
+         plot_bgcolor=cor_interna, paper_bgcolor=cor_externa,
          title="Análise de Crescimento Mensal",
          xaxis_title="Mês",
          yaxis_title="Faturamento",
@@ -524,9 +539,9 @@ def dashboard_financeiro(request):
 
       div_three = fig_three.to_html(full_html=False)
 
+      context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido}
       
-      
-      return render(request, 'dashboard_fin.html', {'div':div, 'div_three': div_three, 'div_two': div_two})
+      return render(request, 'dashboard_fin.html', context)
 
 
 
