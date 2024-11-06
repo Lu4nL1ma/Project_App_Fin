@@ -462,8 +462,8 @@ def download_recibo(request, c_id, f_id):
 def dashboard_financeiro(request):
       
       #dados
-      fins = financas.objects.values_list('status', 'curso', 'valor')
-      df = pd.DataFrame(fins, columns=['Status','Curso','Valor'])
+      fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor')
+      df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor'])
       
       # Criando os dados para o gráfico
 
@@ -479,6 +479,8 @@ def dashboard_financeiro(request):
       receber = df[df['Status'] == 'A receber']['Valor'].sum()
 
       vencido = df[df['Status'] == 'Vencido']['Valor'].sum()
+
+      unicos = df['Cliente'].nunique()
 
       #cores
       cor_interna = '#F0FFF0'
@@ -539,7 +541,7 @@ def dashboard_financeiro(request):
 
       div_three = fig_three.to_html(full_html=False)
 
-      context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido}
+      context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos}
       
       return render(request, 'dashboard_fin.html', context)
 
