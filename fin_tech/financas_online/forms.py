@@ -1,7 +1,8 @@
 from financas_online.models import customers, financas
-from financas_online.models import customers, financas, cursos
+from financas_online.models import customers, financas, cursos, turmas_formatec
 from django.forms import ModelForm
 from django import forms
+from datetime import datetime
 
 #CREATE YOUR FORMS HERE!
 
@@ -20,22 +21,26 @@ class customerform(ModelForm):
 class parcelaform(ModelForm):
    class Meta:
       model = financas
-      fields = ['id_ori', 'cliente', 'parcela', 'valor', 'curso', 'turma', 'vencimento']
-      parcelas = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
+      fields = '__all__'
+      exclude = ['status', 'data_pagamento', 'banco', 'arquivo']
+      parcela = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
+      curso = cursos.objects.all().values_list('curso','curso')
+      turm = turmas_formatec.objects.all().values_list('turmas_formatec','turmas_formatec')
       widgets = {
             'id_ori': forms.TextInput(attrs={'type': 'hidden',}),
             'cliente': forms.TextInput(attrs={'type': 'hidden',}),
-            'parcela': forms.Select(choices=parcelas),
+            'curso' : forms.Select(choices=curso),
+            'turma' : forms.Select(choices=turm),
+            'parcela' : forms.Select(choices=parcela),
             'valor': forms.TextInput(attrs={'type': 'text',}),
-            'curso': forms.Select(attrs={}),
-            'turma': forms.Select(attrs={}),
             'vencimento': forms.DateInput(attrs={'type': 'date',}),
-        }
+        }      
       
 class updtparcelaform(ModelForm):
    class Meta:
       model = financas
-      fields = ['status','parcela', 'data_pagamento', 'banco', 'arquivo']
+      fields = '__all__'
+      exlude = ['id_ori', 'cliente', 'parcela', 'valor', 'curso', 'turma', 'vencimento']
       widgets = {
             'status': forms.HiddenInput(),
             'parcela': forms.TextInput(attrs={'readonly': 'readonly'}),
@@ -43,3 +48,36 @@ class updtparcelaform(ModelForm):
             'banco': forms.TextInput(attrs={'type': 'text'}),
             'arquivo': forms.FileInput(attrs={'type': 'file'}),
             }
+      
+class form_dash(forms.Form):
+
+   ano = forms.ChoiceField(choices=[])
+     
+   mes = forms.ChoiceField(
+        choices=[
+            (1, 'Janeiro'),
+            (2, 'Fevereiro'),
+            (3, 'Março'),
+            (4, 'Maio'),
+            (6, 'Junho'),
+            (7, 'Julho'),
+            (8, 'Agosto'),
+            (9, 'Setembro'),
+            (10, 'Outubro'),
+            (11, 'Novembro'),
+            (12, 'Dezembro'),
+        ]
+    )
+   
+
+   curso = forms.ChoiceField(choices=[])
+
+
+   def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        ano_atual = datetime.now().year
+        anos = [(ano, str(ano)) for ano in range(2020, ano_atual + 7)]
+        self.fields['ano'].choices = anos
+        self.fields['curso'].choices = cursos.objects.all().values_list('curso','curso')
+
+      

@@ -263,26 +263,26 @@
 
   .graf_bar{position: absolute;
             top: 200px;
-            left: 300px;
+            left: 420px;
             }
   
   .graf_piz{position: absolute;
             top: 200px;
             right: 50px;}
   
-  .graf_fatur{position: absolute;
-              top: 40px;
+.graf_fatur{position: absolute;
+              top: 60px;
               background-color: #F0FFFF;
               width: 200px;
               height: 60px;
-              left: 300px;
+              left: 420px;
               display: flex;
               text-align: center;
               align-items:center;
 
   }
 
-  .graf_fatur h1{ font-size: 20px;
+.graf_fatur h1{ font-size: 20px;
                   color: #000000;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                   align-items: center;
@@ -298,31 +298,31 @@
                 left: 10px;}
 
 .graf_fat{position: absolute;
-    top: 10px;
+    top: 30px;
     width: 160px;
     height: 80px;
-    left: 320px;
+    left: 430px;
     color: #ece5df;
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .graf_rec{position: absolute;
-  top: 10px;
+  top: 30px;
   width: 160px;
   height: 80px;
-  left: 570px;
+  left: 690px;
   color: #ece5df;
   font-size: 20px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .graf_receber{position: absolute;
-  top: 40px;
+  top: 60px;
   background-color: #F0FFFF;
   width: 200px;
   height: 60px;
-  left: 550px;
+  left: 674px;
   display: flex;
   text-align: center;
   align-items:center;
@@ -347,32 +347,22 @@
     position: absolute;
     left: 20px;}
 
-.graf_rec{position: absolute;
-      top: 10px;
-      width: 160px;
-      height: 80px;
-      left: 570px;
-      color: #ece5df;
-      font-size: 20px;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
 .graf_ven{position: absolute;
-      top: 10px;
+      top: 30px;
       width: 160px;
       height: 80px;
-      left: 820px;
+      right: 340px;
       color: #ece5df;
       font-size: 20px;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
     
 .graf_venc{position: absolute;
-      top: 40px;
+      top: 60px;
       background-color: #F0FFFF;
       width: 200px;
       height: 60px;
-      left: 800px;
+      left: 940px;
       display: flex;
       text-align: center;
       align-items:center;
@@ -400,21 +390,21 @@
 
 
 .graf_ca{position: absolute;
-          top: 10px;
+          top: 30px;
           width: 160px;
           height: 80px;
-          left: 1076px;
+          left: 1218px;
           color: #ece5df;
           font-size: 20px;
           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
         
 .graf_cativos{position: absolute;
-          top: 40px;
+          top: 60px;
           background-color: #F0FFFF;
           width: 200px;
           height: 60px;
-          left: 1050px;
+          left: 1196px;
           display: flex;
           text-align: center;
           align-items:center;
@@ -441,10 +431,35 @@
 
 
 .filters{position: absolute;
-          top: 200px;
-          left: 20px;
+          top: 59px;
+          left: 50px;
           background-color: #0D242C;
+          width: 335px;
+          height: 542px;
               }
+.filters select{
+        width: 310px;
+        height: 25px;}
+.filters h1{
+  font-size: 18px;
+  color: #ece5df;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  align-items: center;
+  text-align: center;
+}
+
+.dash_buttons{background-color: #0D242C;
+  display: flex; /* Transforma a div em um container flexbox */
+  justify-content: center; /* Alinha os itens no centro horizontalmente */
+  align-items: center;}
+
+.dash_buttons button{background-color: #0D242C; margin: 20px;}
+
+.filters label{font-size: 18px;
+                    color: #ece5df;
+                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                    align-items: center;
+                    text-align: center;}
 
 
 

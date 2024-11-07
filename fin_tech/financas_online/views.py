@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
-from .forms import customerform, parcelaform, updtparcelaform
+from .forms import customerform, parcelaform, updtparcelaform, form_dash
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
@@ -460,14 +460,32 @@ def download_recibo(request, c_id, f_id):
 
 @login_required
 def dashboard_financeiro(request):
+
+      #valores dos filtros
+
+      ano = request.GET.get('ano')
+
+      mes = request.GET.get('mes')
+
+      curso = request.GET.get('curso')
       
       #dados
-      fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor')
-      df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor'])
-      
-      # Criando os dados para o gráfico
+      fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor', 'vencimento')
+      df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor', 'Vencimento'])
+
+      # # Criando os dados para o gráfico
 
       df['Valor'] = df['Valor'].astype(int)
+      df['Curso'] = df['Curso'].astype(str)
+      # df['Vencimento'] = pd.to_datetime(df['Vencimento'])
+      # df['Ano'] = df['Vencimento'].dt.year
+      # df['Mês'] = df['Vencimento'].dt.month
+
+      # #filtrando valores
+      # df = df[df['Ano'] == ano]
+      # df = df[df['Mês'] == mes]
+      
+      # print(df)
 
       x = df['Curso']
       y = df['Valor']
@@ -481,6 +499,8 @@ def dashboard_financeiro(request):
       vencido = df[df['Status'] == 'Vencido']['Valor'].sum()
 
       unicos = df['Cliente'].nunique()
+
+      month = list(range(1, 13))
 
       #cores
       cor_interna = '#F0FFF0'
@@ -497,34 +517,18 @@ def dashboard_financeiro(request):
       ))
 
 
-      fig.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa, height=400, width=520,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Demanda', yaxis_title='Curso', font=dict(family='Arial', color='#000000', size=16))
+      fig.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa, height=400, width=460,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Demanda', yaxis_title='Curso', font=dict(family='Arial', color='#000000', size=16))
 
 
       # Convertendo o gráfico para HTML
       div = fig.to_html(full_html=False)
 
-      # # Dados do funil
-      # stages = ['Segunda', 'Terça', 'Quarta', 'Quinta']
-      # values = [1000, 500, 200, 150]
-
-      # # Criar o gráfico de funil
-      # fig_two = go.Figure(go.Funnel(
-      #    x=values,
-      #    y=stages,
-      #    textinfo="value+percent initial",
-      #    marker={"color": ["deepskyblue", "lightblue", "lightsalmon", "salmon"]}))
-      
-      # fig_two.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa,height=400, width=400,title_text='Vendas Por Dias da Semana', title_x=0.5, font=dict(family='Arial', color='#000000', size=16))
-      
-      # div_two = fig_two.to_html(full_html=False)
-
-
-            # Criando um DataFrame com dados fictícios
-      df = pd.DataFrame({'Ano': [2015, 2016, 2017, 2018, 2019],
-                        'Vendas': [100, 120, 150, 140, 180]})
+      # Criando um DataFrame com dados fictícios
+      df = pd.DataFrame({'Mês': month,
+                        'Vendas': month})
 
       # Criando o gráfico de linha
-      fig_three = go.Figure(data=go.Scatter(x=df['Ano'], y=df['Vendas'], mode='lines+markers'))
+      fig_three = go.Figure(data=go.Scatter(x=df['Mês'], y=df['Vendas'], mode='lines+markers'))
 
       # Personalizando o gráfico
       fig_three.update_layout(
@@ -533,7 +537,7 @@ def dashboard_financeiro(request):
          xaxis_title="Mês",
          yaxis_title="Faturamento",
          hovermode="x unified",
-         height=400, width=520,
+         height=400, width=460,
          title_x=0.5,
          font=dict(family='Arial', color='#000000', size=16)
          
@@ -541,7 +545,7 @@ def dashboard_financeiro(request):
 
       div_three = fig_three.to_html(full_html=False)
 
-      context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos}
+      context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
       
       return render(request, 'dashboard_fin.html', context)
 
