@@ -477,13 +477,13 @@ def dashboard_financeiro(request):
 
       df['Valor'] = df['Valor'].astype(int)
       df['Curso'] = df['Curso'].astype(str)
-      # df['Vencimento'] = pd.to_datetime(df['Vencimento'])
-      # df['Ano'] = df['Vencimento'].dt.year
-      # df['Mês'] = df['Vencimento'].dt.month
+      df['Vencimento'] = pd.to_datetime(df['Vencimento'])
+      df['Ano'] = df['Vencimento'].dt.year
+      df['Mês'] = df['Vencimento'].dt.month
 
-      # #filtrando valores
-      # df = df[df['Ano'] == ano]
-      # df = df[df['Mês'] == mes]
+      #filtrando valores
+      df = df[df['Ano'] == ano]
+      df = df[df['Mês'] == mes]
       
       # print(df)
 
