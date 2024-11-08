@@ -28,7 +28,7 @@ class financas(models.Model):
     cliente = models.CharField(max_length=100, blank=False, default='')
     parcela = models.CharField(max_length=100, blank=False, default='')
     valor = models.CharField(max_length=100, blank=False, default='')
-    curso = models.ForeignKey(curso, on_delete=models.PROTECT)
+    curso = models.ForeignKey(cursos, on_delete=models.PROTECT)
     turma = models.ForeignKey(turmas_formatec, on_delete=models.PROTECT)
     vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
