@@ -21,8 +21,7 @@ class customerform(ModelForm):
 class parcelaform(ModelForm):
    class Meta:
       model = financas
-      fields = '__all__'
-      exclude = ['status', 'data_pagamento', 'banco', 'arquivo']
+      fields = ['id_ori', 'cliente', 'valor', 'curso', 'turma', 'vencimento']
       parcela = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
       curso = cursos.objects.all().values_list('curso','curso')
       turm = turmas_formatec.objects.all().values_list('turmas_formatec','turmas_formatec')
@@ -39,8 +38,7 @@ class parcelaform(ModelForm):
 class updtparcelaform(ModelForm):
    class Meta:
       model = financas
-      fields = '__all__'
-      exlude = ['id_ori', 'cliente', 'valor', 'curso', 'turma', 'vencimento']
+      fields = ['status', 'data_pagamento', 'banco', 'arquivo']
       widgets = {
             'status': forms.HiddenInput(),
             'parcela': forms.TextInput(attrs={'readonly': 'readonly'}),
