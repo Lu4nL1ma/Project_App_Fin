@@ -189,11 +189,7 @@ def form(request, c_id):
 
      form_parc = parcelaform(initial={'id_ori': c_id, 'cliente': c.nome})
 
-     turms = turmas_formatec.objects.all()
-
-     curs = cursos.objects.all()
-
-     context = {'c': c, 'form_parc': form_parc, 'turms': turms, 'curs': curs}
+     context = {'c': c, 'form_parc': form_parc}
      
      return render(request, 'forms.html', context)
   

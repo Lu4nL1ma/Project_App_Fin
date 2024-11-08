@@ -23,8 +23,6 @@ class parcelaform(ModelForm):
       model = financas
       fields = ['id_ori', 'cliente', 'valor', 'curso', 'turma', 'vencimento']
       parcela = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
-      curso = cursos.objects.all().values_list('curso','curso')
-      turm = turmas_formatec.objects.all().values_list('turmas_formatec','turmas_formatec')
       widgets = {
             'id_ori': forms.TextInput(attrs={'type': 'hidden',}),
             'cliente': forms.TextInput(attrs={'type': 'hidden',}),
