@@ -26,8 +26,8 @@ class parcelaform(ModelForm):
       widgets = {
             'id_ori': forms.TextInput(attrs={'type': 'hidden',}),
             'cliente': forms.TextInput(attrs={'type': 'hidden',}),
-            'curso' : forms.Select(choices=curso),
-            'turma' : forms.Select(choices=turm),
+            'curso' : forms.Select(choices=[]),
+            'turma' : forms.Select(choices=[]),
             'parcela' : forms.Select(choices=parcela),
             'valor': forms.TextInput(attrs={'type': 'text',}),
             'vencimento': forms.DateInput(attrs={'type': 'date',}),
