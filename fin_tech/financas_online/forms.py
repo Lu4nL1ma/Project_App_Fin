@@ -40,7 +40,7 @@ class updtparcelaform(ModelForm):
    class Meta:
       model = financas
       fields = '__all__'
-      exlude = ['id_ori', 'cliente', 'parcela', 'valor', 'curso', 'turma', 'vencimento']
+      exlude = ['id_ori', 'cliente', 'valor', 'curso', 'turma', 'vencimento']
       widgets = {
             'status': forms.HiddenInput(),
             'parcela': forms.TextInput(attrs={'readonly': 'readonly'}),
