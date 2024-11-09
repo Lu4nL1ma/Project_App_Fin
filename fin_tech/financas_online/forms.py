@@ -21,7 +21,7 @@ class customerform(ModelForm):
 class parcelaform(ModelForm):
    class Meta:
       model = financas
-      fields = ['id_ori', 'cliente', 'valor', 'curso', 'turma', 'vencimento']
+      fields = ['id_ori', 'parcela', 'cliente', 'valor', 'curso', 'turma', 'vencimento']
       parcela = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
       widgets = {
             'id_ori': forms.TextInput(attrs={'type': 'hidden',}),
