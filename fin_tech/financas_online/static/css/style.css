@@ -413,8 +413,8 @@
 .div_titles{
           position: absolute;
           top: 20px;
-          right: 20px;
-          width: 1200px;
+          right: 30px;
+          width: 1000px;
           height: 40px;
           background-color: #b8860b;
           margin: 20px;
@@ -422,9 +422,9 @@
 
 .div_cards{
           position: absolute;
-          top: 140px;
-          right: 20px;
-          width: 1200px;
+          top: 110px;
+          right: 30px;
+          width: 1000px;
           height: 40px;
           background-color: #e6e1d6;
         }
