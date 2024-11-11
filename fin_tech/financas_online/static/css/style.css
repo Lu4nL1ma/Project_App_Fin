@@ -410,9 +410,20 @@
                     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                     align-items: center;
                     text-align: center;}
-.backgrou{
+.div_titles{
           position: absolute;
           top: 20px;
+          right: 20px;
+          width: 1200px;
+          height: 40px;
+          background-color: #b8860b;
+          margin: 20px;
+        }
+
+.div_cards{
+          position: absolute;
+          top: 40px;
+          left: 20px;
           width: 1200px;
           height: 40px;
           background-color: #b8860b;

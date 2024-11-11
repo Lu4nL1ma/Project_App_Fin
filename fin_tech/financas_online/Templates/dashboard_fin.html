@@ -40,18 +40,23 @@
           {{div_two|safe}}
           </div>
           
-          <!--Div geral dos cards do Dashboard-->
-          <div class="backgrou">
-            
-              <li>      
-                  <b> FATURADO </b> 
-                  <b> A RECEBER </b> 
-                  <b> VENCIDO </b> 
-                  <b> CLIENTES ATIVOS </b>  </li> 
+          <!--Div do titulos do Dashboard-->
+          <div class="div_titles">
+                  <span>
+                  <p><b> FATURADO </b> </p>
+                  <p><b> A RECEBER </b></p> 
+                  <p><b> VENCIDO </b></p> 
+                  <p><b> CLIENTES ATIVOS </b></p>
+                  </span>
+           <!-- final da Div da linha dos cards do Dashboard-->  
+          </div>         
 
                
             <!--end spans-->
-          <li> 
+
+            <!-- inicio DIV cards -->
+          <div>             
+            
             <div class="cards">            
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-cash-coin" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
@@ -87,10 +92,12 @@
               <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
             </svg>
             <h1> <b> {{unicos}} </b> </h1>
-          </div> 
-        </li>
-        <!-- final da Div da linha dos cards do Dashboard-->  
-        </div>
+          </div>
+          <!-- end DIV card --> 
+      </div> 
+
+             
+            <!-- filtros do dash -->
      
         <form action="{% url "dash_f" %}" method="get"> 
           <div class="filters">
