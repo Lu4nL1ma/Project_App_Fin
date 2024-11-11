@@ -356,11 +356,10 @@
       font-size: 20px;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
- #titulos{font-size: 18px;
+ .titulos{font-size: 18px;
           color: #ece5df;
           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-          align-items: center;
-          text-align: center;}
+          margin: 20px;}
 
 .cards{position: absolute;
       top: 60px;
