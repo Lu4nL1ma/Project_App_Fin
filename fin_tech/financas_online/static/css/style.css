@@ -411,7 +411,9 @@
                     align-items: center;
                     text-align: center;}
 .backgrou{background-color: #b8860b;
-          top: 20px;}
+          top: 20px;
+          width: 1200px;
+          height: 40px;}
 
 
 
