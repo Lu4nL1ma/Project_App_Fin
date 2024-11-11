@@ -40,10 +40,13 @@
           {{div_two|safe}}
           </div>
           
-          <div class="graf_fat"> <b> FATURADO </b> </div>
-          
-          <div class="graf_fatur"> 
+          <!--Div da linha dos cards do Dashboard-->
+          <div>
 
+          <span class="graf_fat"> 
+            
+            <b> FATURADO </b> 
+                  <br>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-cash-coin" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
               <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
@@ -53,35 +56,43 @@
             
             <h1> <b> {{faturado|formata_reais}} </b> </h1> 
            
-          </div>
+          </span>
         
-      <div class="graf_rec"> <b> A RECEBER </b> </div>
-        <div class="graf_receber">
+      <span class="graf_rec"> 
+        
+        <b> A RECEBER </b> 
+              <br>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#696969" class="bi bi-safe" viewBox="0 0 16 16">
             <path d="M1 1.5A1.5 1.5 0 0 1 2.5 0h12A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 1 14.5V13H.5a.5.5 0 0 1 0-1H1V8.5H.5a.5.5 0 0 1 0-1H1V4H.5a.5.5 0 0 1 0-1H1zM2.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5z"/>
             <path d="M13.5 6a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5M4.828 4.464a.5.5 0 0 1 .708 0l1.09 1.09a3 3 0 0 1 3.476 0l1.09-1.09a.5.5 0 1 1 .707.708l-1.09 1.09c.74 1.037.74 2.44 0 3.476l1.09 1.09a.5.5 0 1 1-.707.708l-1.09-1.09a3 3 0 0 1-3.476 0l-1.09 1.09a.5.5 0 1 1-.708-.708l1.09-1.09a3 3 0 0 1 0-3.476l-1.09-1.09a.5.5 0 0 1 0-.708M6.95 6.586a2 2 0 1 0 2.828 2.828A2 2 0 0 0 6.95 6.586"/>
           </svg> 
           <h1> <b> {{receber|formata_reais}} </b> </h1>
-        </div>
+       </span>
 
-        <div class="graf_ven"> <b> VENCIDO </b> </div>
-        <div class="graf_venc">
+        <span class="graf_ven"> 
+          
+          <b> VENCIDO </b> 
+              <br>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-calendar-x" viewBox="0 0 16 16">
             <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708"/>
             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
           </svg> 
           <h1> <b> {{vencido|formata_reais}} </b> </h1>
-        </div>
+        </span>
 
 
-        <div class="graf_ca"> <b> CLIENTES ATIVOS </b> </div>
-        <div class="graf_cativos">
+        <span class="graf_ca"> 
+          <b> CLIENTES ATIVOS </b> 
+                <br>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-person-fill-check" viewBox="0 0 16 16">
             <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
             <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
           </svg>
           <h1> <b> {{unicos}} </b> </h1>
-        </div>
+        </span>
+
+          <!-- final da Div da linha dos cards do Dashboard-->
+            <div>
         
         <form action="{% url "dash_f" %}" method="get"> 
           <div class="filters">
