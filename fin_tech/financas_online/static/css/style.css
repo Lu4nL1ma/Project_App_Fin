@@ -423,10 +423,10 @@
 .div_cards{
           position: absolute;
           top: 40px;
-          left: 20px;
+          right: 20px;
           width: 1200px;
           height: 40px;
-          background-color: #b8860b;
+          background-color: #e6e1d6;
         }
 
 
