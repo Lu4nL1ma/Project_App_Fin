@@ -460,30 +460,42 @@ def download_recibo(request, c_id, f_id):
 
 @login_required
 def dashboard_financeiro(request):
-
-      #valores dos filtros
-
-      ano = request.GET.get('ano')
-
-      mes = request.GET.get('mes')
-
-      curso = request.GET.get('curso')
       
-      #dados
-      fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor', 'vencimento')
-      df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor', 'Vencimento'])
+      if "filter" in request.method == 'POST':
+         
+         #valores dos filtros
 
-      # # Criando os dados para o gráfico
+         ano = request.GET.get('ano')
 
-      df['Valor'] = df['Valor'].astype(int)
-      df['Curso'] = df['Curso'].astype(str)
-      df['Vencimento'] = pd.to_datetime(df['Vencimento'])
-      df['Ano'] = df['Vencimento'].dt.year
-      df['Mês'] = df['Vencimento'].dt.month
+         mes = request.GET.get('mes')
 
-      #filtrando valores
-      df = df[df['Ano'] == ano]
-      df = df[df['Mês'] == mes]
+         curso = request.GET.get('curso')
+         
+         #dados
+         fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor', 'vencimento')
+         df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor', 'Vencimento'])
+
+         # # Criando os dados para o gráfico
+
+         df['Valor'] = df['Valor'].astype(int)
+         df['Curso'] = df['Curso'].astype(str)
+         df['Vencimento'] = pd.to_datetime(df['Vencimento'])
+         df['Ano'] = df['Vencimento'].dt.year
+         df['Mês'] = df['Vencimento'].dt.month
+
+         #filtrando valores
+         df = df[df['Ano'] == ano]
+         df = df[df['Mês'] == mes]
+
+      else:
+         #dados
+         fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor', 'vencimento')
+         df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor', 'Vencimento'])
+
+         # # Criando os dados para o gráfico
+
+         df['Valor'] = df['Valor'].astype(int)
+         df['Curso'] = df['Curso'].astype(str)
       
       # print(df)
 
@@ -505,15 +517,13 @@ def dashboard_financeiro(request):
       #cores
       cor_interna = '#F0FFF0'
       cor_externa = '#F0FFFF'
-      cor_barra = '#B0E0E6'
-      cor_font = '#F8F8FF'
 
       fig = go.Figure(go.Bar(
       x=df['Valor'],
       y=df['Curso'],
-      width=0.4,
+      width=0.3,
       orientation='h',
-      marker=dict(color='red')
+      marker=dict(color='#4682B4')
       ))
 
 
