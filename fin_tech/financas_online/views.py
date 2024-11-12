@@ -173,9 +173,11 @@ def customer(request, c_id):
       
        dele = request.POST.getlist('ids_slct_fin')
 
-       for d in dele:
+       fin = financas.objects.filter(id__in=dele)
+
+       for f in fin:
          
-         filed = d.arquivo
+         filed = f.arquivo
 
          caminho = os.path.join(BASE_DIR, f'comprovantes/{filed}')
 
