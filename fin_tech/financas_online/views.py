@@ -172,7 +172,15 @@ def customer(request, c_id):
    elif request.method == 'POST':
       
        dele = request.POST.getlist('ids_slct_fin')
-       
+
+       for d in dele:
+         
+         filed = d.arquivo
+
+         caminho = os.path.join(BASE_DIR, f'comprovantes/{filed}')
+
+         os.remove(caminho)
+              
        del_cliente = financas.objects.filter(id__in=dele)
        
        del_cliente.delete()
@@ -288,6 +296,8 @@ def updatefin(request,c_id, f_id):
         banco = form_updt.cleaned_data['banco']
 
         arquivo = form_updt.cleaned_data['arquivo']
+
+        banco = banco.title()
 
       #edições nos dados
         status = 'Recebido'
