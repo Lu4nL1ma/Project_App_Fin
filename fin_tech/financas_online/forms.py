@@ -37,6 +37,7 @@ class updtparcelaform(ModelForm):
    class Meta:
       model = financas
       fields = ['status', 'parcela','data_pagamento', 'banco', 'arquivo']
+      labels = {'parcela':'Nº da Parcela', 'data_pagamento':'Data do Pagamento'}
       widgets = {
             'status': forms.HiddenInput(),
             'parcela': forms.TextInput(attrs={'readonly': 'readonly'}),
