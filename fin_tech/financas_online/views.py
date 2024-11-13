@@ -251,6 +251,8 @@ def form(request, c_id):
         condicional = int(parcela)
 
         date = str(vencimento)
+
+        valor = int(valor)
         
         #CONDICIONAL DE UMA INCLUSÃO NO BANCO DE DADOS
         
