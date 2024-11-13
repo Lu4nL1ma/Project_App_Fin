@@ -125,7 +125,7 @@
     <td> {{f.curso}}   <br> </td>
     <td> {{f.turma}}   <br> </td>
     <td> {{f.parcela}} <br> </td>
-    <td> R$ {{f.valor}},00 <br> </td>
+    <td> {{f.valor|formata_reais}} <br> </td>
     <td type="date"> {{f.vencimento|date:'d/m/Y'}} <br> </td>
     <td>{{f.data_pagamento|date:'d/m/Y'}}</td>
     <td>{{f.tipo_pagamento}}</td>
