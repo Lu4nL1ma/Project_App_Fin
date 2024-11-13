@@ -175,16 +175,10 @@ def customer(request, c_id):
          numero = l.telefone
          msg = f'Olá, {f_nome} {l_nome}, somos da Formatec, segue as informações do débito abaixo:'
          link_wpp = f'https://web.whatsapp.com/send/?phone=55{numero}&text={quote(msg)}%0A%0A'
-      for f in fin:
-         if f.valor != "":
-            
-            valor_edit = int(f.valor)
 
-            context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp, 'valor_edit': valor_edit}
-            return render(request, 'customer.html', context)
-         else:
-            context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp}
-            return render(request, 'customer.html', context)  
+      context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp}
+
+      return render(request, 'customer.html', context)  
 
       
 
@@ -198,8 +192,6 @@ def customer(request, c_id):
        for f in fin:
          
          filed = f.arquivo
-
-         print(f'DADOOOO: {filed}')
 
          try:
             caminho = os.path.join(BASE_DIR, f'media\\comprovantes\\{filed}')
