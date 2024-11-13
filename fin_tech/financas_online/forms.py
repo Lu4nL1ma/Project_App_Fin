@@ -37,7 +37,7 @@ class updtparcelaform(ModelForm):
    class Meta:
       model = financas
       fields = ['status', 'parcela','data_pagamento', 'tipo_pagamento', 'banco', 'arquivo']
-      pay = [('Pix','Pix'), ('Dinheiro', 'Dinheiro') ('Cartão de Crédito', 'Cartão de Crédito'), ('Cartão de Débito', 'Cartão de Dédito')]
+      pay = [('Pix','Pix'), ('Dinheiro', 'Dinheiro'), ('Cartão de Crédito', 'Cartão de Crédito'), ('Cartão de Débito', 'Cartão de Dédito')]
       labels = {'parcela':'Nº da Parcela', 'data_pagamento':'Data do Pagamento', 'arquivo': 'Comprovante'}
       widgets = {
             'status': forms.HiddenInput(),
