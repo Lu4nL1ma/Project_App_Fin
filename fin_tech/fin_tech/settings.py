@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #caminho templates
 
-cam = os.path.join(BASE_DIR, 'financas_online')
+cam = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -62,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': ['/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/Templates'],
-        'DIRS': [f'{cam}/templates'],
+        'DIRS': [cam],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
