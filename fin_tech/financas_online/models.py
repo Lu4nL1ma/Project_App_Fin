@@ -32,6 +32,7 @@ class financas(models.Model):
     turma = models.ForeignKey(turmas_formatec, on_delete=models.PROTECT)
     vencimento = models.DateField(auto_now=False, null=True)
     data_pagamento = models.DateField(auto_now=False, null=True)
+    tipo_pagamento = models.CharField(max_length=100, blank=False, default='')
     banco = models.CharField(max_length=50, blank=False, default='')
     arquivo = models.FileField(upload_to='comprovantes/', blank=True, null=True)
     registro_fin = models.DateField(auto_now=True)
