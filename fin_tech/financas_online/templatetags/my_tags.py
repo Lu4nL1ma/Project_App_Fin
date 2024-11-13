@@ -3,6 +3,9 @@ import locale
 
 register = template.Library()
 
+#definir local global
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+
 @register.filter
 def formata_cpf(value):
     # Lógica para formatar o CPF
