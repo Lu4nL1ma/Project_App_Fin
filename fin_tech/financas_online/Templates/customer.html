@@ -128,7 +128,7 @@
     <td> R$ {{f.valor}},00 <br> </td>
     <td type="date"> {{f.vencimento|date:'d/m/Y'}} <br> </td>
     <td>{{f.data_pagamento|date:'d/m/Y'}}</td>
-    <th>{{f.tipo_pagamento}}</th>
+    <td>{{f.tipo_pagamento}}</td>
     <td>{{f.banco}}</td>
     {% if f.arquivo != "" %}
     <td> <a title="Redirecionar para uma nova guia com o arquivo anexado" class="gray" href="{{url}}{{f.arquivo}}" target="_blank">
