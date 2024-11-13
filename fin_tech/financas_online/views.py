@@ -180,8 +180,10 @@ def customer(request, c_id):
             
             valor_edit = int(f.valor)
 
-      context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp, 'valor_edit': valor_edit}
-      
+            context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp, 'valor_edit': valor_edit}
+         else:
+            context = {'c': id_cliente,'fin': fin, 'url': url_arquivo, 'link_wpp': link_wpp}    
+
       return render(request, 'customer.html', context)
 
 #condicional do método post
