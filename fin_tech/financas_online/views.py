@@ -68,7 +68,19 @@ def index(request):
 
      del_fin = financas.objects.filter(id_ori__in=ids)
 
-     del_fin.delete()
+     for d in del_fin:
+        
+        filed = d.arquivo
+
+        try:
+            caminho = os.path.join(BASE_DIR, f'media\\comprovantes\\{filed}')
+
+            os.remove(caminho)
+
+            del_fin.delete()
+        
+        except:
+           del_fin.delete()
 
      clientes = customers.objects.all().order_by('id')
 
@@ -179,13 +191,22 @@ def customer(request, c_id):
          
          filed = f.arquivo
 
-         caminho = os.path.join(BASE_DIR, f'comprovantes/{filed}')
+         print(f'DADOOOO: {filed}')
 
-         os.remove(caminho)
-              
-       del_cliente = financas.objects.filter(id__in=dele)
+         try:
+            caminho = os.path.join(BASE_DIR, f'media\\comprovantes\\{filed}')
+
+            os.remove(caminho)
+
+            del_cliente = financas.objects.filter(id__in=dele)
        
-       del_cliente.delete()
+            del_cliente.delete()
+         
+         except:
+
+            del_cliente = financas.objects.filter(id__in=dele)
+            
+            del_cliente.delete()
        
        return redirect(reverse('cliente', args=[c_id]))
        
