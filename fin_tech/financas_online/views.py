@@ -316,6 +316,8 @@ def updatefin(request,c_id, f_id):
         
         data_pagamento = form_updt.cleaned_data['data_pagamento']
 
+        tipo_pagamento = form_updt.cleaned_data['tipo_pagamento']
+
         banco = form_updt.cleaned_data['banco']
 
         arquivo = form_updt.cleaned_data['arquivo']
@@ -337,10 +339,10 @@ def updatefin(request,c_id, f_id):
 
          img = img.save(path)
          
-         financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo=file_name)
+         financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, tipo_pagamento=tipo_pagamento, banco=banco, arquivo=file_name)
 
         else:
-           financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, banco=banco, arquivo="")
+           financas.objects.filter(id=f_id).update(status=status, parcela=parcela, data_pagamento=data_pagamento, tipo_pagamento=tipo_pagamento, banco=banco, arquivo="")
      
    return redirect(reverse('cliente', args=[c_id]))
 
