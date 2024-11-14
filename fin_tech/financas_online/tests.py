@@ -43,6 +43,6 @@ corpo = "Olá, este é um email personalizado para você!"
 for destinatario in destinatarios:
     c
     assunto = f"Saudação carinhosa para você {pessoa[c]}!"
-    corpo = f"Olá, querido(a) {pessoa[c]}, lembrando que você é muito especial e estou passando para lhe desejar um ótimo dia! S2"
+    corpo = f"Olá, querido(a) {pessoa[c]}, lembrando que você é muito especial e estou passando para lhe desejar um ótimo dia, acredite em si mesmo, você é capaz além do que imagina! S2"
     enviar_email(destinatario, assunto, corpo)
     c = c+1
