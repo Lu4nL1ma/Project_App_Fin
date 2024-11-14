@@ -31,8 +31,8 @@ def enviar_email(destinatario, assunto, corpo):
         smtp.sendmail(sender_email, destinatario, message.as_string())
 
 # variaveis para envio
-pessoa = ['Luan Gloria','Evelym Farias']
-destinatarios = ["2019luangl@gmail.com","evelymsantos805@gmail.com"]
+pessoa = ['Luan','Evelym', 'Yas']
+destinatarios = ["2019luangl@gmail.com","evelymsantos805@gmail.com", "yasminkristine123@gmail.com"]
 c = 0
 
 # Assunto e corpo do email (pode ser personalizado para cada destinatário)
