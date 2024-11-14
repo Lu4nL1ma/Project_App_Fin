@@ -61,8 +61,8 @@ ROOT_URLCONF = 'fin_tech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': ['/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/Templates'],
-        'DIRS': [cam],
+        'DIRS': ['/home/Lu4nL1ma/meu_aplicativo/Project_App_Fin/fin_tech/financas_online/Templates'],
+        # 'DIRS': [cam],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
