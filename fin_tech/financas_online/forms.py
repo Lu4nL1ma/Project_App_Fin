@@ -36,14 +36,14 @@ class parcelaform(ModelForm):
 class updtparcelaform(ModelForm):
    class Meta:
       model = financas
-      #fields = ['status', 'parcela','data_pagamento', 'tipo_pagamento', 'banco', 'arquivo']
-     # pay = [('Pix','Pix'), ('Dinheiro', 'Dinheiro'), ('Cartão de Crédito', 'Cartão de Crédito'), ('Cartão de Débito', 'Cartão de Dédito')]
-      labels = {'parcela':'Nº da Parcela', 'data_pagamento':'Data do Pagamento', 'arquivo': 'Comprovante',}#'tipo_pagamento': 'Tipo de Pagamento'}
+      fields = ['status', 'parcela','data_pagamento', 'tipo_pagamento', 'banco', 'arquivo']
+      pay = [('Pix','Pix'), ('Dinheiro', 'Dinheiro'), ('Cartão de Crédito', 'Cartão de Crédito'), ('Cartão de Débito', 'Cartão de Dédito')]
+      labels = {'parcela':'Nº da Parcela', 'data_pagamento':'Data do Pagamento', 'arquivo': 'Comprovante','tipo_pagamento': 'Tipo de Pagamento'}
       widgets = {
             'status': forms.HiddenInput(),
             'parcela': forms.TextInput(attrs={'readonly': 'readonly'}),
             'data_pagamento': forms.DateInput(attrs={'type': 'date',}),
-            #'tipo_pagamento' : forms.Select(choices=pay),
+            'tipo_pagamento' : forms.Select(choices=pay),
             'banco': forms.TextInput(attrs={'type': 'text'}),
             'arquivo': forms.FileInput(attrs={'type': 'file'}),
             }
