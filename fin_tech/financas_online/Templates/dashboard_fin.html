@@ -107,9 +107,7 @@
              
             <!-- filtros do dash -->
      
-        <form action="{% url "dash_f" %}" method="post"> 
-          
-          {% csrf_token %}
+        <form action="{% url "dash_f" %}" method="get"> 
           
           <div class="filters">
             <br> 
@@ -128,7 +126,7 @@
             </button>
            </form>
 
-           <form action="{% url "dash_f" %}" method="post">
+           <form action="{% url "dash_f" %}" method="get">
             <button type="submit" name="clear">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
