@@ -73,7 +73,7 @@ def index(request):
         filed = d.arquivo
 
         try:
-            caminho = os.path.join(BASE_DIR, f'media\\comprovantes\\{filed}')
+            caminho = os.path.join(BASE_DIR, f'media/comprovantes/{filed}')
 
             os.remove(caminho)
 
