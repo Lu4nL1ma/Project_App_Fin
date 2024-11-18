@@ -523,6 +523,67 @@ def dashboard_financeiro(request):
          #filtrando valores
          df = df[df['Ano'] == ano]
          df = df[df['Mês'] == mes]
+         df = df[df['Mês'] == mes]
+
+               x = df['Curso']
+         y = df['Valor']
+
+         #somas para o dash
+
+         faturado = df[df['Status'] == 'Recebido']['Valor'].sum()
+
+         receber = df[df['Status'] == 'A receber']['Valor'].sum()
+
+         vencido = df[df['Status'] == 'Vencido']['Valor'].sum()
+
+         unicos = df['Cliente'].nunique()
+
+         month = list(range(1, 13))
+
+         #cores
+         cor_interna = '#F0FFF0'
+         cor_externa = '#F0FFFF'
+
+         fig = go.Figure(go.Bar(
+         x=df['Valor'],
+         y=df['Curso'],
+         width=0.3,
+         orientation='h',
+         marker=dict(color='#4682B4')
+         ))
+
+
+         fig.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa, height=400, width=460,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Demanda', yaxis_title='Curso', font=dict(family='Arial', color='#000000', size=16))
+
+
+         # Convertendo o gráfico para HTML
+         div = fig.to_html(full_html=False)
+
+         # Criando um DataFrame com dados fictícios
+         df = pd.DataFrame({'Mês': month,
+                           'Vendas': month})
+
+         # Criando o gráfico de linha
+         fig_three = go.Figure(data=go.Scatter(x=df['Mês'], y=df['Vendas'], mode='lines+markers'))
+
+         # Personalizando o gráfico
+         fig_three.update_layout(
+            plot_bgcolor=cor_interna, paper_bgcolor=cor_externa,
+            title="Análise de Crescimento Mensal",
+            xaxis_title="Mês",
+            yaxis_title="Faturamento",
+            hovermode="x unified",
+            height=400, width=460,
+            title_x=0.5,
+            font=dict(family='Arial', color='#000000', size=16)
+            
+         )
+
+         div_three = fig_three.to_html(full_html=False)
+
+         context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
+         
+      return render(request, 'dashboard_fin.html', context)
 
       else:
          #dados
@@ -534,68 +595,67 @@ def dashboard_financeiro(request):
          df['Valor'] = df['Valor'].astype(int)
          df['Curso'] = df['Curso'].astype(str)
       
-      # print(df)
+         x = df['Curso']
+         y = df['Valor']
 
-      x = df['Curso']
-      y = df['Valor']
+         #somas para o dash
 
-      #somas para o dash
+         faturado = df[df['Status'] == 'Recebido']['Valor'].sum()
 
-      faturado = df[df['Status'] == 'Recebido']['Valor'].sum()
+         receber = df[df['Status'] == 'A receber']['Valor'].sum()
 
-      receber = df[df['Status'] == 'A receber']['Valor'].sum()
+         vencido = df[df['Status'] == 'Vencido']['Valor'].sum()
 
-      vencido = df[df['Status'] == 'Vencido']['Valor'].sum()
+         unicos = df['Cliente'].nunique()
 
-      unicos = df['Cliente'].nunique()
+         month = list(range(1, 13))
 
-      month = list(range(1, 13))
+         #cores
+         cor_interna = '#F0FFF0'
+         cor_externa = '#F0FFFF'
 
-      #cores
-      cor_interna = '#F0FFF0'
-      cor_externa = '#F0FFFF'
-
-      fig = go.Figure(go.Bar(
-      x=df['Valor'],
-      y=df['Curso'],
-      width=0.3,
-      orientation='h',
-      marker=dict(color='#4682B4')
-      ))
+         fig = go.Figure(go.Bar(
+         x=df['Valor'],
+         y=df['Curso'],
+         width=0.3,
+         orientation='h',
+         marker=dict(color='#4682B4')
+         ))
 
 
-      fig.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa, height=400, width=460,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Demanda', yaxis_title='Curso', font=dict(family='Arial', color='#000000', size=16))
+         fig.update_layout(plot_bgcolor=cor_interna, paper_bgcolor=cor_externa, height=400, width=460,title_text='Faturamento Por Curso', title_x=0.5, xaxis_title='Demanda', yaxis_title='Curso', font=dict(family='Arial', color='#000000', size=16))
 
 
-      # Convertendo o gráfico para HTML
-      div = fig.to_html(full_html=False)
+         # Convertendo o gráfico para HTML
+         div = fig.to_html(full_html=False)
 
-      # Criando um DataFrame com dados fictícios
-      df = pd.DataFrame({'Mês': month,
-                        'Vendas': month})
+         # Criando um DataFrame com dados fictícios
+         df = pd.DataFrame({'Mês': month,
+                           'Vendas': month})
 
-      # Criando o gráfico de linha
-      fig_three = go.Figure(data=go.Scatter(x=df['Mês'], y=df['Vendas'], mode='lines+markers'))
+         # Criando o gráfico de linha
+         fig_three = go.Figure(data=go.Scatter(x=df['Mês'], y=df['Vendas'], mode='lines+markers'))
 
-      # Personalizando o gráfico
-      fig_three.update_layout(
-         plot_bgcolor=cor_interna, paper_bgcolor=cor_externa,
-         title="Análise de Crescimento Mensal",
-         xaxis_title="Mês",
-         yaxis_title="Faturamento",
-         hovermode="x unified",
-         height=400, width=460,
-         title_x=0.5,
-         font=dict(family='Arial', color='#000000', size=16)
+         # Personalizando o gráfico
+         fig_three.update_layout(
+            plot_bgcolor=cor_interna, paper_bgcolor=cor_externa,
+            title="Análise de Crescimento Mensal",
+            xaxis_title="Mês",
+            yaxis_title="Faturamento",
+            hovermode="x unified",
+            height=400, width=460,
+            title_x=0.5,
+            font=dict(family='Arial', color='#000000', size=16)
+            
+         )
+
+         div_three = fig_three.to_html(full_html=False)
+
+         context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
          
-      )
-
-      div_three = fig_three.to_html(full_html=False)
-
-      context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
-      
       return render(request, 'dashboard_fin.html', context)
-
+      
+     
 
 
    
