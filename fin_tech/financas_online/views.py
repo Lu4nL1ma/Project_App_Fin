@@ -194,7 +194,7 @@ def customer(request, c_id):
          filed = f.arquivo
 
          try:
-            caminho = os.path.join(BASE_DIR, f'media\\comprovantes\\{filed}')
+            caminho = os.path.join(BASE_DIR, f'media/comprovantes/{filed}')
 
             os.remove(caminho)
 
@@ -490,7 +490,7 @@ def download_recibo(request, c_id, f_id):
    response = HttpResponse(buffer, content_type='application/pdf')
 
     # Definir cabeçalho para visualização no navegador ou para download
-   response['Content-Disposition'] = f'inline; filename="recibo_id{f_id}.pdf"'  # Para visualização
+   response['Content-Disposition'] = f'inline; filename="RECIBO_ID{f_id}.pdf"'  # Para visualização
    # response['Content-Disposition'] = 'attachment; filename="meu_arquivo.pdf"'  # Para download
    
    return response
