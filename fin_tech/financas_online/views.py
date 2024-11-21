@@ -583,7 +583,6 @@ def dashboard_financeiro(request):
 
          context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
          
-         return render(request, 'dashboard_fin.html', context)
 
       else:
          #dados
@@ -653,7 +652,7 @@ def dashboard_financeiro(request):
 
          context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
          
-         return render(request, 'dashboard_fin.html', context)
+      return render(request, 'dashboard_fin.html', context)
       
      
 
