@@ -525,7 +525,7 @@ def dashboard_financeiro(request):
          df = df[df['Mês'] == mes]
          df = df[df['Mês'] == mes]
 
-               x = df['Curso']
+         x = df['Curso']
          y = df['Valor']
 
          #somas para o dash
@@ -584,7 +584,7 @@ def dashboard_financeiro(request):
          context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
          
          return render(request, 'dashboard_fin.html', context)
-         
+
       elif request.method == "GET":
          #dados
          fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor', 'vencimento')
