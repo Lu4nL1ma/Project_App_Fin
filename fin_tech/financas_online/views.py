@@ -498,7 +498,7 @@ def download_recibo(request, c_id, f_id):
 @login_required
 def dashboard_financeiro(request):
       
-      if "filter" in request.method == 'POST':
+      if "filter" in request.method == 'GET':
          
          #valores dos filtros
 
