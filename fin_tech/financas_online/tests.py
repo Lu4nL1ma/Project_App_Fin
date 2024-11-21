@@ -1,6 +1,12 @@
 import smtplib
+import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import locale
+
+# Definir o locale para português do Brasil
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+
 
 def enviar_email(destinatario, assunto, corpo):
     """Envia um email para o destinatário especificado.
@@ -29,20 +35,32 @@ def enviar_email(destinatario, assunto, corpo):
         smtp.starttls()
         smtp.login(sender_email, password)
         smtp.sendmail(sender_email, destinatario, message.as_string())
+# Data atual.
+hoje = datetime.date.today()
+
+dia = hoje.strftime("%A")
 
 # variaveis para envio
-pessoa = ['Luan','Evelym', 'Yas']
-destinatarios = ["2019luangl@gmail.com","evelymsantos805@gmail.com", "yasminkristine123@gmail.com"]
+pessoa = ['Luan','Evelym']
+destinatarios = ["2019luangl@gmail.com","evelymsantos805@gmail.com"]
 c = 0
 
-# Assunto e corpo do email (pode ser personalizado para cada destinatário)
-assunto = "Assunto do email"
-corpo = "Olá, este é um email personalizado para você!"
+if dia != "Sábado" and dia != "Domingo":
+    if dia == "segunda-feira":
 
-# Envia um email para cada destinatário
-for destinatario in destinatarios:
-    c
-    assunto = f"Saudação carinhosa para você {pessoa[c]}!"
-    corpo = f"Olá, querido(a) {pessoa[c]}, lembrando que você é muito especial e estou passando para lhe desejar um ótimo dia, acredite em si mesmo, você é capaz além do que imagina! S2"
-    enviar_email(destinatario, assunto, corpo)
-    c = c+1
+        # Envia um email para cada destinatário
+        for destinatario in destinatarios:
+            c
+            assunto = f"Que sua semana seja produtiva querido(a) {pessoa[c]}!"
+            corpo = f"Olá, querido(a) {pessoa[c]}, venho nesta {dia} lembrar que você é muito especial e estou passando para lhe desejar uma ótima semana, acredite em si mesmo, pois você é muito capaz, bem além do que você mesmo pode imaginar! S2"
+            enviar_email(destinatario, assunto, corpo)
+            c = c+1
+    elif dia == "sexta-feira":
+
+        # Envia um email para cada destinatário
+        for destinatario in destinatarios:
+            c
+            assunto = f"Descanse querido(a) {pessoa[c]}!"
+            corpo = f"Olá, querido(a) {pessoa[c]}, venho nesta {dia} lembrar que você merece um descanso da correria que foi esta semana, aproveite o final de semana! S2"
+            enviar_email(destinatario, assunto, corpo)
+            c = c+1
