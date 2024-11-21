@@ -498,7 +498,7 @@ def download_recibo(request, c_id, f_id):
 @login_required
 def dashboard_financeiro(request):
       
-      if "filter" in request.method == 'GET':
+      if "filter" in request.method == 'POST':
          
          #valores dos filtros
 
@@ -583,8 +583,9 @@ def dashboard_financeiro(request):
 
          context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
          
-
-      else:
+         return render(request, 'dashboard_fin.html', context)
+         
+      elif request.method == "GET":
          #dados
          fins = financas.objects.values_list('status', 'cliente', 'curso', 'valor', 'vencimento')
          df = pd.DataFrame(fins, columns=['Status', 'Cliente', 'Curso','Valor', 'Vencimento'])
@@ -651,8 +652,8 @@ def dashboard_financeiro(request):
          div_three = fig_three.to_html(full_html=False)
 
          context = {'div':div, 'div_three': div_three, 'faturado': faturado, 'receber': receber, 'vencido': vencido, 'unicos': unicos, 'form': form_dash}
-         
-      return render(request, 'dashboard_fin.html', context)
+
+         return render(request, 'dashboard_fin.html', context)
       
      
 
